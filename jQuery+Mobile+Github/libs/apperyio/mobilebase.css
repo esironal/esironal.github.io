@@ -1,0 +1,327 @@
+body {
+    overflow: auto;
+}
+
+a {
+    outline: none;
+    color: black;
+    -webkit-touch-callout: none;
+}
+
+td {
+    vertical-align: top;
+}
+
+.ui-field-contain {
+    padding: 0;
+    border-bottom-width: 0px;
+}
+
+.ui-selectmenu {
+    z-index: 1001 !important;
+}
+
+.ui-btn.ui-btn-right:not(.ui-btn-icon-notext) {
+    text-align: right;
+}
+
+.ui-btn.ui-btn-left:not(.ui-btn-icon-notext) {
+    text-align: left;
+}
+
+.ui-mobile-viewport textarea.ui-input-text {
+    margin: 0;
+}
+
+.ui-mobile-viewport .ui-footer .ui-body {
+    clear: none;
+}
+
+.ui-mobile-viewport .ui-header div.ui-navbar,
+.ui-mobile-viewport .ui-footer div.ui-navbar {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+
+.ui-field-contain div.ui-input-text,
+.ui-field-contain textarea.ui-input-text,
+.ui-field-contain div.ui-input-search,
+.ui-field-contain div.ui-slider:not(.ui-slider-switch),
+.ui-field-contain div.ui-select {
+    width: 100%;
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* see ETST-20022 */
+.ui-field-contain div.ui-select.ui-btn-inline{
+    display: inline-block;
+}
+
+/* Listview */
+
+.ui-listview > li a > h3 {
+    margin: 0;
+}
+
+.ui-listview .ui-li-has-thumb > .ui-btn > img:first-child:not([dsid]) {
+    height: 5em;
+    width: 5em;
+}
+
+ol.ui-listview > li span.ui-li-count {
+    margin-top: -.88em;
+    text-indent: inherit;
+}
+
+/* see ETST-11565 */
+li div.ui-li-static-container.ui-btn{
+    margin:0;
+    overflow: overlay;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    text-align: left;
+}
+
+li.ui-last-child div.ui-li-static-container.ui-btn {
+    border-bottom-width: 1px;   
+    border-bottom-right-radius: 0;   
+} 
+li.ui-first-child div.ui-li-static-container.ui-btn {
+    border-top-right-radius: 0;   
+} 
+
+.ui-listview li.ui-li-has-thumb div.ui-li-static-container.ui-btn > img:first-child:not([dsid]){
+    position: absolute;
+    top: 50%;
+    left:0;
+    max-width: 5em;
+    max-height: 5em;
+    margin-top: -2.5em;   
+}
+
+.ui-listview li.ui-li-has-icon div.ui-li-static-container.ui-btn > img:first-child:not([dsid]){
+    position: absolute;
+    top: 50%;
+    left:10px;
+    max-width: 1em;
+    max-height: 1em;
+    margin-top: -0.5em;   
+}  
+
+.ui-listview > li.ui-li-has-icon img:first-child:not([dsid]) {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.ui-listview .ui-li-has-thumb > img[dsid]:first-child, .ui-listview .ui-li-has-thumb > .ui-btn > img[dsid]:first-child {
+    position: static ; 
+    max-height: none ; 
+    max-width: none ; 
+}
+
+.ui-listview a.ui-btn.ul-li-custom-split-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+
+.ui-listview a.ui-btn.ul-li-custom-split-button:focus, 
+.ui-listview li.ui-btn:focus {
+     z-index: 3; 
+}
+
+.ui-listview li.ui-btn:after {
+    z-index: 4; /*ETST-20410*/
+}
+
+.ui-listview li.ui-last-child .ui-btn.ul-li-custom-split-button {
+    -moz-border-bottom-right-radius: inherit;
+    -webkit-border-bottom-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    -moz-border-bottom-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ui-listview li.ui-first-child .ui-btn.ul-li-custom-split-button {
+    -moz-border-top-right-radius: inherit;
+    -webkit-border-top-right-radius: inherit;
+    border-top-right-radius: inherit;
+    -moz-border-top-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.ui-btn-icon-right.ui-icon-none:after{
+    display:none;
+}
+
+ol.ui-listview li.ui-btn .ui-li-static-container.ui-btn:before {
+    display: none;
+}
+ol.ui-listview > li .ui-li-static-container img:first-child + * {
+    display: inherit;
+}
+ol.ui-listview > li img:first-child + * ~ * {
+    text-indent: inherit;
+} 
+ol.ui-listview > li.ui-li-static h1,
+ol.ui-listview > li.ui-li-static h2,
+ol.ui-listview > li.ui-li-static h3,
+ol.ui-listview > li.ui-li-static h4,
+ol.ui-listview > li.ui-li-static h5,
+ol.ui-listview > li.ui-li-static h6 {
+    display: block;
+}
+
+/* ETST-17856 */
+ol.ui-listview > li > a > h3 {
+    width: 100%;
+    text-indent: 2em;
+    margin-left: -2em;
+}
+
+/* see ETST-7646 */
+@media all and (min-width: 28em) {
+    .ui-mobile-viewport .ui-field-contain .ui-controlgroup-controls {
+        display: block;
+        width: auto;
+        float: none;
+    }
+}
+
+/* ETST-7532 */
+.ui-icon.ui-icon-none {
+    background: none;
+    background-image: none;
+}
+
+.ui-icon-shadow.ui-icon-none {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.tiggzi-mobiletemplate {
+    background-color: transparent;
+    padding: 0px;
+}
+
+/* ETST-10870 */
+.ui-header > .ui-btn-left,
+.ui-header > .ui-btn-right {
+    max-width: 30%;
+}
+
+/* ETST-12129 */
+.ui-collapsible > .ui-collapsible-content {
+    border-top: 1px solid transparent;
+    margin-top: -1px;
+}
+
+/* ETST-14349 */
+.content-secondary .ui-collapsible-content ul[data-role="listview"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.content-secondary .ui-collapsible-content [data-role="listview"] .ui-li.ui-first-child {
+    border-top-width: 1px;
+}
+
+.content-secondary .ui-scrollview-view > .ui-collapsible {
+    margin-top: 0px;
+}
+
+.content-secondary .ui-collapsible .hasDatepicker {
+    width: 100%;
+}
+
+/* ETST-17778 */
+.ui-header .ui-btn:not(.ui-input-clear-hidden) {
+    display: block;
+}
+
+/* ETST-17901 */
+.ui-icon-none.ui-btn-icon-left:after,
+.ui-icon-none.ui-btn-icon-right:after,
+.ui-icon-none.ui-btn-icon-top:after,
+.ui-icon-none.ui-btn-icon-bottom:after,
+.ui-icon-none.ui-btn-icon-notext:after {
+    background-color: transparent;
+}
+
+/* ETST-17941 */
+.ui-mobile .ui-input-text, .ui-mobile .ui-input-search {
+    margin: 0;
+}
+
+/* ETST-17802 */
+div[data-role="panel"] div.hasDatepicker { 
+    width: 100%;
+}
+
+/* ETST-19652 */
+div.ui-navbar ul.ui-grid-solo li.ui-block-a {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* ETST-20351 */
+.ui-popup .ui-slider {
+	min-width:110px;
+}
+
+/* ETST-20352 */
+.ui-popup [apperytype="object"]:not([apperyclass="carousel"]){
+	min-width: 150px;
+}
+
+/* ETST-20172 */
+.ui-btn-icon-right.ui-btn-icon-left:after {
+	left: auto;
+    right: .5625em;
+}
+.ui-btn-icon-right.ui-btn-icon-left {
+    padding-left: 1em;
+}
+
+/* ETST-20407 */
+.ui-li-static h3.ui-collapsible-heading {
+    margin-top: -1px;
+    margin-bottom: 0;
+    overflow: visible;
+}
+
+div[data-role="popup"], .ui-popup-content-wrapper {
+    max-width: inherit;
+}
+
+/* ETST-20447 */
+div[data-role="popup"] > .ui-popup-content-wrapper > div > table{
+    table-layout:auto;
+}
+
+/* ETST-21103 */
+.ui-controlgroup-vertical .ui-controlgroup-controls .cell-wrapper .ui-btn {
+    border-bottom-width: 1px;
+}
+
+/* We need "html.ui-mobile>body.ui-mobile-viewport" prefix to make selector heavy enough to override casual displays */
+html.ui-mobile > body.ui-mobile-viewport [data-appery-tpl='true'] {
+    display: none;
+}
