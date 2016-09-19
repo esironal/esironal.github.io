@@ -6,7 +6,7 @@ var MyCtrlAuth = ['$scope', '$http', '$location', function ($scope, $http, $loca
     function onGetToken (msg) {
         var code = msg && msg.data ? (msg.data || '').split("=")[1] || null : null;
         if (code) {
-            $http.post('http://vc.zz.mu/proxy.php?url=https://github.com/login/oauth/access_token', {client_id: app.id, client_secret: app.secret, code: code})
+            $http.post('https://github.com/login/oauth/access_token', {client_id: app.id, client_secret: app.secret, code: code})
                 .success(function (data) {
                     var token = null;
 
