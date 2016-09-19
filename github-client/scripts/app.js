@@ -28,8 +28,8 @@
 
     angular.extend(app, {
         prefix: 'https://api.github.com/',
-        id: 'd4e6966c1bf0a567fb21',
-        secret: '9f766ed6c1871075bb18edc34043066ef89b4d20',
+        id: '589f52a8842a481d2185',
+        secret: 'e5b520e71a6011cb0e1cb050843d44edc9633eb1',
         token: null
     });
 
