@@ -2,6 +2,8 @@
 
 /* Controllers */
 
+/* http://vc.zz.mu/proxy.php?url=https://github.com/login/oauth/access_token */
+
 var MyCtrlAuth = ['$scope', '$http', '$location', function ($scope, $http, $location) {
     function onGetToken (msg) {
         var code = msg && msg.data ? (msg.data || '').split("=")[1] || null : null;
