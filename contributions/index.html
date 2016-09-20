@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="contributions">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+    <title>Contributions</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.min.css">
+    <link rel="stylesheet" href="css/emoji.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    <script src="vendor/github/github.js"></script>
+    <script src="js/emoji.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-controller="ContributionController">
+    <div class="header">
+      <div class="container">
+          <h1>
+            <a class="username" ng-href="{{ user.html_url }}" ng-bind="user.name" ng-attr-title="{{ user.updated_at }}"></a>
+          </h1>
+          <form ng-submit="updateUsername()">
+             <input type="text" id="username" class="form-control" ng-model="options.username" placeholder="GitHub username" required autofocus>
+            <button type="submit">Update</button>
+          </form>
+        </div>
+      </div>
+    <div class="container">
+      <div id="contributions">
+
+        <div class="alert alert-danger" role="alert" ng-show="messages.error">{{ messages.error }}</div>
+
+        <form ng-show="repos.length || starred.length || reposLoading || starredLoading" id="repository-options">
+          <input type="text" class="form-control" placeholder="Filter repositories…" ng-model="options.query">
+        </form>
+
+        <div>
+          <div class="repos" ng-show="reposLoading">
+            <h2>Loading repositories…</h2>
+          </div>
+
+          <div id="repository-results" class="repos" ng-class="!filtered.length ? 'hide' : ''" ng-hide="reposLoading">
+            <h2 ng-show="filtered.length === 1">1 repository</h2>
+            <h2 ng-show="filtered.length !== 1">{{ filtered.length }} repositories</h2>
+            <ul>
+              <li class="repo" ng-repeat="repo in filtered = (repos | filter:options.query | orderBy:'-pushed_at')" ng-class="repo.description ? '' : 'no-desc'">
+                <span class="repo-icon octicon octicon-repo" ng-hide="repo.fork"></span>
+                <span class="repo-icon octicon octicon-repo-forked" ng-show="repo.fork"></span>
+                <span class="name"><a href="{{ repo.html_url }}">{{ repo.name }}</a></span>
+                <p>{{ repo.description }}</p>
+                <span class="stars" ng-show="repo.stargazers_count">{{ hideZero(repo.stargazers_count).toLocaleString() }} <span class="octicon octicon-star"></span></span>
+                <div class="links">
+                  <span><a href="{{ repo.homepage }}" class="icon" ng-show="repo.homepage">🏠</a></span>
+                  <span><a href="{{ repo.html_url + '/archive/' + repo.default_branch + '.zip' }}" class="icon">↓</a></span>
+                </div>
+                <a href="{{ repo.html_url }}" class="fit"></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="repos" ng-show="starredLoading">
+            <h2>Loading starred repositories…</h2>
+          </div>
+
+          <div id="starred-repos" class="repos" ng-show="starredFiltered.length">
+            <h2 ng-show="starredFiltered.length === 1">1 starred repository</h2>
+            <h2 ng-show="starredFiltered.length !== 1">{{ starredFiltered.length }} starred repositories</h2>
+            <ul>
+              <li class="repo" ng-repeat="repo in starredFiltered = (starred | filter:options.query)" ng-class="repo.description ? '' : 'no-desc'">
+                <span class="repo-icon octicon octicon-repo"></span>
+                <span class="name"><a href="{{ repo.html_url }}">{{ repo.name }}</a></span>
+                <p>{{ repo.description }}</p>
+                <span class="stars" ng-show="repo.stargazers_count">{{ hideZero(repo.stargazers_count).toLocaleString() }} <span class="octicon octicon-star"></span></span>
+                <div class="links">
+                  <span><a href="{{ repo.homepage }}" class="icon" ng-show="repo.homepage">🏠</a></span>
+                  <span><a href="{{ repo.html_url + '/archive/' + repo.default_branch + '.zip' }}" class="icon">↓</a></span>
+                </div>
+                <a href="{{ repo.html_url }}" class="fit"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+   
+  </body>
+</html>
