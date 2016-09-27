@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+
+  <meta charset="UTF-8">
+  <title>jQuery Github</title>
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="js/assets/base.css">
+
+  <!-- Demo CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  
+
+  <div class="title">
+    <h1>Fave Repos</h1>
+    <p>My Favorite Github Repositories</p>
+  </div>
+
+  <div class="projects">
+    <div data-repo="esironal/esironal.github.io"></div>
+    <div data-repo="esironal/jquery-github"></div>
+    <div data-repo="esironal/jquery-gist-browser"></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+    <div data-repo=""></div>
+  </div>
+
+  
+  <img id="github-logo" src="img/github-cat.png" alt="Github Cat" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="js/jquery.github.min.js"></script>
+
+  <script>
+    $('[data-repo]').github();
+  </script>
+
+</body>
+</html>
