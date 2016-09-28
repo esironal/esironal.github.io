@@ -1,0 +1,60 @@
+{
+  "name": "octocat",
+  "version": "0.11.0",
+  "description": "GitHub API client in Javascript (Node.js and Browser)",
+  "author": {
+    "name": "Samy Pesse",
+    "email": "samypesse@gmail.com"
+  },
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamyPesse/octocat.js.git"
+  },
+  "dependencies": {
+    "q": "1.4.1",
+    "lodash": "3.10.1",
+    "request": "2.64.0",
+    "js-base64": "2.1.9",
+    "mime-types": "2.1.4",
+    "progress-stream": "1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "1.18.2",
+    "should": "7.0.4"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --timeout 15000"
+  },
+  "license": "Apache-2.0",
+  "gitHead": "4400d2a28412df5d81a98f5b574ca6b021117966",
+  "bugs": {
+    "url": "https://github.com/SamyPesse/octocat.js/issues"
+  },
+  "homepage": "https://github.com/SamyPesse/octocat.js#readme",
+  "_id": "octocat@0.11.0",
+  "_shasum": "ef8f84e04ec7cdb39ae9dffaa9192597da11456d",
+  "_from": "octocat@latest",
+  "_npmVersion": "3.7.2",
+  "_nodeVersion": "5.1.0",
+  "_npmUser": {
+    "name": "samypesse",
+    "email": "samypesse@gmail.com"
+  },
+  "dist": {
+    "shasum": "ef8f84e04ec7cdb39ae9dffaa9192597da11456d",
+    "tarball": "https://registry.npmjs.org/octocat/-/octocat-0.11.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "samypesse",
+      "email": "samypesse@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-13-west.internal.npmjs.com",
+    "tmp": "tmp/octocat-0.11.0.tgz_1458554169326_0.8928552842698991"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/octocat/-/octocat-0.11.0.tgz"
+}
