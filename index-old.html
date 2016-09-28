@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<title>esironal.github.io</title>
+
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0-beta.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.layout/1.4.3/jquery.layout.min.js"></script>
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+	<script type="text/javascript">
+
+	var myLayout; // a var is required because this page utilizes: myLayout.allowOverflow() method
+
+	$(document).ready(function () {
+
+		myLayout = $('body').layout({
+			west__size:					160
+		,	west__spacing_closed:		20
+		,	west__togglerLength_closed:	100
+		,	west__togglerAlign_closed:	"top"
+		,	west__togglerContent_closed:"M<BR>E<BR>N<BR>U"
+		,	west__togglerTip_closed:	"Open & Pin Menu"
+		,	west__sliderTip:			"Slide Open Menu"
+		,	west__slideTrigger_open:	"mouseover"
+		,	center__maskContents:		true // IMPORTANT - enable iframe masking
+		});
+
+ 	});
+
+	</script>
+
+
+	<style type="text/css">
+	/**
+	 *	Basic Layout Theme
+	 */
+	.ui-layout-pane { /* all 'panes' */ 
+		border: 1px solid #BBB; 
+	} 
+	.ui-layout-pane-center { /* IFRAME pane */ 
+		padding: 0;
+		margin:  0;
+	} 
+	.ui-layout-pane-west { /* west pane */ 
+		padding: 0 10px; 
+		background-color: #EEE !important;
+		overflow: auto;
+	} 
+
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+		} 
+		.ui-layout-resizer-open:hover { /* mouse-over */
+			background: #9D9; 
+		}
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+		} 
+		.ui-layout-toggler-closed { /* closed toggler-button */ 
+			background: #CCC; 
+			border-bottom: 1px solid #BBB; 
+		} 
+		.ui-layout-toggler .content { /* toggler-text */ 
+			font: 14px bold Verdana, Verdana, Arial, Helvetica, sans-serif;
+		}
+		.ui-layout-toggler:hover { /* mouse-over */ 
+			background: #DCA; 
+			} 
+			.ui-layout-toggler:hover .content { /* mouse-over */ 
+				color: #009; 
+				}
+
+		/* masks are usually transparent - make them visible (must 'override' default) */
+		.ui-layout-mask {
+			background:	#C00 !important;
+			opacity:	.20 !important;
+			filter:		alpha(opacity=20) !important;
+		}
+
+
+	body {
+		background-color: black;
+		font-family: Geneva, Arial, Helvetica, sans-serif;
+	}
+
+	ul { /* basic menu styling */
+		margin:		1ex 0;
+		padding:	0;
+		list-style:	none;
+		position:	relative;
+	}
+	li {
+		padding: 0.15em 1em 0.3em 5px;
+	}
+
+	</style>
+
+</head>
+<body>
+
+<iframe id="mainFrame" name="mainFrame" class="ui-layout-center"
+	width="100%" height="600" frameborder="0" scrolling="auto"
+	src="http://norowchan.ml/bookmarks.php/esironal/"></iframe>
+
+<div class="ui-layout-west">
+	<ul>
+		<li><a target="mainFrame" href="http://codemagic.gr/" class="btn btn-default">Codemagic</a></li>
+
+<li><a target="mainFrame" href="https://raindrop.io" class="btn btn-default">Raindrop</a></li>
+
+<li><a target="mainFrame" href="https://app.gistboxapp.com/" class="btn btn-default">GistBox</a></li>
+
+<li><a target="mainFrame" href="http://bootsnipp.com/" class="btn btn-default">Bootsnipp</a></li>
+
+<li><a target="mainFrame" href="http://v4.pingendo.com/playground.html#" class="btn btn-default">Pingendo</a></li>
+
+<li><a target="mainFrame" href="http://www.tutorialspoint.com/codingground.htm" class="btn btn-default">Coding Ground</a></li>
+
+<li><a target="mainFrame" href="http://fiddlesalad.com/html/" class="btn btn-default">Fiddle Salad</a></li>
+
+<li><a target="mainFrame" href="http://www.generatecss.com/" class="btn btn-default">Generate CSS</a></li>
+
+<li><a target="mainFrame" href="http://liveweave.com/" class="btn btn-default">LiveWeave</a></li>
+
+<li><a target="mainFrame" href="http://www.codeply.com/go" class="btn btn-default">Codeply</a></li>
+
+<li><a target="mainFrame" href="http://json.parser.online.fr/beta/" class="btn btn-default">Json Parser</a></li>
+
+<li><a target="mainFrame" href="http://iinventwheels.com/" class="btn btn-default">Api Tester</a></li>
+
+<li><a target="mainFrame" href="https://cdnjs.com/" class="btn btn-default">CDN Js</a></li>
+
+<li><a target="mainFrame" href="https://www.jsdelivr.com/" class="btn btn-default">Jsdelivr</a></li>
+
+<li><a target="mainFrame" href="http://w2ui.com/web/demos/#!layout/layout-1" class="btn btn-default">W2UI</a></li>
+
+<li><a target="mainFrame" href="http://www.sitepoint.com/demos/online-json-tree-viewer/" class="btn btn-default">JSON Tree</a></li>
+
+
+<li><a target="mainFrame" href="http://sta.sh/writer/" class="btn btn-default">Sta.sh Writer</a></li>
+
+<li><a target="mainFrame" href="http://syframework.alwaysdata.net/" class="btn btn-default">SyBox</a></li>
+
+<li><a target="mainFrame" href="http://prose.io/" class="btn btn-default">Prose.io</a></li>
+      
+      <li><a target="mainFrame" href="http://demo.qooxdoo.org/5.0.1/demobrowser/" class="btn btn-default">qooxdoo</a></li>
+
+
+	</ul>
+</div>
+
+</body>
+
+</html>
