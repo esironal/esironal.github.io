@@ -1,0 +1,23 @@
+{ "name": "github"
+, "description": "Library for accessing GitHub API."
+, "version": "0.2.0"
+, "keywords": ["github", "gist"]
+, "contributors":
+  [ "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)" ]
+, "repository":
+  { "type": "git"
+  , "url": "git://github.com/Gozala/github.git"
+  }
+, "bugs": { "web": "http://github.com/Gozala/github/issues/" }
+, "directories":
+  { "doc": "./doc"
+  , "man": "./man"
+  , "lib": "./lib"
+  , "test": "./test"
+  }
+, "licenses" :
+  [ { "type" : "MPL 1.1/LGPL 2.1/GPL 2.0"
+    , "url" : "http://www.mozilla.org/MPL/"
+    }
+  ]
+}
