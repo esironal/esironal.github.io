@@ -158,8 +158,8 @@
 					<td><ul><li class="up">&and;</li><li class="down">&or;</li></ul></td>
 				</tr>
 			</table>
-			<button type="button" class="clearBut">清空</button>
-			<button type="button" class="okBut">确定</button>
+			<button type="button" class="clearBut">Clear</button>
+			<button type="button" class="okBut">Determine</button>
 		<div>
 		<div class="tm">
 			<ul class="hh">
@@ -217,25 +217,25 @@
 
 <_PAGE_ id="navTabCM"><![CDATA[
 <ul id="navTabCM">
-	<li rel="reload">刷新标签页</li>
-	<li rel="closeCurrent">关闭标签页</li>
-	<li rel="closeOther">关闭其它标签页</li>
-	<li rel="closeAll">关闭全部标签页</li>
+	<li rel="reload">Refresh Tab</li>
+	<li rel="closeCurrent">Close Tabs</li>
+	<li rel="closeOther">Close Other Tabs</li>
+	<li rel="closeAll">Close All Tabs</li>
 </ul>
 ]]></_PAGE_>
 <_PAGE_ id="dialogCM"><![CDATA[
 <ul id="dialogCM">
-	<li rel="closeCurrent">关闭弹出窗口</li>
-	<li rel="closeOther">关闭其它弹出窗口</li>
-	<li rel="closeAll">关闭全部弹出窗口</li>
+	<li rel="closeCurrent">Close Popup</li>
+	<li rel="closeOther">Close the other pop-up window</li>
+	<li rel="closeAll">Close all pop-ups</li>
 </ul>
 ]]></_PAGE_>
 <_PAGE_ id="externalFrag"><![CDATA[
 <iframe src="{url}" style="width:100%;height:{height};" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
 ]]></_PAGE_>
-<_MSG_ id="statusCode_503"><![CDATA[服务器当前负载过大或者正在维护!]]></_MSG_>
-<_MSG_ id="validateFormError"><![CDATA[提交数据不完整，{0}个字段有错误，请改正后再提交!]]></_MSG_>
-<_MSG_ id="sessionTimout"><![CDATA[会话超时，请重新登录!]]></_MSG_>
+<_MSG_ id="statusCode_503"><![CDATA[The current server load is too large or is under maintenance!]]></_MSG_>
+<_MSG_ id="validateFormError"><![CDATA[Submitted incomplete data, {0} fields have errors, please correct before submitting!]]></_MSG_>
+<_MSG_ id="sessionTimout"><![CDATA[Session timeout, please log in again!]]></_MSG_>
 <_MSG_ id="alertSelectMsg"><![CDATA[请选择信息!]]></_MSG_>
 <_MSG_ id="forwardConfirmMsg"><![CDATA[继续下一步!]]></_MSG_>
 
