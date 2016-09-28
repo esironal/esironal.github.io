@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>esironal.github.io</title>
+
+<link href="http://esironal.github.io/dwz/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="http://esironal.github.io/dwz/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="http://esironal.github.io/dwz/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
+<link href="http://esironal.github.io/dwz/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
+<!--[if IE]>
+<link href="themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
+<![endif]-->
+
+<!--[if lt IE 9]><script src="js/speedup.js" type="text/javascript"></script><script src="js/jquery-1.11.3.min.js" type="text/javascript"></script><![endif]-->
+<!--[if gte IE 9]><!--><script src="dwz/js/jquery-2.1.4.min.js" type="text/javascript"></script><!--<![endif]-->
+
+<script src="http://esironal.github.io/dwz/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="http://esironal.github.io/dwz/js/jquery.validate.js" type="text/javascript"></script>
+<script src="http://esironal.github.io/dwz/js/jquery.bgiframe.js" type="text/javascript"></script>
+<script src="http://esironal.github.io/dwz/xheditor/xheditor-1.2.2.min.js" type="text/javascript"></script>
+<script src="http://esironal.github.io/dwz/xheditor/xheditor_lang/zh-cn.js" type="text/javascript"></script>
+<script src="http://esironal.github.io/dwz/uploadify/scripts/jquery.uploadify.js" type="text/javascript"></script>
+
+
+
+
+
+<script src="http://esironal.github.io/dwz/bin/dwz.min.js" type="text/javascript"></script>
+
+<!-- You can replace the front with all dwz dwz.min.js * js (Note: When you replace the following dwz.regional.zh.js also need to be introduced)
+<script src="bin/dwz.min.js" type="text/javascript"></script>
+http://esironal.github.io/dwz/bin/dwz.min.js
+-->
+
+
+<!-- 
+    <script src="dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
+
+-->
+
+<script type="text/javascript">
+$(function(){
+	DWZ.init("http://esironal.github.io/dwz/dwz.frag.xml", {
+		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
+//		loginUrl:"login.html",	// 跳到登录页面
+		statusCode:{ok:200, error:300, timeout:301}, //【可选】
+		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
+		keys: {statusCode:"statusCode", message:"message"}, //【可选】
+		ui:{hideMode:'offsets'}, //【可选】hideMode:navTab组件切换的隐藏方式，支持的值有’display’，’offsets’负数偏移位置的值，默认值为’display’
+		debug:false,	// 调试模式 【true|false】
+		callback:function(){
+			initEnv();
+			$("#themeList").theme({themeBase:"themes"}); // themeBase 相对于index页面的主题base路径
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+	<div id="layout">
+		<div id="header">
+			<div class="headerNav">
+				<a class="logo" href="http://esironal.github.io">esironal.github.io</a>
+				
+               <!--  
+                
+                <ul class="nav">
+					<li id="switchEnvBox"><a href="javascript:">( <span>Beijing</span> ) Change City</a>
+						<ul>
+							<li><a href="sidebar_1.html">Beijing</a></li>
+							<li><a href="sidebar_2.html">Shanghai</a></li>
+							<li><a href="sidebar_2.html">Nanjing</a></li>
+							<li><a href="sidebar_2.html">Shenzhen</a></li>
+							<li><a href="sidebar_2.html">Canton</a></li>
+							<li><a href="sidebar_2.html">Tianjin</a></li>
+							<li><a href="sidebar_2.html">Hangzhou</a></li>
+						</ul>
+					</li>
+					<li><a href="https://me.alipay.com/dwzteam" target="_blank">Donate</a></li>
+					<li><a href="changepwd.html" target="dialog" width="600">Set up</a></li>
+					<li><a href="http://www.cnblogs.com/dwzjs" target="_blank">Blog</a></li>
+					<li><a href="http://weibo.com/dwzui" target="_blank">BiHiroshi</a></li>
+					<li><a href="login.html">drop out</a></li>
+				</ul>
+				<ul class="themeList" id="themeList">
+					<li theme="default" class="default"><div class="selected">blue</div></li>
+					<li theme="green" class="green"><div>green</div></li>
+					<li theme="red"><div>红色</div></li>
+					<li theme="purple" class="purple"><div>purple</div></li>
+					<li theme="silver" class="silver"><div>Silver</div></li>
+					<li theme="azure" class="azure"><div>Azure</div></li>
+				</ul>
+-->
+
+			</div>
+
+			<!-- navMenu -->
+			
+		</div>
+
+		<div id="leftside">
+			<div id="sidebar_s">
+				<div class="collapse">
+					<div class="toggleCollapse"><div></div></div>
+				</div>
+			</div>
+			<div id="sidebar">
+				<div class="toggleCollapse"><h2>Main Menu</h2><div>Shrink</div></div>
+
+				<div class="accordion" fillSpace="sidebar">
+					<div class="accordionHeader">
+						<h2><span>Folder</span>Apps</h2>
+					</div>
+					
+					
+					
+					<div class="accordionContent">
+						<ul class="tree treeFolder">
+
+
+
+<li><a>Home</a>
+								<ul>
+								
+								
+								
+								</ul>
+							</li>
+
+
+
+
+							<li><a>Local Apps</a>
+								<ul>
+									
+<li><a href="http://esironal.github.io/search/" target="navTab" rel="search">Search</a></li>
+<li><a href="http://esironal.github.io/contributions/" target="navTab" rel="Contributions">Contributions</a></li>
+
+<!-- 
+<li><a href="contributions/" target="navTab" rel="Contributions">Contributions</a></li>
+ -->
+<li><a href="http://esironal.github.io/online-json-tree-viewer/" target="navTab" rel="json-tree">Json Tree</a></li>	
+<li><a href="http://esironal.github.io/codemagic/" target="navTab" rel="codemagic">codemagic</a></li>	
+
+
+								</ul>
+							</li>
+							
+														
+
+
+							
+							
+							<li><a>Remote Apps</a>
+								<ul>
+								<li><a href="https://leanote.com/note/" target="navTab" rel="leanote">Leanote</a></li>
+								<li><a href="https://raindrop.io/" target="navTab" rel="raindrop">Raindrop</a></li>
+								<li><a href="https://app.gistboxapp.com/" target="navTab" rel="GistBox">GistBox</a></li>
+								
+								<li><a href="http://prose.io/" target="navTab" rel="Prose.io">Prose.io</a></li>
+								<li><a href="https://jsconsole.com/" target="navTab" rel="jsconsole">Js Console</a></li>
+								<li><a href="http://syframework.alwaysdata.net/" target="navTab" rel="SyBox PHP">SyBox</a></li>
+								<li><a href="http://www.generatecss.com/" target="navTab" rel="Generate-CSS">Generate CSS</a></li>
+
+
+
+								</ul>
+							</li>
+
+
+
+
+							<li><a>PlayGrounds</a>
+								<ul>
+								
+								<li><a href="http://liveweave.com/" target="navTab" rel="LiveWeave">LiveWeave</a></li>
+								<li><a href="https://apigee.com/console/github" target="navTab" rel="Apigee
+								Github">apigee</a></li>
+								
+								</ul>
+							</li>
+
+
+
+
+
+
+								<li><a>CDN</a>
+								<ul>
+									
+									<li><a href="https://cdnjs.com/" target="navTab" rel="CDN-Js">CDN Js</a></li>
+								<li><a href="https://www.jsdelivr.com/" target="navTab" rel="Jsdelivr">Jsdelivr</a></li>
+
+								</ul>
+							</li>
+
+
+
+
+							<li><a>Other</a>
+								<ul>
+									
+									
+
+								</ul>
+							</li>
+
+
+							
+<!--
+
+							<li><a>New Folder</a>
+								<ul>
+									
+									
+								<li><a href="link" target="navTab" rel="name">name</a></li>
+								<li><a href="link" target="navTab" rel="name">name</a></li>
+								<li><a href="link" target="navTab" rel="name">name</a></li>
+								<li><a href="link" target="navTab" rel="name">name</a></li>
+
+
+								</ul>
+							</li>
+
+-->
+
+
+
+							
+						</ul>
+					</div>
+
+
+
+
+
+					<div class="accordionHeader">
+						<h2><span>Folder</span>Personal</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder treeCheck">
+							<li><a href="demo_page1.html" target="navTab" rel="demo_page1">查询我的客户</a></li>
+							<li><a href="demo_page1.html" target="navTab" rel="demo_page2">表单查询页面</a></li>
+							<li><a href="demo_page4.html" target="navTab" rel="demo_page4">表单录入页面</a></li>
+							<li><a href="demo_page5.html" target="navTab" rel="demo_page5">有文本输入的表单</a></li>
+							<li><a href="javascript:;">有提示的表单输入页面</a>
+								<ul>
+									<li><a href="javascript:;">页面一</a></li>
+									<li><a href="javascript:;">页面二</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">选项卡和图形的页面</a>
+								<ul>
+									<li><a href="javascript:;">页面一</a></li>
+									<li><a href="javascript:;">页面二</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">选项卡和图形切换的页面</a></li>
+							<li><a href="javascript:;">左右两个互动的页面</a></li>
+							<li><a href="javascript:;">列表输入的页面</a></li>
+							<li><a href="javascript:;">双层栏目列表的页面</a></li>
+						</ul>
+					</div>
+					<div class="accordionHeader">
+						<h2><span>Folder</span>Tools</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree">
+							<li><a href="newPage1.html" target="dialog" rel="dlg_page">列表</a></li>
+							<li><a href="newPage1.html" target="dialog" rel="dlg_page2">列表</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="container">
+			<div id="navTab" class="tabsPage">
+				<div class="tabsPageHeader">
+					<div class="tabsPageHeaderContent"><!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+						<ul class="navTab-tab">
+							<li tabid="main" class="main"><a href="javascript:;"><span><span class="home_icon">Home</span></span></a></li>
+						</ul>
+					</div>
+					<div class="tabsLeft">left</div><!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
+					<div class="tabsRight">right</div><!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
+					<div class="tabsMore">more</div>
+				</div>
+				<ul class="tabsMoreList">
+					<li><a href="javascript:;">My Home Page</a></li>
+				</ul>
+				<div class="navTab-panel tabsPageContent layoutBox">
+					<div class="page unitBox">
+						
+						
+						<iframe src="http://esironal.github.io/jquery-github/" style="width:100%;height:525px;" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
+    
+  </div>
+
+
+
+						</div>
+						
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="footer">Copyright &copy; 2016 <a href="http://esironal.github.io" target="dialog">esironal.github.io</a></div>
+
+
+
+
+</body>
+</html>
