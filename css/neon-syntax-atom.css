@@ -1,0 +1,196 @@
+atom-text-editor,
+:host {
+  background-color: #1c1c1c;
+  color: #71787c;
+  -webkit-filter: contrast(200%);
+  -webkit-filter: saturate(200%);
+}
+atom-text-editor .invisible-character,
+:host .invisible-character {
+  color: #444444;
+}
+atom-text-editor .indent-guide,
+:host .indent-guide {
+  color: #444444;
+}
+atom-text-editor .wrap-guide,
+:host .wrap-guide {
+  color: #444444;
+}
+atom-text-editor .gutter,
+:host .gutter {
+  background-color: #1c1c1c;
+  color: #71787c;
+}
+atom-text-editor .gutter .line-number.cursor-line,
+:host .gutter .line-number.cursor-line {
+  background-color: #282828;
+  color: #71787c;
+}
+atom-text-editor .gutter .line-number.cursor-line-no-selection,
+:host .gutter .line-number.cursor-line-no-selection {
+  color: #71787c;
+}
+atom-text-editor .search-results .marker .region,
+:host .search-results .marker .region {
+  background-color: transparent;
+  border: #E5E5B2;
+}
+atom-text-editor .search-results .marker.current-result .region,
+:host .search-results .marker.current-result .region {
+  border: #71787c;
+}
+atom-text-editor.is-focused .cursor,
+:host .cursor {
+  border-color: #D8D9D1;
+}
+atom-text-editor.is-focused .selection .region,
+:host .selection .region {
+  background-color: #223F63;
+}
+atom-text-editor.is-focused .line-number.cursor-line-no-selection,
+:host .line-number.cursor-line-no-selection,
+atom-text-editor.is-focused .line.cursor-line,
+:host .line.cursor-line {
+  background-color: #282828;
+}
+.bracket-matcher .region {
+  border-bottom: 1px solid #22c899;
+  z-index: 100;
+}
+.comment {
+  font-weight: bold;
+  font-style: italic;
+  color: #a1784c;
+  text-shadow: 0px 0px 15px rgba(161, 120, 76, 0.8);
+}
+.string {
+  color: rgba(170, 175, 235, 0.93);
+  text-shadow: 0px 0px 15px rgba(170, 175, 219, 0.8);
+}
+.constant.numeric {
+  color: rgba(143, 194, 187, 0.73);
+  text-shadow: 0px 0px 15px rgba(119, 194, 187, 0.8);
+}
+.constant.character,
+.constant.other {
+  color: rgba(34, 255, 153, 0.87);
+  text-shadow: 0px 0px 15px rgba(34, 200, 153, 0.8);
+}
+.constant.language {
+  color: #bDbe82;
+  text-shadow: 0px 0px 15px rgba(189, 190, 130, 0.8);
+}
+.storage {
+  color: #8b6ccf;
+  text-shadow: 0px 0px 15px rgba(139, 93, 223, 0.8);
+}
+.meta.function-call {
+  color: #cbaf6c;
+  text-shadow: 0px 0px 15px rgba(203, 175, 108, 0.8);
+}
+.support.function {
+  color: #ADAeB2;
+  text-shadow: 0px 0px 15px rgba(189, 190, 130, 0.8);
+}
+.variable.other.external-symbol {
+  color: #BBDFDD;
+  text-shadow: 0px 0px 15px rgba(187, 223, 221, 0.8);
+}
+.variable.language,
+.variable.other {
+  color: #3aafff;
+  text-shadow: 0px 0px 15px rgba(58, 175, 255, 0.8);
+}
+.variable.parameter {
+  color: #33b6a9;
+  text-shadow: 0px 0px 15px rgba(5, 214, 249, 0.8);
+}
+.keyword {
+  color: #bB7Dbf;
+  text-shadow: 0px 0px 15px rgba(155, 159, 253, 0.8);
+}
+.entity.name.type {
+  color: rgba(175, 119, 169, 0.93);
+  text-shadow: 0px 0px 15px rgba(175, 119, 169, 0.8);
+}
+.entity.name.class {
+  color: #B998DF;
+  text-shadow: 0px 0px 15px rgba(185, 152, 223, 0.8);
+}
+.entity.name.structure {
+  color: rgba(34, 255, 153, 0.87);
+  text-shadow: 0px 0px 15px rgba(185, 152, 223, 0.8);
+}
+.entity.name.tag {
+  color: #49a6d2;
+  text-shadow: 0px 0px 15px rgba(73, 166, 210, 0.8);
+}
+.entity.name.function {
+  color: rgba(18, 255, 169, 0.97);
+  text-shadow: 0px 0px 15px rgba(34, 255, 169, 0.8);
+}
+.entity.name.function.io {
+  color: #DFB3AC;
+  text-shadow: 0px 0px 15px rgba(223, 179, 172, 0.8);
+}
+.entity.name.function.misc {
+  color: #E3E4A9;
+  text-shadow: 0px 0px 15px rgba(227, 228, 169, 0.8);
+}
+.entity.name.function.predicate {
+  color: #A5DF93;
+  text-shadow: 0px 0px 15px rgba(165, 223, 147, 0.8);
+}
+.entity.other.attribute-name {
+  color: rgba(73, 134, 194, 0.8);
+  text-shadow: 0px 0px 15px rgba(73, 134, 194, 0.8);
+}
+.meta.class,
+.entity.name.class,
+.entity.name.type.class {
+  color: #ff4377;
+  text-shadow: 0px 0px 15px rgba(255, 51, 153, 0.8);
+}
+.support.class {
+  color: rgba(239, 106, 167, 0.87);
+  text-shadow: 0px 0px 15px rgba(239, 106, 167, 0.8);
+}
+.invalid {
+  color: #DFDFD5;
+  text-shadow: 0px 0px 15px #CC1B27;
+}
+.string .source {
+  font-style: italic;
+  color: #3399ff;
+  text-shadow: 0px 0px 15px rgba(0, 153, 255, 0.8);
+}
+.entity.name.tag {
+  color: #49a6d2;
+  text-shadow: 0px 0px 15px rgba(73, 166, 210, 0.8);
+}
+.markup.heading {
+  font-weight: bold;
+  color: rgba(18, 255, 169, 0.97);
+  text-shadow: 0px 0px 15px rgba(34, 255, 169, 0.8);
+}
+.markup.italic {
+  font-style: italic;
+  color: #bB7Dbf;
+  text-shadow: 0px 0px 15px rgba(155, 169, 253, 0.8);
+}
+.markup.bold {
+  font-weight: bold;
+  color: #bB7Dbf;
+  text-shadow: 0px 0px 15px rgba(155, 169, 253, 0.8);
+}
+.markup.underline {
+  text-decoration: underline;
+  color: #8b6ccf;
+  text-shadow: 0px 0px 15px rgba(139, 93, 223, 0.8);
+}
+.gfm .link .entity {
+  text-decoration: underline;
+  color: #3aafff;
+  text-shadow: 0px 0px 15px rgba(58, 175, 255, 0.8);
+}
