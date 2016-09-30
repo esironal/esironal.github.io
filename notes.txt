@@ -88,11 +88,11 @@ http://esironal.oschina.io/Repo.js/basic.html
 
 http://esironal.oschina.io/Repo.js/repo.min.js
 
-http://esironal.oschina.io/
+http://esironal.oschina.io/hubsearch
 
 http://esironal.oschina.io/
 
-http://esironal.oschina.io/
+http://esironal.oschina.io/cmtouch/
 
 http://esironal.oschina.io/
 
