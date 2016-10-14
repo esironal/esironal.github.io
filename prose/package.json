@@ -1,0 +1,81 @@
+{
+  "name": "prose",
+  "version": "1.1.22",
+  "description": "[Prose](http://prose.io) is a web-based interface for managing text-based content in your GitHub repositories. Use it to create, edit, and delete files, and save your changes directly to GitHub.",
+  "dependencies": {
+    "backbone": "~1.0.0",
+    "chosen-jquery-browserify": "~0.9.15",
+    "chrono": "~1.0.4",
+    "codemirror": "^5.13.2",
+    "deepmerge": "~0.2.7",
+    "diff": "~1.0.4",
+    "handsontable": "git://github.com/handsontable/handsontable.git#0.20.2",
+    "ignore": "~2.2.7",
+    "jquery-browserify": "~1.8.1",
+    "js-base64": "~2.1.1",
+    "js-yaml": "^3.6.1",
+    "keymaster": "git://github.com/madrobby/keymaster.git#0f09fc1b7e66c2b7e07afe89a419366dcf2d1cd8",
+    "marked": "~0.2.8",
+    "mkdirp": "^0.5.0",
+    "papaparse": "^4.1.2",
+    "queue-async": "~1.0.3",
+    "underscore": "~1.4.4"
+  },
+  "keywords": [
+    "editor",
+    "github"
+  ],
+  "devDependencies": {
+    "browserify": "^6.0.0",
+    "browserify-shim": "^3.8.0",
+    "chai": "^1.9.2",
+    "del": "^1.1.1",
+    "function-bind": "~0.1.0",
+    "glob": "~3.1.21",
+    "gulp": "^3.8.2",
+    "gulp-concat": "^2.2.0",
+    "gulp-if": "^2.0.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-shell": "^0.2.7",
+    "gulp-uglify": "^0.3.1",
+    "gulp-watch": "^0.6.8",
+    "merge2": "^1.0.2",
+    "mocha": "^2.4.5",
+    "mocha-phantomjs": "^4.0.2",
+    "phantomjs-prebuilt": "^2.1.7",
+    "request": "~2.16.2",
+    "serve": "^1.4.0",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.6.0",
+    "uglify-js": "~2.2.5",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^0.1.1"
+  },
+  "scripts": {
+    "postinstall": "gulp",
+    "test": "gulp test",
+    "test-ci": "gulp test-ci",
+    "start": "gulp watch & serve",
+    "build": "gulp clean; gulp production"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "chai": "global:chai"
+  },
+  "browser": {
+    "handsontable": "handsontable/dist/handsontable.full"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/prose/prose.git"
+  },
+  "author": "Development Seed",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "2f58c9a97bb76b21055fe76b4c97424068ad5386"
+}
