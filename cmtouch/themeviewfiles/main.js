@@ -1,5 +1,5 @@
 var ignore = false;
-var theme = "neo";
+var theme = "neonsyntax";
 var delay = 0;
 
 /**
@@ -12,7 +12,7 @@ for(var i = 0; i < default_themes.length; i++){
   select_html += opt;
 }
 $("#defaults").html(select_html);
-$("#defaults").val("neo"); //default
+$("#defaults").val("neonsyntax"); //default
 $("#defaults").change(function(){
   setDefaults($("#defaults").val());
 });
