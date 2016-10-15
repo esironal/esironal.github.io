@@ -32,7 +32,7 @@ $("#lang").change(function(){
 var editor = CodeMirror(document.getElementById("container"),{
     lineNumbers: true,
     mode: "javascript",
-    theme: "neo",
+    theme: "neonsyntax",
     lineWrapping: true,
     indentUnit: 4,
     indentWithTabs: true
@@ -172,7 +172,7 @@ $("input[type='text']").change(function(){
 });
 
 setLang("javascript","javascript");
-setDefaults("neo");
+setDefaults("neonsyntax");
 
 function download(){
   //woop! time to export!
