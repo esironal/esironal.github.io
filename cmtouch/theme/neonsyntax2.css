@@ -1,0 +1,29 @@
+﻿/*neonsyntax2
+CodeMirror theme file created with CodeMirror-Themes
+https://github.com/mkaminsky11/codemirror-themes*/
+.cm-s-neonsyntax2.CodeMirror{background:rgba(28,28,28,1) !important;}
+.cm-s-neonsyntax2.CodeMirror{color:rgba(255,255,255,1) !important;}
+.cm-s-neonsyntax2 div.CodeMirror-selected{background:rgba(255,255,255,0.14902) !important;}
+.cm-s-neonsyntax2 .CodeMirror-gutters{background:rgba(61,61,61,1) !important;}
+.cm-s-neonsyntax2 .CodeMirror-guttermarker{color:rgba(113,120,124,1) !important;}
+.cm-s-neonsyntax2 .CodeMirror-guttermarker-subtle{color:rgba(113,120,124,1) !important;}
+.cm-s-neonsyntax2 .CodeMirror-linenumber{color:rgba(34,34,34,1) !important;}
+.cm-s-neonsyntax2 .CodeMirror-cursor{border-color:rgba(113,120,124,1) !important;}
+.cm-s-neonsyntax2 span.cm-comment{color:rgba(255,255,0,1) !important;}
+.cm-s-neonsyntax2 span.cm-atom{color:rgba(207,126,169,1) !important;}
+.cm-s-neonsyntax2 span.cm-number{color:rgba(143,194,187,0.729412) !important;}
+.cm-s-neonsyntax2 span.cm-property{color:rgba(0,255,0,1) !important;}
+.cm-s-neonsyntax2 span.cm-attribute{color:rgba(73,134,194,0.8) !important;}
+.cm-s-neonsyntax2 span.cm-keyword{color:rgba(187,125,191,1) !important;}
+.cm-s-neonsyntax2 span.cm-string{color:rgba(170,175,235,0.933333) !important;}
+.cm-s-neonsyntax2 span.cm-string-2{color:rgba(51,153,255,1) !important;}
+.cm-s-neonsyntax2 span.cm-variable{color:rgba(187,223,221,1) !important;}
+.cm-s-neonsyntax2 span.cm-variable-2{color:rgba(58,175,255,1) !important;}
+.cm-s-neonsyntax2 span.cm-def{color:rgba(170,198,227,1) !important;}
+.cm-s-neonsyntax2 span.cm-bracket{color:rgba(113,120,124,1) !important;}
+.cm-s-neonsyntax2 span.cm-tag{color:rgba(73,166,210,1) !important;}
+.cm-s-neonsyntax2 span.cm-link{color:rgba(58,175,255,1) !important;}
+.cm-s-neonsyntax2 span.cm-error{background:rgba(0,0,0,0) !important;}
+.cm-s-neonsyntax2 span.cm-error{color:rgba(223,223,213,1) !important;}
+.cm-s-neonsyntax2 .CodeMirror-activeline-background{color:rgba(113,120,124,1) !important;}
+.cm-s-neonsyntax2 .CodeMirror-matchingbracket{color:rgba(0,255,0,1) !important;}
