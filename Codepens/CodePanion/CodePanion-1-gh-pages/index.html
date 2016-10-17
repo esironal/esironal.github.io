@@ -1,0 +1,47 @@
+<!Doctype html>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/codemirror.css">
+  <link rel="stylesheet" href="css/base16-light.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="cp_get_pen">
+    <input type="text">
+  </div>
+
+  <div id="cp_editor_container">
+    <div class="cp_editor">
+      <div class="cp_editor_header">
+        <span class="cp_editor_name">HTML</span>
+        <input type="checkbox" class="cp_commit_this" checked>
+      </div>
+      <textarea name="HTMLeditor" id="HTMLeditor"></textarea>
+    </div>
+    <div class="cp_editor">
+      <div class="cp_editor_header">
+        <span class="cp_editor_name">CSS</span>
+        <input type="checkbox" class="cp_commit_this" checked>
+      </div>
+      <textarea name="CSSeditor" id="CSSeditor"></textarea>
+    </div>
+    <div class="cp_editor">
+      <div class="cp_editor_header">
+        <span class="cp_editor_name">JS</span>
+        <input type="checkbox" class="cp_commit_this" checked>
+      </div>
+      <textarea name="JSeditor" id="JSeditor"></textarea>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/codemirror.js"></script>
+  <script type="text/javascript" src="mode/xml/xml.js"></script>
+  <script type="text/javascript" src="mode/css/css.js"></script>
+  <script type="text/javascript" src="mode/javascript/javascript.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

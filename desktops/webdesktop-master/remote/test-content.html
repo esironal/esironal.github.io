@@ -1,0 +1,26 @@
+<div class="content">
+	<h1>AJAX content</h1>
+	<p>This content comes from the file 'remote/test-content.html'</p>
+	<hr>
+
+	<h2>Examples</h2>
+	<p class="random-number"></p>
+	<h3>Links in Windows</h3>
+	<ul>
+		<li>
+			<a href="remote/test-content.html">Internal link</a>
+		</li>
+		<li>
+			<a href="javascript:void( null );">Link with JS in href attribute</a>
+		</li>
+		<li>
+			<a href="http://www.google.com/" target="_blank">External link defined by target attribute</a>
+		</li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	oWin.setTitle( 'Testing-Window' );
+    oWin.setStatus( 'This status will disappear after 3 seconds.', 3000 );
+	$( '.random-number', oWin.element ).text( 'Random number: ' + Math.random() );
+</script>

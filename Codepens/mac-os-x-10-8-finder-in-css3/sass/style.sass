@@ -1,0 +1,433 @@
+@import compass
+
+@mixin cocoa
+  display: block
+  background-color: #ededed
+  +box-shadow(rgba(#000, .1) 1px 1px, rgba(#000, .1) -1px -1px, rgba(#000, .1) 1px -1px, rgba(#000, .1) -1px 1px, rgba(#000, .8) 0 0 70px)
+  +border-radius(5px)
+
+@mixin aqua
+  width: 12px
+  height: 12px
+  display: block
+  margin: 5px 4px 4px 4px
+  background: #000
+  float: left
+  position: relative
+  +background-image(radial-gradient(6px 18px, rgba(#fff, .7) 2px, rgba(#fff, 0) 5px), radial-gradient(6px -1px, #fff 1px, rgba(#fff, 0) 3px))
+  +box-shadow(rgba(#000, .9) 0 1px 4px inset, rgba(#fff, .5) 0 1px)
+  +border-radius(100px)
+
+@mixin NSWindow
+  position: relative
+  display: block
+  border-bottom: solid 1px #686868
+  +background(linear-gradient(#e4e4e4, #b8b7b8))
+  +box-shadow(#f1f1f1 0 1px inset)
+  +border-radius(6px 6px 0 0)
+
+@mixin NSToolbar
+  height: 31px
+
+@mixin FinderDroplet
+  display: inline-block
+  position: relative
+  height: 20px
+  width: 38px
+  margin-top: 1px
+  border: 1px solid #767676
+  +background-image(linear-gradient(#e8e8e8, #bcbcbc))
+  +box-shadow(#f1f1f1 0px 1px inset, #cccccc 0px 1px)
+  +border-radius(4px)
+
+@mixin FinderDropletView
+  width: 28px
+  border-left: 0px
+  border-right: 0px
+  +border-radius(0)
+  +box-shadow(#e7e7e7 0px 1px inset, #e5e5e5 0px 2px inset, #bdbdbd 0px -1px inset, #bfbfbf 0px -2px inset, #a7a7a7 -1px 0px inset)
+  
+@mixin FinderDropletViewIcons
+  border-left: #4a4a4a 1px solid
+  border-right: #4a4a4a 1px solid
+
+html
+  display: table
+  width: 100%
+  height: 100%
+
+body
+  margin: 0px
+  padding: 50px
+  display: table-cell
+  vertical-align: middle
+  font-family: "Lucida Grande", sans-serif
+  font-size: 12px
+  user-select: none
+  +text-shadow(0px 1px 1px #fff)
+  +background(linear-gradient(top left, #33799d, #e8ebb4))
+
+ul
+  margin: 0
+  padding: 0
+  list-style-type: none
+  li
+    ul
+      font-size: 13px
+      li
+        padding: 0 0 3px 15px
+
+i
+  display: inline-block
+  width: 19px
+  height: 19px
+  position: relative
+  top: 4px
+  background: url('http://i.imgur.com/YO1WL.png') no-repeat
+
+#finder
+  @include cocoa
+  width: 770px
+  height: 435px
+  margin: 0 auto
+  *::before,
+  *::after
+    content: ""
+    position: absolute
+    display: block
+
+
+#toolbar
+  @include NSWindow
+
+#traffic-light
+  position: absolute
+  display: inline
+  left: 4px
+  #red,
+  #yellow,
+  #green
+    @include aqua
+  #red
+    background-color: #f24443
+  #yellow
+    background-color: #f0aa5a
+  #green
+    background-color: #88be72
+  &:hover
+    #red,
+    #yellow,
+    #green
+      &::after
+        position: absolute
+        top: -2px
+        left: 2px
+        font-weight: bold
+        font-size: 13px
+        +text-shadow(rgba(#000, .6) 0px -1px)
+    #red
+      &::after
+        content: "x"
+        color: rgba(#ba1720, .5)
+    #yellow
+      &::after
+        content: "-"
+        color: rgba(#a76322, .5)
+    #green
+      &::after
+        left: 1px
+        content: "+"
+        color: rgba(#46902e, .5)
+
+#windowname
+  text-align: center
+  font-size: 13px
+  line-height: 23px
+  i
+    background: url('http://i.imgur.com/hhy5Y.png') no-repeat
+
+#actions
+  @include NSToolbar
+  input
+    width: 278px
+    height: 17px
+    margin-right: 8px
+    float: right
+    +border-radius(100px)
+
+#back,
+#next,
+#iconV,
+#list,
+#grid,
+#coverflow
+  @include FinderDroplet
+
+#back,
+#next
+  width: 25px
+
+#back
+  margin-left: 8px
+  margin-right: 0
+  +border-radius(4px 0 0 4px)
+  color: #797979
+  &::after
+    content: "\25C4"
+    top: 1px
+    left: 9px
+    font-size: 13px
+
+#next
+  left: -4px
+  border-left: 0px solid #767676
+  +border-radius(0 4px 4px 0)
+  color: #a4a4a4
+  &::after
+    content: "\25C4"
+    top: 4px
+    left: 8px
+    font-size: 13px
+    +text-shadow(0px -1px -1px #fff)
+    +rotate(180deg)
+
+#iconV,
+#list,
+#grid,
+#coverflow
+  @include FinderDropletView
+
+#iconV
+  font-size: 13px
+  color: #fcfcfc
+  margin-left: 69px
+  border-left: 1px solid #767676
+  +border-radius(4px 0 0 4px)
+  +background-image(linear-gradient(#767676, #9a9a9a))
+  +box-shadow(#676767 -1px 1px 4px -1px inset, #676767 0px 1px inset, #757575 0px 2px inset, #999999 0px -1px inset, #969696 0px -2px inset)
+  +text-shadow(0px 1px 1px #545454)
+  &::before
+    content: "\25AB \25AB"
+    top: -2px
+    left: 8px
+  &::after
+    content: "\25AB \25AB"
+    top: 4px
+    left: 8px
+
+#list
+  left: -3px
+  font-size: 15px
+  &::after
+    content: "\1D306"
+    left: 8px
+
+#grid
+  left: -7px
+  &::before
+    top: 5px
+    left: 7px
+    width: 11px
+    height: 8px
+    border: 1px solid
+    border-top-color: #1b1b1b
+    border-bottom-color: #232323
+    @include FinderDropletViewIcons
+    +box-shadow(#fff 0px 1px)
+  &::after
+    content: ""
+    top: 6px
+    left: 11px
+    width: 3px
+    height: 9px
+    @include FinderDropletViewIcons
+
+#coverflow
+  left: -11px
+  border-right: 1px solid #767676
+  +border-radius(0 4px 4px 0)
+  +box-shadow(#e7e7e7 0px 1px inset, #e5e5e5 0px 2px inset, #bdbdbd 0px -1px inset, #bfbfbf 0px -2px inset)
+  &::before
+    content: ""
+    top: 5px
+    left: 5px
+    width: 13px
+    height: 10px
+    @include FinderDropletViewIcons
+  &::after
+    content: ""
+    top: 6px
+    left: 7px
+    width: 9px
+    height: 8px
+    @include FinderDropletViewIcons
+  i.view
+    position: absolute
+    top: 6px
+    left: 9px
+    width: 5px
+    height: 6px
+    border: 1px solid
+    border-top-color: #1b1b1b
+    border-bottom-color: #232323
+    @include FinderDropletViewIcons
+    +box-shadow(#fff 0px 1px)
+    +background-image(linear-gradient(#6c6c6c, #868686))
+    &::after
+      content: ""
+
+#settings,
+#share
+  @include FinderDroplet
+
+#settings
+  left: -9px
+  color: #4a4a4a
+  &::before
+    content: "\2699"
+    top: -4px
+    left: 7px
+    font-size: 22px
+  &::after
+    content: "\25B4"
+    top: 2px
+    right: 4px
+    font-size: 17px
+    +text-shadow(0px -1px -1px #fff)
+    +rotate(180deg)
+
+#share
+  left: -5px
+  color: #a1a1a1
+  &::before
+    content: ""
+    top: 5px
+    left: 12px
+    display: block
+    width: 10px
+    height: 7px
+    border: 2px solid
+    border-top-color: #9a9a9a
+    border-left-color: #a9a9a9
+    border-right-color: #a9a9a9
+    border-bottom-color: #a9a9a9
+    +box-shadow(#fff 0px 1px)
+  &::after
+    content: "\27A6"
+    top: -1px
+    left: 16px
+    font-size: 14px
+    +text-shadow(0px 1px 1px #fff, -1px -1px #e9e9e9, 1px 1px #e9e9e9)
+
+#view
+  width: 770px
+  height: 383px
+
+#sidebar
+  width: 133px
+  height: 380px
+  background-color: #e7ebf0
+  +box-shadow(-1px 0 #b8b8b8 inset)
+  +border-radius(0 0 0 6px)
+  float: left
+
+.group
+  text-transform: uppercase
+  color: #707e8b
+  font-weight: bold
+  letter-spacing: 0px
+  line-height: 25px
+  padding: 5px
+
+#content
+  width: 637px
+  height: 380px
+  background-color: #fff
+  +border-radius(0 0 6px 0)
+  float: left
+
+.folder
+  width: 90px
+  height: 90px
+  margin: 0px 20px 21px 25px
+  text-align: center
+  float: left
+  span
+    display: inline-block
+    width: 82px
+
+.factive
+  color: #fff
+  +text-shadow(0 0)
+  &::before
+    width: 72px
+    height: 72px
+    top: 4px
+    left: 9px
+    background-color: #cccccc
+    +border-radius(6px)
+  span
+    background-color: #3875d7
+    +border-radius(100px)
+
+.icon
+  width: 64px
+  height: 56px
+  margin: 18px 13px 4px
+  +background-image(linear-gradient(#b3d0e0, #7fafcc))
+  +border-radius(4px 4px 2px 2px)
+  +transform(perspective( 600px ) rotateX( -45deg ))
+  +box-shadow(rgba(#7fafcc, .5) 1px 1px, rgba(#7fafcc, .5) -1px -1px, rgba(#7fafcc, .5) 1px -1px, rgba(#7fafcc, .5) -1px 1px, rgba(#000, .8) 0 3px 3px)
+  &::before
+    width: 56px
+    height: 3px
+    top: -4px
+    left: 5px
+    +border-radius(100px 100px 0 0)
+    +background-image(linear-gradient(#a0c3d9, #77a9c9))
+  &::after
+    width: 21px
+    height: 7px
+    top: -11px
+    left: 8px
+    +background-image(linear-gradient(#b2c9da, #a0c3d9))
+    +border-radius(2px 2px 0 0)
+
+/* sidebar icons */
+
+.afiles
+  background-position: -3px -4px
+
+.airdrop
+  background-position: -3px -29px
+
+.apps
+  background-position: -3px -53px
+
+.desk
+  background-position: -3px -76px
+
+.docs
+  background-position: -3px -100px
+
+.downs
+  background-position: -3px -125px
+
+.mov
+  background-position: -3px -148px
+
+.music
+  background-position: -3px -172px
+
+.pic
+  background-position: -3px -195px
+
+/* sidebar selection */
+
+.current_page
+  color: #f3ffff
+  +text-shadow(0px 1px 1px rgba(#000, .5))
+  +background(linear-gradient(#67b1df, #3489cc))
+  +box-shadow(#5aa5da 0 1px inset, #6fbae5 0 2px inset, #307cbc 0 -1px inset)
+  .afiles
+    background: url('http://i.imgur.com/wBIjH.png') no-repeat

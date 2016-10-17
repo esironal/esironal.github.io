@@ -1,0 +1,30 @@
+.json {
+  font-family: monospace;
+  width: 80%;
+  height: 200px;
+  overflow: auto;
+  white-space: pre;
+}
+.gist:nth-child(4n) {
+  clear:both;
+}
+.gist .files a {
+  font-size: smaller; 
+}
+time {
+  float: right;
+  margin-top: -1em;
+  margin-bottom: 3em;
+}
+.language[title]:before {
+    content: attr(title);
+  margin-right: .5em;
+  font-family: monospace;
+  background: rgba(0,0,0,.4);
+  color: white;
+  padding: 3px;
+}
+.language[title='']:before {
+  display: none;
+}
+}

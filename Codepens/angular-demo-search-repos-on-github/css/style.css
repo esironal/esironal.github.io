@@ -1,0 +1,34 @@
+.wrapper{
+    background-color: #EDEDED;
+    padding-top: 40px;
+}
+.general-description{
+    margin-bottom: 20px;
+}
+.general-description img{
+    width: auto;
+    max-width: 52px;
+    height: auto;
+    max-height: 52px;
+}
+.project{
+    height: 280px;
+    max-height: 280px;
+    margin-bottom: 20px;
+}
+.panel{
+    height: 100%;
+}
+.panel-body{
+    padding: 10px 0 0 0;
+}
+.input-group .form-control{
+    width: auto !important;
+}
+.input-group{
+    margin: 0 auto;
+    padding: 20px;
+}
+.input-group .input-group-btn{
+    float: left;
+}

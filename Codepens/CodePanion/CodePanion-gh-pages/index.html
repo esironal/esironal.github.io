@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CodePanion</title>
+    <meta name="description" content="Easily commit CodePen files (or other public web files) to GitHub!">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+  </head>
+  
+  <body>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-68638619-2', 'auto');
+      ga('send', 'pageview');
+  
+    </script>
+    
+  <!--
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  -->
+    
+  <div class="container">
+      
+    <div class="navbar"><button class="sign-in" style="float: right;"><i class="fa fa-github"></i> GitHub</button></div>
+
+    <div class="head">
+    
+        <h1>{ CodePanion }</h1>
+        <h3>Clone Pens to GitHub</h3>
+        
+    </div>
+
+      <div class="middle_panel">
+
+    <div class="app_info">
+      <!--
+      <input id="gh-username" type="text" placeholder="github username" />
+      <input id="gh-pas" type="text" placeholder="personal access token" />
+      -->
+      <input id="gh-url" type="text" placeholder="http://codepen.io/lucusp/pen/yYXQxP.js" />
+      <input id="gh-path" type="text" placeholder="reponame/branch/dir/filename.type" />
+      <input id="gh-commit-msg" type="text" placeholder="commit message" />
+
+      <button id="gh-commit-changes">Commit Changes</button>
+    </div>
+
+      <pre id="data_dump"></pre>
+
+    <div class="what_is_this">
+      <h3>{ What is this? }</h3>
+      <p>CodePanion is an online tool that allows you to commit web files to github. It allows the use of online editors, such as <a href="http://codepen.io/">CodePen</a>, to commit files to a repository on <a href="http://github.com/">GitHub</a>. Now you
+        can code and commit anywhere!</p>
+
+      <h3>{ What can I commit? }</h3>
+      <p>You can commit any file or resource that has a web filepath. However, all URL's are subject to Cross-origin resource sharing restrictions.</p>
+
+      <h3>{ What do I need? }</h3>
+      <p>To get started you will need:</p>
+      <ul>
+        <li>A <a href="http://github.com/">GitHub</a> account and sign-in above</li>
+        <li>A GitHub repository</li>
+        <li>A web file/url</li>
+      </ul>
+
+      <h3>{ What method is used? }</h3>
+      <p>Repository commits are made using a javascript method, found <a href="https://github.com/michael/github">here</a>.</p>
+    </div>
+
+    </div>
+
+    <div class="footer">
+      <p>
+        Made with you in mind by <a href="https://github.com/lucusp">Lucus Pettigrew</a> (<a href="http://twitter.com/lucusp">@lucusp</a>).
+      </p>
+    </div>
+
+  </div>
+  
+  <script src="https://cdn.rawgit.com/lucusp/github/master/github.js"></script>
+  <script src="https://cdn.rawgit.com/lucusp/oauth-js/master/dist/oauth.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  </body>
+  
+</html>

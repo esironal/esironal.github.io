@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+	<head>
+		<title>Web-Desktop</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/typeface.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/awesome.css">
+        <!--[if gte IE 9]>
+			<style type="text/css">.gradient {filter: none;}</style>
+		<![endif]-->
+	</head>
+	<body>
+		<div id="desktop-wrapper">
+			<div id="taskbar">
+				<div class="start-btn no-select" title="Startmenü öffnen">
+					<i class="icon-th-large start-icon"></i>
+					<ul class="menu"></ul>
+				</div>
+				<ul id="tasks" class="pull-left"></ul>
+				<div id="sysclock" class="pull-right no-select"></div>
+			</div>
+			<!-- /#taskbar -->
+			<div id="windows"></div>
+		</div>
+		<!-- /#desktop-wrapper -->
+		<!-- le scripts -->
+
+		<!--[if lt IE 9 ]>
+			<script src="assets/js/jquery-1.9.1.min.js"></script>
+		<![endif]-->
+		<!--[if (gt IE 8)|!(IE)]><!-->
+			<script src="assets/js/jquery.min.js"></script>
+		<!--<![endif]-->
+		
+		<script src="assets/js/jquery-ui.min.js"></script>
+		<script src="assets/js/jquery.contextmenu.js"></script>
+		<script src="assets/js/desktop.js"></script>
+		<script src="assets/js/jquery.desktopWindow.js"></script>
+		<script src="assets/js/jquery.menuParser.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+               $( '#taskbar ul.menu' ).menuParser(
+                   {
+                       source: 'assets/json/menu.json'
+                   }
+               );
+
+				$('<div>').desktopWindow({
+					posY: 50,
+					posX: 200
+				});
+				$('<div>').desktopWindow({
+					posY: 160,
+					posX: 650
+				});
+
+				return new init;
+			});
+		</script>
+	</body>
+</html>

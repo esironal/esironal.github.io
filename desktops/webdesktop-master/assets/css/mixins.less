@@ -1,0 +1,18 @@
+.rounded(@radius: 3px) {
+    -webkit-border-radius: @radius;
+    -khtml-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -o-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.box-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
+    -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+
+.text-shadow(@x-axis: 0, @y-axis: 0, @blur: 0, @color: #000) {
+    text-shadow: @x-axis @y-axis @blur @color;
+    filter: dropshadow(color=@color, offx=@x-axis, offy=@y-axis);
+}

@@ -1,0 +1,39 @@
+[
+    {
+        "name":    "Master Data",
+        "icon":    "icon-rocket",
+        "link":    "#",
+        "submenu": [
+            {
+                "name": "Basic settings",
+                "icon": "icon-rocket",
+                "link": "#"
+            },
+            {
+                "name": "Countries",
+                "icon": "icon-rocket",
+                "link": "#"
+            },
+            {
+                "name": "Supplier",
+                "icon": "icon-rocket",
+                "link": "#"
+            },
+            {
+                "name": "Manufacturers",
+                "icon": "icon-rocket",
+                "link": "#"
+            }
+        ]
+    },
+    {
+        "name": "Shop settings",
+        "icon": "icon-rocket",
+        "link": "#"
+    },
+    {
+        "name": "Extensions",
+        "icon": "icon-rocket",
+        "link": "#"
+    }
+]

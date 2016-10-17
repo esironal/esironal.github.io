@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Retrieve list of gists using AJAX in AngularJS</title>
+    
+    
+    
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+
+        <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      .json {
+  font-family: monospace;
+  width: 80%;
+  height: 200px;
+  overflow: auto;
+  white-space: pre;
+}
+.gist:nth-child(4n) {
+  clear:both;
+}
+.gist .files a {
+  font-size: smaller; 
+}
+time {
+  float: right;
+  margin-top: -1em;
+  margin-bottom: 3em;
+}
+.language[title]:before {
+    content: attr(title);
+  margin-right: .5em;
+  font-family: monospace;
+  background: rgba(0,0,0,.4);
+  color: white;
+  padding: 3px;
+}
+.language[title='']:before {
+  display: none;
+}
+}
+    </style>
+
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+    
+  </head>
+
+  <body>
+
+    <div class="container" ng-app="myApp" ng-controller="Example">
+	<div class="jumbotron">
+		<div class="container">
+			<h2>Retrieve list of gists using <code>AJAX</code> in <code>AngularJS</code></h2>
+			<p>This could be any list of <code>JSON</code> data, from any source exposing an <code>API</code> which returns structured data.
+				<br />I am using data from <small>gist.github.com</small> where I store public and private code snippets. I spiced it up with some standard <code>AngularJS</code> goddies like search and the <code>ng-repeat</code>, all styled using <code>Bootstrap</code>
+			</p>
+			<div class="col-md-12 tags"><strong>Tags:</strong>
+				<span ng-repeat="tag in tags">
+            <a href="http://codepen.io/search?q={{tag}}&limit=all&depth=everything&show_forks=false"><code class="btn btn-primary btn-xs">{{tag}}</code></a></span>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>List of some of my <code>gists</code> from <small>gist.github.com</small></h2>
+
+				<div class="input-group">
+					<span class="input-group-addon">Search</span>
+					<input type="search" class="form-control" ng-model="search" placeholder="Do a fulltext search here">
+				</div>
+
+				<br />
+				<div class="col-md-3 gist" ng-repeat="gist in gists | filter:search">
+					<div class="list-group files">
+						<a href="{{gist.html_url}}" target="_blank" class="list-group-item active">{{gist.description }}</a>
+						<a ng-repeat="file in gist.files" class="list-group-item language" title="{{file.language}}">{{file.filename}}</a>
+					</div>
+					<time>{{gist.updated_at | date}}</time>
+				</div>
+
+			</div>
+			<div class="col-md-12">
+				<blockquote>
+					<li>Please note that only <code>60</code> request per hour</li>
+					<li>Only the first 30 gists are fetched, perhaps in a later version I will fix that, as inside the headers you can see if more gists exists.</li>
+          <li>Oh, and I am so looking forward to the time in future where websites will have a common agrement to implement a <code>data-layer</code> allowing anyone to extract (any) raw data from any website. Please give us <code>data://</code> :-)</li>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+</div>
+    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+  </body>
+</html>

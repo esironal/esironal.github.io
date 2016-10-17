@@ -1,0 +1,233 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+}
+.icons-list {
+  position: absolute;
+  background: url("https://dl.dropboxusercontent.com/u/254436606/ios7/assets/iphone5s.png") no-repeat;
+  background-size: 510px 883px;
+  width: 510px;
+  height: 883px;
+  z-index: -1;
+  margin: -403px 0 0 -249px;
+  left: 50%;
+  top: 50%;
+}
+.icons-list ul {
+  position: absolute;
+  padding: 26px 16px;
+  background: url("https://dl.dropboxusercontent.com/u/254436606/ios7/assets/bgrd.png");
+  background-size: 320px 568px;
+  width: 320px;
+  height: 568px;
+  left: 89px;
+  top: 103px;
+  overflow: hidden;
+}
+.icons-list ul.shaking .dragging div {
+  -webkit-animation: none;
+          animation: none;
+}
+.icons-list ul.shaking div {
+  -webkit-animation: shake 0.25s 0s ease-in-out infinite;
+          animation: shake 0.25s 0s ease-in-out infinite;
+}
+.icons-list li {
+  -webkit-transition: opacity, -webkit-transform 0.25s ease-in-out;
+  transition: opacity, -webkit-transform 0.25s ease-in-out;
+  transition: opacity, transform 0.25s ease-in-out;
+  transition: opacity, transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+  cursor: pointer;
+  list-style: none;
+  position: absolute;
+  text-align: center;
+  font-size: 11px;
+  color: #000;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.icons-list li span {
+  width: 100%;
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 64px;
+}
+.icons-list li.placeholder {
+  cursor: auto;
+}
+.icons-list li.placeholder div {
+  background: none;
+}
+.icons-list li.placeholder span {
+  display: none;
+}
+.icons-list li.dragging {
+  -webkit-transition: none;
+  transition: none;
+  opacity: 0.75;
+}
+.icons-list li.dragging div {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+.icons-list li.dragging div:after {
+  opacity: 0.75;
+}
+.icons-list li div {
+  background: #fff url("https://dl.dropboxusercontent.com/u/254436606/ios7/assets/icons.jpg") no-repeat;
+  background-size: 1440px 60px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+}
+.icons-list li div:after {
+  content: '';
+  left: 0;
+  top: 0;
+  background: #000;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  opacity: 0;
+}
+.icons-list li div.appstore {
+  background-position: 0px 0px;
+}
+.icons-list li div.calculator {
+  background-position: -60px 0px;
+}
+.icons-list li div.calendar {
+  background-position: -120px 0px;
+}
+.icons-list li div.camera {
+  background-position: -180px 0px;
+}
+.icons-list li div.clock {
+  background-position: -240px 0px;
+}
+.icons-list li div.compass {
+  background-position: -300px 0px;
+}
+.icons-list li div.facetime {
+  background-position: -360px 0px;
+}
+.icons-list li div.itunesstore {
+  background-position: -420px 0px;
+}
+.icons-list li div.mail {
+  background-position: -480px 0px;
+}
+.icons-list li div.maps {
+  background-position: -540px 0px;
+}
+.icons-list li div.messages {
+  background-position: -600px 0px;
+}
+.icons-list li div.music {
+  background-position: -660px 0px;
+}
+.icons-list li div.passbook {
+  background-position: -720px 0px;
+}
+.icons-list li div.phone {
+  background-position: -780px 0px;
+}
+.icons-list li div.photos {
+  background-position: -840px 0px;
+}
+.icons-list li div.reminders {
+  background-position: -900px 0px;
+}
+.icons-list li div.safari {
+  background-position: -960px 0px;
+}
+.icons-list li div.settings {
+  background-position: -1020px 0px;
+}
+.icons-list li div.stocks {
+  background-position: -1080px 0px;
+}
+.icons-list li div.twitter {
+  background-position: -1140px 0px;
+}
+.icons-list li div.weather {
+  background-position: -1200px 0px;
+}
+.icons-list li div.newsstand {
+  background-position: -1260px 0px;
+}
+.icons-list li div.videos {
+  background-position: -1320px 0px;
+}
+.icons-list li div.notes {
+  background-position: -1380px 0px;
+}
+.info {
+  width: 320px;
+  font-family: Arial, sans-serif;
+  position: absolute;
+  z-index: 1000;
+  left: -300px;
+  top: 350px;
+}
+.info h4 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+.info p {
+  color: #fff;
+  font-size: 14px;
+}
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotateZ(-2deg);
+            transform: rotateZ(-2deg);
+  }
+  33.3% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  66.6% {
+    -webkit-transform: rotateZ(2deg);
+            transform: rotateZ(2deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}
+@keyframes shake {
+  0% {
+    -webkit-transform: rotateZ(-2deg);
+            transform: rotateZ(-2deg);
+  }
+  33.3% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  66.6% {
+    -webkit-transform: rotateZ(2deg);
+            transform: rotateZ(2deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}

@@ -1,0 +1,124 @@
+@keyframes shake
+  0%
+    transform rotateZ(-2deg)
+  33.3%
+    transform rotateZ(0deg)
+  66.6%
+    transform rotateZ(2deg)
+  100%
+    transform rotateZ(0deg)
+
+*,
+*:before,
+*:after
+  box-sizing border-box
+  user-select none
+
+body
+  margin 0
+  padding 0
+  background black
+  overflow hidden
+
+.icons-list
+  position absolute
+  background url('https://dl.dropboxusercontent.com/u/254436606/ios7/assets/iphone5s.png') no-repeat
+  background-size 510px 883px
+  width 510px
+  height 883px
+  z-index -1
+  margin -403px 0 0 -249px
+  left 50%
+  top 50%
+
+  ul
+    position absolute
+    padding 26px 16px
+    background url('https://dl.dropboxusercontent.com/u/254436606/ios7/assets/bgrd.png')
+    background-size 320px 568px
+    width 320px
+    height 568px
+    left 89px
+    top 103px
+    overflow hidden
+
+    &.shaking
+      .dragging
+        div
+          animation none
+      div
+        animation shake 0.25s 0s ease-in-out infinite
+
+  li
+    transition opacity, transform 0.25s ease-in-out
+    cursor pointer
+    list-style none
+    position absolute
+    text-align center
+    font-size 11px
+    color black
+    font-family Helvetica, Arial, sans-serif
+    
+    span
+      width 100%
+      display block
+      position absolute
+      text-align center
+      top 64px
+      
+    &.placeholder
+      cursor auto
+      div
+        background none
+      span
+        display none
+          
+    &.dragging
+      transition none
+      opacity 0.75
+        
+      div
+        transform scale(1.25)
+        &:after
+          opacity 0.75
+
+    div
+      background white url(https://dl.dropboxusercontent.com/u/254436606/ios7/assets/icons.jpg) no-repeat
+      background-size 1440px 60px
+      width 100%
+      height 100%
+      border-radius 12px
+      transition transform 0.25s ease-out
+      
+      &:after
+        content ''
+        left 0
+        top 0
+        background black
+        position absolute
+        z-index 1
+        width 100%
+        height 100%
+        border-radius 12px
+        opacity 0
+        
+      iconClasses = appstore calculator calendar camera clock compass facetime itunesstore mail maps messages music passbook phone photos reminders safari settings stocks twitter weather newsstand videos notes
+        
+      for iconClass, i in iconClasses
+        &.{iconClass}
+          background-position (-(i*60)px) 0px
+  
+.info
+  width 320px
+  font-family Arial, sans-serif
+  position absolute
+  z-index 1000
+  left -300px
+  top 350px
+  h4
+    color white
+    margin-bottom 10px
+  p
+    color white
+    font-size 14px
+    
