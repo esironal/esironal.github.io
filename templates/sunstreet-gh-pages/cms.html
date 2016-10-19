@@ -1,0 +1,188 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
+  <title>Sunstreet CMS</title>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jsonlint.js"></script>
+
+  <link rel="stylesheet" href="css/cms.css">
+  <script src="js/cms.js"></script>
+
+
+</head>
+
+<body>
+  <div id="content">
+    <h2>Configurations in JSON</h2>
+    <section id="source">
+      <textarea rows="20"></textarea>
+      <button id="validateBtn"> Validate JSON</button>
+      <button id="toSettingsBtn"> JSON -> Settings</button>
+      <button id="toJSONBtn"> Settings -> JSON</button>
+      <pre id="result"></pre>
+    </section>
+    <h2>Global Settings</h2>
+    <section id="global">
+      <span class="cmsLabel">Title</span>
+      <span class="cmsInput">
+        <input type="text" name="title">
+      </span>
+      <span class="cmsLabel">Tag(s)</span>
+      <span class="cmsInput">
+        <input type="text" name="tag">
+      </span>
+      <span class="cmsLabel">Header Image</span>
+      <span class="cmsInput">
+        <input type="text" name="img">
+      </span>
+      <span class="cmsLabel">Thumb</span>
+      <span class="cmsInput">
+        <input type="text" name="thumb">
+      </span>
+      <span class="cmsLabel">Disqus Shortname</span>
+      <span class="cmsInput">
+        <input type="text" name="disqusShortname">
+      </span>
+      <span class="cmsLabel">Google Analytics ID</span>
+      <span class="cmsInput">
+        <input type="text" name="googleAnalyticsId">
+      </span>
+    </section>
+
+    <h2>Contact</h2>
+    <section id="contacts">
+
+    </section>
+    <div id="newContact">
+      <button>New Contact</button>
+    </div>
+    <h2>Footer</h2>
+    <section id="footer">
+      <span class="cmsLabel">Short About</span>
+      <span class="cmsInput">
+        <textarea name="shortAbout" rows="5"></textarea>
+      </span>
+      <span class="cmsLabel">Copyright</span>
+      <span class="cmsInput">
+        <input type="text" name="copyright">
+      </span>
+      <span class="cmsLabel">Powered By</span>
+      <span class="cmsInput">
+        <input type="text" name="poweredBy">
+      </span>
+    </section>
+    <h2>Pages</h2>
+    <section id="pages">
+
+    </section>
+    <div id="newPage">
+      <button>New Page</button>
+    </div>
+    <h2>Posts</h2>
+    <section id="posts">
+
+    </section>
+    <div id="newPost">
+      <button>New Post</button>
+    </div>
+    <div id="contactTemp" style="display:none">
+      <div>
+        <div>
+          <h3>Contact Icon</h3>
+          <button name="remove">&#10006;</button>
+        </div>
+        <span class="cmsLabel">URL</span>
+        <span class="cmsInput">
+          <input type="text" name="url">
+        </span>
+        <span class="cmsLabel">Icon</span>
+        <span class="cmsInput">
+          <input type="text" name="img">
+        </span>
+      </div>
+    </div>
+    <div id="pageTemp" style="display:none">
+      <div>
+        <div>
+          <h3>Page</h3>
+          <button name="remove">&#10006;</button>
+        </div>
+        <span class="cmsLabel">Source</span>
+        <span class="cmsInput">
+          <input type="text" name="url">
+        </span>
+        <span class="cmsLabel">Title</span>
+        <span class="cmsInput">
+          <input type="text" name="title">
+        </span>
+        <span class="cmsLabel">Tag(s)</span>
+        <span class="cmsInput">
+          <input type="text" name="tag">
+        </span>
+        <span class="cmsLabel">Header Image</span>
+        <span class="cmsInput">
+          <input type="text" name="img">
+        </span>
+
+        <span class="cmsLabel">Enable Disqus</span>
+        <span class="cmsInput">
+          <input type="checkbox" name="disqusEnable">
+        </span>
+        <hr>
+      </div>
+    </div>
+
+    <div id="postTemp" style="display:none">
+      <div>
+        <div>
+          <h3>Post</h3>
+          <button name="remove">&#10006;</button>
+        </div>
+        <span class="cmsLabel">Source</span>
+        <span class="cmsInput">
+          <input type="text" name="url">
+        </span>
+        <span class="cmsLabel">Title</span>
+        <span class="cmsInput">
+          <input type="text" name="title">
+        </span>
+        <span class="cmsLabel">Tag</span>
+        <span class="cmsInput">
+          <input type="text" name="tag">
+        </span>
+
+        <span class="cmsLabel">Date</span>
+        <span class="cmsInput">
+          <input type="date" name="date" value="1986-12-21">
+        </span>
+        <span class="cmsLabel">Header Image</span>
+        <span class="cmsInput">
+          <input type="text" name="img">
+        </span>
+        <span class="cmsLabel">Slider Image </span>
+        <span class="cmsInput">
+          <input type="text" name="thumb">
+        </span>
+
+        <span class="cmsLabel">Enable Disqus</span>
+        <span class="cmsInput">
+          <input type="checkbox" name="disqusEnable" checked="true">
+        </span>
+        <span class="cmsLabel">Disqus Identifier</span>
+        <span class="cmsInput">
+          <input type="text" name="disqusIdentifier">
+        </span>
+        <span class="cmsLabel">Disqus Lang</span>
+        <span class="cmsInput">
+          <input type="text" name="disqusLang" value="en">
+        </span>
+        <hr>
+      </div>
+    </div>
+</div></body>
+
+</html>

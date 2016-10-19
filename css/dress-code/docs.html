@@ -1,0 +1,421 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title></title>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,500,300italic|Ubuntu+Mono" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/dress-code/assets/styles/main.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <link rel="icon" href="favicon.ico">
+</head>
+<body class="dc-body--demo-breakpoints">
+		<header class="f-header">
+			<img class="f-logo" src="/dress-code/assets/img/zalando-logo.svg" alt="Zalando Logo">
+			<div class="f-control f-menu-toggle">
+			    <i class="dc-icon dc-icon--menu"></i>
+			</div>
+			
+			<div class="f-control f-menu-toggle">
+				<a href class="dc-link js-toggle-breakpoints">Breakpoints</a>
+			</div>
+            <div class="f-control">
+                <a class="dc-link" href="https://github.com/zalando/dress-code/" target="_blank">Github</a>
+            </div>
+		</header>
+		<!-- fabricator icons -->
+		<svg class="dc-svg" style="display: none;">
+			<symbol id="f-icon-code" viewBox="0 0 512 512">
+				<path d="M377.3 121.3l-40.5 40.4 94.4 94.3-94.4 94.3 40.5 40.4L512 256zM134.7 121.3L0 256l134.7 134.7 40.5-40.4L80.8 256l94.4-94.3zM281.8 103.8zM230.183 408.16l-29.233-7.97 80.85-296.484 29.234 7.972z"/>
+			</symbol>
+			<symbol id="f-icon-notes" viewBox="0 0 512 512">
+				<path d="M443.8 0H68.2C30.6 0 0 30.5 0 68v264.2c0 16.6 8.9 29.5 25.9 37.5 15.3 7.2 33.1 8.4 40.1 8.5V512l201.6-134h176.1c37.6 0 68.2-30.3 68.2-67.8V68c.1-37.5-30.5-68-68.1-68zM114 438V330H68.2c-11.1 0-19.2-8.8-19.2-19.8V68c0-11 8.2-20 19.2-20h375.5c11.1 0 19.2 9 19.2 20v242.2c0 11-8.2 19.8-19.2 19.8H244.2L114 438z"/>
+			</symbol>
+			<symbol id="f-icon-labels" viewBox="0 0 512 512">
+				<path d="M304 280c0 13.2-10.8 24-24 24h-48c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48zM464 280c0 13.2-10.8 24-24 24h-48c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48zM144 280c0 13.2-10.8 24-24 24H72c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48z"/>
+			</symbol>
+			<symbol id="f-icon-menu" viewBox="0 0 512 512">
+				<path d="M512 100c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 212c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 324c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 436c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24z"/>
+			</symbol>
+			<symbol id="f-icon-settings" viewBox="0 0 512 512">
+				<path d="M256 377.3c-67.5 0-121.6-53.9-121.6-121.3s54-121.3 121.6-121.3S377.6 188.6 377.6 256 323.5 377.3 256 377.3zm0-215.6c-52.7 0-94.6 41.8-94.6 94.3s41.9 94.3 94.6 94.3 94.6-41.8 94.6-94.3-41.9-94.3-94.6-94.3zM293.2 512h-72.9L200 450c-13.5-4-27-9.4-39.2-16.2l-59.4 29.6L50 412.3 79.7 353c-6.8-12.1-12.2-25.6-16.2-39.1L0 292.4v-72.8l62.1-20.2c4.1-13.5 9.5-26.9 16.2-39.1L48.6 101 100 49.9l59.4 29.6c12.2-6.7 25.7-12.1 39.2-16.2L220.2 0h72.9l20.3 62c13.5 4 27 9.4 39.2 16.2L412 48.5l51.3 51.2-29.7 59.3c6.8 12.1 12.2 25.6 16.2 39.1l62.1 20.2V291l-62.1 20.2c-4.1 13.5-9.5 26.9-16.2 39.1l29.7 59.3-51.3 51.2-59.4-29.6c-12.2 6.7-25.7 12.1-39.2 16.2L293.2 512zm-54.1-26.9h35.1l18.9-57.9 6.8-1.3c16.2-4 31.1-10.8 45.9-18.9l6.8-4 54 26.9 24.3-24.3-27-53.9 4.1-6.7c8.1-13.5 14.9-29.6 18.9-45.8l1.4-6.7 58.1-18.9v-35l-58.1-18.9-1.4-6.7c-4.1-16.2-10.8-31-18.9-45.8l-4.1-6.7 27-53.9-24.3-24.3-54 26.9-6.8-4c-14.8-8.2-29.7-14.9-45.9-19l-6.8-1.3L274.2 27h-35.1l-18.9 57.9-6.8 1.3c-16.2 4-31.1 10.8-45.9 18.9l-6.8 4-54-26.9-24.3 24.3 27 53.9-4.1 6.7c-8.1 13.5-14.9 29.6-18.9 45.8l-1.4 6.7-58 18.9v35l58.1 18.9 1.4 6.7c4.1 16.2 10.8 31 18.9 45.8l4.1 6.7-27 53.9 24.3 24.3 54-26.9 6.8 4c14.9 8.1 29.7 14.8 45.9 18.9l6.8 1.3 18.8 58z"/>
+			</symbol>
+		</svg>
+		<!-- /fabricator icons -->
+		<!-- fabricator menu -->
+		<div class="f-menu">
+		
+			<div class="f-controls">
+				<div class="f-control f-global-control" data-f-toggle-control="labels" title="Toggle Labels">
+					<svg class="dc-svg">
+						<use xlink:href="#f-icon-labels" />
+					</svg>
+				</div>
+				<div class="f-control f-global-control" data-f-toggle-control="notes" title="Toggle Notes">
+					<svg class="dc-svg">
+						<use xlink:href="#f-icon-notes" />
+					</svg>
+				</div>
+				<div class="f-control f-global-control" data-f-toggle-control="code" title="Toggle Code">
+					<svg class="dc-svg">
+						<use xlink:href="#f-icon-code" />
+					</svg>
+				</div>
+			</div>
+		
+			<ul>
+		
+				<li>
+					<a href="index.html" class="f-menu__heading">The Dress Code</a>
+				</li>
+		
+				<li>
+					<a href="01-core.html" class="f-menu__heading">Core</a>
+					<ul>
+						<li>
+							<a href="01-core.html#01-typography">Typography</a>
+						</li>
+						<li>
+							<a href="01-core.html#02-colors">Colors</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="02-grid.html" class="f-menu__heading">Grid</a>
+					<ul>
+						<li>
+							<a href="02-grid.html#01-Grid">Grid</a>
+						</li>
+						<li>
+							<a href="02-grid.html#02-horizontal-alignment">Horizontal Alignment</a>
+						</li>
+						<li>
+							<a href="02-grid.html#03-vertical-alignment">Vertical Alignment</a>
+						</li>
+						<li>
+							<a href="02-grid.html#04-scss-reference">Scss Reference</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="03-atoms.html" class="f-menu__heading">Atoms</a>
+					<ul>
+						<li>
+							<a href="03-atoms.html#buttons">Buttons</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#card">Card</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#checkboxes">Checkboxes</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#divider">Divider</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#icons">Icons</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#link">Link</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#lists">Lists</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#loading-bar">Loading Bar</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#paragraph">Paragraph</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#radio-button">Radio Button</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#select">Select</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#spinner">Spinner</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#status">Status</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#table">Table</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#text-input">Text Input</a>
+						</li>
+						<li>
+							<a href="03-atoms.html#textarea">Textarea</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="04-molecules.html" class="f-menu__heading">Molecules</a>
+					<ul>
+						<li>
+							<a href="04-molecules.html#01-button-icon">Button Icon</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#02-button-groups">Button Groups</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#03-dropdown">Dropdown</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#04-input-groups">Input Groups</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#05-search-form">Search Form</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#06-tooltip">Tooltip</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#07-dialog">Dialog</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#08-toast">Toast</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#09-messages">Messages</a>
+						</li>
+						<li>
+							<a href="04-molecules.html#10-breadcrumb">Breadcrumb</a>
+						</li>
+					</ul>
+				</li>
+		
+		
+				<li>
+					<a href="docs.html" class="f-menu__heading">Docs</a>
+					<ul>
+						<li>
+							<a href="docs.html#CODING">Coding</a>
+						</li>
+						<li>
+							<a href="docs.html#CONTRIBUTING">Contributing</a>
+						</li>
+						<li>
+							<a href="docs.html#RELEASING">Releasing</a>
+						</li>
+					</ul>
+				</li>
+		
+			</ul>
+		
+		
+		</div>
+		<!-- /fabricator menu -->
+		<div class="f-container">
+
+
+	
+<h1 class="dc-h1 f-dc-h1--view-title" data-f-toggle="labels">Docs</h1>
+
+
+<div class="f-item-group">
+	<h2 class="dc-h2" id="CODING"><a class="dc-link" href="#CODING">Coding</a></h2>
+	<h1>Coding Conventions and Guidelines</h1>
+<h2>Coding conventions:</h2>
+<ul>
+<li>We use the <a href="http://getbem.com/introduction/">BEM</a> approach to write css.</li>
+<li>Every css class must be prefixed with <code>dc-</code>.</li>
+</ul>
+<h2>Sass conventions:</h2>
+<ul>
+<li>All variables and mixins must be prefixed with <code>dc-</code> and must use the <strong><em>hyphen-case</em></strong> (with hyphens as separators).</li>
+<li>To mark a function/variable/mixins/placeholder/selector as private, its name should start with one underscore. <code>_dc-*</code></li>
+</ul>
+<h2>Notes</h2>
+<h3>Future compatibility</h3>
+<p>Each atom/molecules/module is prepared to be independently loaded, by requiring its own dependencies.
+So you will notice at the top of each file a commented import directive, something like this:</p>
+<pre><code class="language-scss">
+// @import &quot;../core/core&quot;;
+
+@mixin dc-checkbox($sibling-label-selector : &quot;.dc-label&quot;) {
+    // ...
+}
+
+</code></pre>
+<p>We hope that sass 4 brings us a new cool import directive that works as the less one (import once by default).
+We are not the only one requesting that <a href="https://github.com/sass/sass/issues/156">feature</a></p>
+
+</div>
+
+
+<div class="f-item-group">
+	<h2 class="dc-h2" id="CONTRIBUTING"><a class="dc-link" href="#CONTRIBUTING">Contributing</a></h2>
+	<h1>Contributing to Dress Code</h1>
+<h2>Git workflow</h2>
+<p>The git workflow that we use to contribute is mostly based and well explained in this article: <a href="http://nvie.com/posts/a-successful-git-branching-model/">a-successful-git-branching-model</a></p>
+<h4>Main branches:</h4>
+<ul>
+<li><strong>master</strong> : must point to the latest stable version</li>
+<li><strong>develop</strong>: the main development branch, never work on it directly, always merge <strong><em>topic</em></strong> branches and <strong><em>hotfix</em></strong> branches into this branch.</li>
+<li><strong>topic/[topic-name]</strong>: for every new feature or task, open a <strong><em>topic</em></strong> branch from <strong><em>develop</em></strong> and work on it, when you are done open a pull request and ask for review.</li>
+<li><strong>hotfix/[hotifx-name]</strong>: used to fix stable versions</li>
+<li><strong>release/[release-name]</strong>: used to work on release candidates</li>
+</ul>
+<blockquote>
+<p>If a github issue is related to a branch we suggest to append the number at the end of the branch name.<br>
+example: topic/dropdown-refactor-98</p>
+</blockquote>
+<h2><a name="commit"></a> Git Commit Guidelines</h2>
+<p>We have very precise rules over how our git commit messages can be formatted. This leads to <strong>more
+readable messages</strong> that are easy to follow when looking through the <strong>project history</strong>. It is
+important to note that we use the git commit messages to <strong>generate</strong> the Dress Code
+<a href="../../CHANGELOG.md">Changelog</a> document.</p>
+<blockquote>
+<p>A detailed explanation of guidelines and conventions can be found in this
+<a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#">document</a>.</p>
+</blockquote>
+<h3><a name="commit-message-format"></a> Commit Message Format</h3>
+<p>Each commit message consists of a <strong>header</strong>, a <strong>body</strong> and a <strong>footer</strong>. The header has a special
+format that includes a <strong>type</strong>, a <strong>scope</strong> and a <strong>subject</strong>:</p>
+<pre><code class="language-html">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;BLANK LINE&gt;
+&lt;body&gt;
+&lt;BLANK LINE&gt;
+&lt;footer&gt;
+</code></pre>
+<blockquote>
+<p>Any line of the commit message cannot be longer 100 characters!<br/>
+This allows the message to be easier to read on github as well as in various git tools.</p>
+</blockquote>
+<h4>Type</h4>
+<p>Must be one of the following:</p>
+<ul>
+<li><strong>feat</strong>: A new feature</li>
+<li><strong>fix</strong>: A bug fix</li>
+<li><strong>docs</strong>: Documentation only changes</li>
+<li><strong>style</strong>: Changes that do not affect the meaning of the code (white-space, formatting, missing
+semi-colons, etc)</li>
+<li><strong>refactor</strong>: A code change that neither fixes a bug nor adds a feature</li>
+<li><strong>perf</strong>: A code change that improves performance</li>
+<li><strong>test</strong>: Adding missing tests</li>
+<li><strong>chore</strong>: Changes to the build process or auxiliary tools and libraries such as documentation
+generation</li>
+</ul>
+<h4>Scope</h4>
+<p>The scope could be anything specifying the place of the commit change.</p>
+<h4>Subject</h4>
+<p>The subject contains succinct description of the change:</p>
+<ul>
+<li>use the imperative, present tense: &quot;change&quot; not &quot;changed&quot; nor &quot;changes&quot;</li>
+<li>don't capitalize first letter</li>
+<li>no dot (.) at the end</li>
+</ul>
+<h4>Body</h4>
+<p>Just as in the <strong>subject</strong>, use the imperative, present tense: &quot;change&quot; not &quot;changed&quot; nor &quot;changes&quot;
+The body should include the motivation for the change and contrast this with previous behavior.</p>
+<h4>Footer</h4>
+<p>The footer should contain any information about <strong>Breaking Changes</strong> and is also the place to
+reference GitHub issues that this commit <strong>Closes</strong>.</p>
+<blockquote>
+<p>Breaking Changes are intended to highlight (in the ChangeLog) changes that will require community
+users to modify their code with this commit.</p>
+</blockquote>
+<br/>
+<h4>Sample Commit message:</h4>
+<pre><code class="language-text">refactor(button): prefix btn class with dc-
+
+    BREAKING CHANGE: btn class now is prefixed with dc namespace.
+
+    Change your code from this:
+
+    ```html
+    &lt;button class=&quot;btn&quot;&gt;submit&lt;/button&gt;
+    ```
+
+    To this:
+
+    ```html
+    &lt;button class=&quot;dc-btn&quot;&gt;submit&lt;/button&gt;
+    ```
+</code></pre>
+
+</div>
+
+
+<div class="f-item-group">
+	<h2 class="dc-h2" id="RELEASING"><a class="dc-link" href="#RELEASING">Releasing</a></h2>
+	<h1>RELEASING</h1>
+<h3>Step by step instructions to release a new version of the dress-code.</h3>
+<ol>
+<li>From the develop branch, move into a new release branch. The <code>&lt;semver&gt;</code> placeholder stay for a new semantic version (e.g. 0.4.1).
+For more info, please take a look <a href="http://semver.org/">here</a>.</li>
+</ol>
+<pre><code>git checkout -b release/&lt;semver&gt;
+</code></pre>
+<ol start="2">
+<li>Run the build.</li>
+</ol>
+<pre><code>npm run build
+</code></pre>
+<ol start="3">
+<li>Increase <code>bower.json</code> and <code>package.json</code> <semver> version and run the task that updates the changelog.</li>
+</ol>
+<pre><code>npm run changelog
+</code></pre>
+<ol start="4">
+<li>Check the result and if needed adjust the output (<code>CHANGELOG.md</code>).
+When done, commit the changes and push the release branch.</li>
+</ol>
+<pre><code>git add --all;
+git commit -m &quot;chore(release): &lt;semver&gt;&quot;;
+git push -u;
+</code></pre>
+<ol start="5">
+<li><strong>Wait the CI job running on <a href="https://travis-ci.org/zalando/dress-code/builds">Travis</a>.</strong></li>
+</ol>
+<p>When the CI job pass with SUCCESS, merge or rebase the release branch on top of the master branch.</p>
+<pre><code>git checkout master;
+git pull;
+git rebase release/&lt;semver&gt;; # or open a pull request to master
+</code></pre>
+<ol start="6">
+<li>Add a git tag, push the master branch and the new tag.</li>
+</ol>
+<pre><code>git tag -a &lt;semver&gt; -m &quot;&lt;semver&gt;&quot;;
+git push origin master;
+git push origin &lt;semver&gt;; # push the tag
+</code></pre>
+<ol start="7">
+<li>Build and deploy demo <a href="http://zalando.github.io/dress-code/">docs/demo</a> artifacts.</li>
+</ol>
+<pre><code>npm run deploy:demo;
+</code></pre>
+<ol start="8">
+<li>Publish on npm registry.</li>
+</ol>
+<pre><code>npm publish
+</code></pre>
+<ol start="9">
+<li>Keep in sync the develop branch.</li>
+</ol>
+<pre><code>git checkout develop;
+git rebase master; # or git merge
+git push origin develop;
+</code></pre>
+
+</div>
+
+
+
+		</div>
+		<div class="dc-grid"></div>
+
+		<script src="/dress-code/assets/scripts/main.js"></script>
+
+</body>
+</html>

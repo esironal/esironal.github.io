@@ -1,0 +1,93 @@
+{
+  "global": {
+    "title": "Sunstreet",
+    "tag": "Github Pages Template",
+    "img": "content/img/sunset.jpg",
+    "thumb":"img/thumb.jpg",
+    "disqusShortname": "",
+    "googleAnalyticsId": ""
+  },
+
+  "footer": {
+    "copyright": "Under <a href=\"https://opensource.org/licenses/MIT\">Mit License</a> © 2016. Designed & built with love, coffee and biscuits.",
+    "poweredBy": "Powered By <a href=\"https://github.com/zalando/sunstreet/\">Sunstreet</a>",
+    "shortAbout": "Who's Behind it"
+  },
+  "contacts": {
+    "0": {
+      "url": "http://github.com/#",
+      "img": "img/github.png"
+    },
+    "1": {
+      "url": "https://plus.google.com/#",
+      "img": "img/googleplus.svg"
+    },
+    "2": {
+      "url": "https://www.linkedin.com/#",
+      "img": "img/linkedin.png"
+    },
+    "3": {
+      "url": "http://stackoverflow.com/#",
+      "img": "img/stackoverflow.svg"
+    },
+    "4": {
+      "url": "https://behance.net/#",
+      "img": "img/behance.png"
+    },
+    "5": {
+      "url": "https://hackerrank.com/#",
+      "img": "img/hackerrank.png"
+    }
+  },
+  "pages": {
+    "0": {
+      "url": "content/pages/about-dummy.md",
+      "title": "About",
+      "tag": "",
+      "img": "",
+      "disqusEnable": false
+    },
+    "1": {
+      "url": "content/pages/portfolio-dummy.md",
+      "title": "Portfolio",
+      "tag": "",
+      "img": "",
+      "disqusEnable": false
+    }
+  },
+  "posts": {
+    "0": {
+      "url": "https://api.github.com/repos/ismailmarmoush/debian/readme",
+      "title": "Dummy Post 0 A Readme file from github",
+      "tag": "Linux",
+      "img": "content/img/debian-wallpaper.jpg",
+      "thumb": "content/img/debian-wallpaper.jpg",
+      "disqusIdentifier": "/000001",
+      "disqusLang": "en",
+      "disqusEnable": true,
+      "date": "2015-06-28"
+    },
+    "1": {
+      "url": "content/posts/post.md",
+      "title": "Dummy post 1",
+      "tag": "Linux",
+      "img": "content/img/eclipse.png",
+      "thumb": "content/img/eclipse.png",
+      "disqusIdentifier": "/000003",
+      "disqusLang": "en",
+      "disqusEnable": true,
+      "date": "2015-06-28"
+    },
+    "2": {
+      "url": "content/posts/post.md",
+      "title": "Dummy Post 2",
+      "tag": "Software Development",
+      "img": "content/img/office.jpg",
+      "thumb": "",
+      "disqusIdentifier": "/000002",
+      "disqusLang": "en",
+      "disqusEnable": true,
+      "date": "2015-06-28"
+    }
+  }
+}

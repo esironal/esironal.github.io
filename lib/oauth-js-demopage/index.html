@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>OAuth.io - Demo</title>
+    <link rel="stylesheet" href="library/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="library/bootstrap.min.js"></script>
+    <script src="library/oauth.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-42196684-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+
+    <!-- Boiletplate scripts (provider list / select event...) -->
+    <script src="javascripts/oauth-boilerplate.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col col-lg-12">
+          <h1>
+            <img src="http://oauth.io/img/logo.png" class="pull-left" height="100" width="100"/><span style="display: block; font-size: 1.5em; position: relative; top: 8px; margin-left: 115px">Serverless OAuth is now possible</span>
+          </h1>
+          <p style="margin-left: 120px; margin-top: 0px"><a href="https://oauth.io">Visit OAuth.io</a> - <a href="https://github.com/oauth-io/oauth-js/tree/gh-pages">See the source on Github</a></p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 20px">
+        <div class="col col-lg-3">
+          <div style="margin-top: 5px">
+            <div id="provider_actions" style="float: right; display:inline-block;">
+              <div class="btn-group" data-toggle="buttons-radio">
+                <button type="button" class="btn btn-default active" id="popup_method">Popup</button>
+                <button type="button" ng-hover class="btn btn-default" id="redirect_method">Redirect</button>
+              </div>
+            </div>
+            <div style="clear: right; padding-top: 5px;" id="oauth-connect">
+              <button class="btn btn-block btn-default" data-provider="facebook" style="text-align: left" ng->
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/facebook/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Facebook</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="twitter">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/twitter/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Twitter</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="github">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/github/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Github</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="stackexchange">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/stackexchange/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Stack Exchange</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="soundcloud">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/soundcloud/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Soundcloud</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="youtube">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/youtube/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Youtube</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="tumblr">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/tumblr/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Tumblr</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="instagram">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/instagram/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Instagram</span>
+                </span>
+              </button>
+              <button class="btn btn-block btn-default" style="text-align: left" data-provider="linkedin">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/linkedin/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Connect with Linkedin</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9">
+          <h4>How to use OAuth.io SDK? it's really simple!</h4>
+          <p>After loading oauth.js, you can use <code>OAuth</code> object to authorize your user like this:</p>
+          <pre id="code"><span style="color: #777">// Initialize with your OAuth.io app public key</span>
+OAuth.initialize('<span class="text-success"><strong>Public key</strong></span>');
+OAuth.popup('<span class="provider" style="color: #428bca; font-weight: bold">facebook</span>', function(<span style="color: red; font-weight: bold">error</span>, <span style="color: orange; font-weight: bold">success</span>){
+  <span style="color: #777">// See the result below</span>
+});
+
+
+
+
+
+</pre>
+          <h4 id="success-text" style="display: none">Successful connection with <span class="provider stay"></span></h4>
+          <h4 id="error-text" style="display: none">Connection fail with <span></span></h4>
+          <pre id="result">
+          </pre>
+          <img id="placeholder-result" src="http://oauth-io.github.io/oauth-js/images/try.png">
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col col-lg-12">
+          <h4 style="text-align: center">70+ APIs supported</h4>
+
+          <div id="providers" style="text-align: center">
+          </div>
+          <hr />
+          <div class="row" style="margin: 25px 0">
+            <div class="col col-lg-12" style="text-align: center">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://oauth-io.github.io/oauth-js/" data-via="oauth_io" data-lang="en">Tweet</a>
+              <a href="https://twitter.com/oauth_io" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @oauth_io</a>
+            </div>
+          </div>
+        </div>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <div style="margin-top: 20px">
+            <p style="text-align: center"><strong>powered by <a href="https://oauth.io">OAuth.io</a> & <a href="http://webshell.io">Webshell</a></strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="https://github.com/oauth-io/oauth-js" style="position: absolute; top: 0; right: 0"><img src="images/fork-me.png"></a>
+  </body>
+</html>

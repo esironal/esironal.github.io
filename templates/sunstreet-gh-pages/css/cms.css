@@ -1,0 +1,192 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata|Droid+Serif|Open+Sans|Source+Sans+Pro|Sacramento|Indie+Flower|Lato|PT+Serif);
+body {
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+/*************** Buttons ******************/
+button {
+  background-color: #4d90fe;
+  background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
+  background-image: -moz-linear-gradient(top, #4d90fe, #4787ed);
+  background-image: -ms-linear-gradient(top, #4d90fe, #4787ed);
+  background-image: -o-linear-gradient(top, #4d90fe, #4787ed);
+  color: white;
+  font-size: 11px;
+  line-height: 27px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: default;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 0 8px;
+  height: 27px;
+  min-width: 10px;
+  border: 1px solid #3079ed;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+button:hover {
+  border: 1px solid #2f5bb7;
+  background-color: #357ae8;
+  background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8);
+  background-image: -moz-linear-gradient(top, #4d90fe, #357ae8);
+  background-image: -ms-linear-gradient(top, #4d90fe, #357ae8);
+  background-image: -o-linear-gradient(top, #4d90fe, #357ae8);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+button:active {
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+button:focus {
+  outline: 0;
+}
+/******* Grey ****/
+/******* Brown ****/
+/******* Green ****/
+/******* Red ****/
+/******* Blue ****/
+/********* Grid ***************/
+/************ Mixins ************/
+/************** Content ***********/
+html,
+body {
+  background-color: white;
+  color: #333333;
+  font-family: 'Droid Serif', Georgia;
+  font-size: 14px;
+}
+input,
+textarea {
+  padding: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid grey;
+  color: #333333;
+  font-family: 'Droid Serif', Georgia;
+  font-size: 14px;
+}
+input[type=text] {
+  width: 100%;
+}
+textarea {
+  width: 100%;
+}
+#content {
+  width: 60%;
+  margin: 0 auto;
+}
+#content section {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+  margin-bottom: 10px;
+}
+#content h2 {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+section > div > div {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+  width: 99.5%;
+}
+section > div > div h3 {
+  float: left;
+}
+section > div > div button {
+  float: right;
+}
+hr {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+  margin-top: 30px;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+/*************** JSON Ouput **************/
+#source textarea {
+  display: block;
+  width: 100%;
+}
+#result {
+  padding: 1em;
+}
+.pass {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #eeffee;
+  color: #339933;
+  border: 2px solid #339933;
+}
+.fail {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ffeeee;
+  color: #993333;
+  border: 2px solid #993333;
+}
+.cmsLabel {
+  display: inline;
+  float: left;
+  width: 22.91666667%;
+  margin: 0 1.04166667%;
+  margin-top: 10px;
+}
+.cmsInput {
+  display: inline;
+  float: left;
+  width: 72.91666667%;
+  margin: 0 1.04166667%;
+  margin-top: 10px;
+}
+@media screen and (max-width: 960px) {
+  .cmsLabel {
+    display: inline;
+    float: left;
+    width: 97.91666667%;
+    margin: 0 1.04166667%;
+    margin-top: 10px;
+  }
+  .cmsInput {
+    display: inline;
+    float: left;
+    width: 97.91666667%;
+    margin: 0 1.04166667%;
+    margin-top: 5px;
+  }
+  section {
+    display: inline;
+    float: left;
+    width: 97.91666667%;
+    margin: 0 1.04166667%;
+  }
+  #result {
+    word-wrap: break-word;
+  }
+}
