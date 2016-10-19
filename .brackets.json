@@ -1,6 +1,7 @@
 {
     "jscodehints.detectedExclusions": [
         "D:/esironal/www/Git/esironal.github.io/github-client/scripts/main.js",
-        "D:/esironal/www/Git/esironal.github.io/apps/astexplorer-master/src/parsers/js/shift.js"
+        "D:/esironal/www/Git/esironal.github.io/apps/astexplorer-master/src/parsers/js/shift.js",
+        "D:/esironal/www/Git/esironal.github.io/apps/astexplorer-master/src/parsers/webidl/webidl2.js"
     ]
 }
