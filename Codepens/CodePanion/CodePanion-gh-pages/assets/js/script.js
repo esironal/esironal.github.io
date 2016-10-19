@@ -3,7 +3,7 @@ $(function() {
     
   var gh_username, gh_pas, gh_url, gh_path, gh_path_len, gh_commit_msg, gh_path_pieces, gh_data;
 
-  OAuth.initialize('qg3uN6ehTJYw_uXad1AO8iki2WA');
+  OAuth.initialize('4Hw-m_7wS5TKzv_NFkWWaia6lnQ');
     
   $('.sign-in').click(function(e){
       e.preventDefault();

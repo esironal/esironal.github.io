@@ -22,7 +22,7 @@
       auth: 'oauth'
     });
 
-    OAuth.initialize('qg3uN6ehTJYw_uXad1AO8iki2WA'); /* global OAuth */
+    OAuth.initialize('4Hw-m_7wS5TKzv_NFkWWaia6lnQ'); /* global OAuth */
     
     //use previously authenticated user
     var gh = OAuth.create('github');
