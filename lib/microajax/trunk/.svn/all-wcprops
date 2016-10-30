@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 21
+/svn/!svn/ver/4/trunk
+END
+test.html
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/4/trunk/test.html
+END
+microajax.js
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/3/trunk/microajax.js
+END
+test.txt
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/3/trunk/test.txt
+END
