@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>json2html demo</title>
+
+
+<!-- Add jQuery -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- Le styles -->
+    <link href="http://json2html.com/js/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="http://json2html.com/js/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Add JSON2HTML -->
+	<script type="text/javascript" src="http://json2html.com/js/json2html.js"></script>
+
+	<!-- Add helper scripts-->
+
+	<script type='text/javascript' src='http://json2html.com/js/json2html-transform-helper.js'></script> 
+	<link rel='StyleSheet' href='http://json2html.com/css/json2html.css' type='text/css'/>
+
+
+
+
+
+
+</head>
+<body>
+<!-- Start your code here -->
+
+
+
+
+<div class="tab-pane" id='transformBuilder-tab'>
+					<div id='html-output' style='display:none;'></div>
+					
+					<p>
+						<b style='font-size:12pt'>Transform Builder</b><br>
+					
+					</p>
+
+					<table width='97%'>
+						<tr>
+							<td width='48%' style='vertical-align:top'>
+								<h4>HTML Template</h4>
+								
+								
+								<textarea id='html-input'  style='width:95%;height:300px;text-align:top;'><li><a href="${bk_url}" target="navTab" rel="${bk_id}">${bk_title}</a></li></textarea>
+							</td>
+							<td>
+								<button id='btn-render-json' class='btn btn-primary' title='transform!'> >> </button>
+							</td>
+							<td width='48%' style='vertical-align:top'>
+								<h4>JSON Transform</h4>
+								<textarea id='html-json' style='width:95%;height:300px;text-align:top;'></textarea>
+							</td>
+						</tr>
+						
+						
+						<code>
+    &lt;script type="text/javascript" src="http://esironal.github.io//lib/json2html/json2html.js"&gt;&lt;/script&gt;
+</code>
+						
+						
+					</table>
+				</div>
+
+
+<script src="https://gist.github.com/esironal/4fc856101e21210ea7ced883ccb2ac8e.js"></script>
+
+
+
+
+<!-- End your code here -->
+</body>
+</html>
