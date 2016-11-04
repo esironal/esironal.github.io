@@ -1,0 +1,8 @@
+.DS_Store
+lab/
+components
+build
+node_modules
+docs/_site
+docs/.sass-cache
+docs/.jekyll-metadata
