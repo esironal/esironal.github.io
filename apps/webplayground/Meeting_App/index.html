@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"><!--<![endif]-->
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="revisit-after" content="7 days">
+		<meta name="robots" content="FOLLOW, INDEX">
+		<meta name="copyright" content="2013 Meeting App">
+		<meta name="distribution" content="Local">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="URL" content="http://www.meetingapp.com">
+		<meta name="google-site-verification" content="***********************">
+		<meta name="revisit-after" content="1 Days">
+		<meta name="email" content="http://www.meetingapp.com">
+		<meta name="publisher" content="Meeting App">
+		<meta name="rating" content="General">
+		<meta name="expires" content="never">
+		<meta name="langauge" content="english">
+		<meta name="MS.LOCALE" content="EN-US">
+		<meta http-equiv="imagetoolbar" content="no">
+ 
+		<meta name="keywords" lang="en" content="Meeting App">
+		<meta name="title" content="Meeting App">
+		<meta name="description" content="Meeting App">
+		<meta name="CATEGORY" content="Meeting App">
+		<meta name="distribution" content="Global">
+		<meta name="robots" content="Meeting App">
+		<meta name="copyright" content="©2014 Joel Cardinal">
+		
+		<title>Meeting App</title>
+	
+		<link rel="shortcut icon" href="css/favicon.ico">
+		<link rel="stylesheet" href="css/normalize.min.css">
+		<link rel="stylesheet" href="css/main.css">
+
+	</head>
+	<body>
+		<div class="name" contenteditable="true">Untitled</div>
+		<div class="main-toolbar">
+			<a href="" >New</a>&nbsp;
+			<a href="" >Open</a>&nbsp;
+			<a href="" >Duplicate</a>&nbsp;
+			<a href="" >View</a>&nbsp;
+			<a href="" >Type</a>&nbsp;
+			<a href="" >Share</a>&nbsp;
+			<a class="download" href="#">Download</a>
+		</div>
+		<div id="container" style="float:left;width: 70%;padding: 0 1em 1em 1em;background: #F1F1F1;">
+			<div class="outline textbox" contenteditable="true" placeholder="Outline"></div>
+			<div class="dragbar">
+				<div class="dragger"></div>
+			</div>
+			<div class="notes textbox" contenteditable="true" placeholder="Notes" ></div>
+		</div>
+		<div style="padding: 0 1em 1em 0;background-color: #F1F1F1;">
+			<a href="">Add</a>
+			<div class="textbox" style="margin-top: 0.3em;">
+				<em class="contenteditable-placeholder">Contacts</em>
+			</div>
+		</div>
+		<div class="footer">v0.1b <a class="signature" href="joelcardinal.com">by Joel Cardinal</a></div>
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+	    <script>window.jQuery.ui || document.write('<script src="js/vendor/jquery-ui-1.9.2.min.js"><\/script>')</script>
+		
+		
+		<script type="text/javascript">
+		
+			/**********************************
+	
+			TODO: add file duplicating,opening,deleting,and sharing features
+			TODO: add different views
+			TODO: get rid of HTML when pasting foreign text in?
+			TODO: add contacts
+			TODO: should change data so that the document name is a property of the document
+	
+			**********************************/
+		
+			
+			// enable debugs (console.log, beta features...etc.), to be removed later
+			var debug = true;
+		
+			var downloadStatus = false,
+				newHref,
+				data,
+				saveEnabled=true,
+				oldName;
+				
+			$(document).ready(function() {
+				// TODO: Do I really need this here if I hard-code 'Untitled'?
+				//checkTitle();
+			});	
+				
+			// draggable resizing of outline div
+			$('.dragbar').draggable({
+			    axis: 'y', 
+			    containment: 'parent',
+			    helper: 'clone', 
+			    drag: function (event, ui) { 
+			        var height = ui.offset.top; 
+			        $(this).prev().height(height); 
+			    } 
+			});
+
+				
+			// download content as file hack
+			// http://dtsn.me/2013/03/12/downloading-data-from-localstorage/
+			// TODO: change to server-side solution for proper file naming/handling				
+			$('.download').on('click', function() {
+				if ( downloadStatus === false ){
+					var content = 'OUTLINE:' + '\n\r' + $('.outline').text()  + '\n\r' + 'NOTES:' + '\n\r' + $('.notes').text();
+					// encode the data into base64
+					base64 = window.btoa(content);
+					newHref = 'data:application/octet-stream;base64,' + base64;
+					$('.download').attr('href' , newHref);
+				}
+				downloadStatus = !downloadStatus;
+				// TODO: refactor this pseudo recursive
+				$('.download').click();
+				downloadStatus = !downloadStatus;
+				$('.download').attr('href' , '#');
+
+			});
+			
+			
+			$('.name').focus(function() {
+				// stop saving so a partial document (name) isn't save
+				saveEnabled=false;
+				oldName = $('.name').text();
+		  });
+			
+			
+			$('.name').blur(function() {
+				var isNameValid = true;
+				// remove old document
+				if(localStorage.getItem('data') && data.documents[oldName]){
+					data = JSON.parse(localStorage.getItem('data'));
+					delete data.documents[oldName];
+					localStorage.setItem('data', JSON.stringify(data));
+				}
+				// prevent using existing name
+				data = JSON.parse(localStorage.getItem('data'));
+				$.each(data.documents, function(k,v){
+					if(k === $('.name').text()){
+						isNameValid = false;
+					}
+				});
+				if(isNameValid){
+					// resume saving 
+					saveEnabled=true;
+					saveData();
+				}else{
+					// TODO: Make this better so it really forces the user to rename before saving resumes
+					alert('Name already exists. Please choose another.');
+				}
+		  });
+			
+			
+			// every ten sec save to localstorage if tab/window is active
+			window.setInterval(function(){
+				if(saveEnabled && !document.hidden && document.visibilityState == 'visible'){
+					saveData();
+				}
+			}, 10000);
+			
+			
+			function checkTitle(){
+				if(localStorage.getItem('data') ){
+					var i = 0,
+						numArr=[];
+						
+					// sort helper
+					function compareNumbers(a, b) {
+					  return a - b;
+					}
+						
+					data = JSON.parse(localStorage.getItem('data'));
+					$.each(data.documents, function(k,v){
+						if(k === 'Untitled'){
+							i = 1;
+						}else if( k.match(/Untitled\(\d+\)/i) ){ // Untitled(4)...etc.
+							// get just numbers
+							numArr.push( k.replace(/[^\d.]/g, "") );
+						}
+					});
+					// get largest num in array
+					if(numArr.length > 0){
+						numArr.sort(compareNumbers);
+						i = numArr[(numArr.length)-1];
+						++i;
+					}
+					$('.name').text('Untitled(' + i + ')');
+				}else if ( !$('.name').val() ){
+					$('.name').text('Untitled');
+				}
+			}
+			
+			// save data
+			function saveData(){
+				// TODO: Make sure titles are unique!!!
+				
+				// provide default title if none
+				var title;
+				if($('.name').text()){
+					title = $('.name').text();
+				}else{
+					title = 'Untitled';
+				}
+				
+				if(localStorage.getItem('data')){
+					data = JSON.parse(localStorage.getItem('data'));
+				}else{
+					data = {
+						documents : {}
+					}
+				}
+				data.documents[title] = {
+					outline : $('.outline').text(),
+					notes : $('.notes').text()
+				}
+				
+				///////////// DEBUG //////////////
+				debug && window.console && console.log(data);
+				//////////////////////////////////
+		  	
+				localStorage.setItem('data', JSON.stringify(data));
+			}
+		
+		
+			/*
+			
+			TODO:
+			
+			- Fix file name issues
+			- Fix div size drag
+			- Add features
+			
+			Resources:
+			
+			https://developers.google.com/gmail/
+			https://developers.google.com/google-apps/contacts/v3/
+			http://stackoverflow.com/questions/9093424/placeholder-in-contenteditable-focus-event-issue#answer-20453483
+			http://stackoverflow.com/questions/2388164/set-focus-on-div-contenteditable-element
+			http://jsfiddle.net/hHLXr/12/
+			
+			
+			
+			
+			
+			
+			
+				// Google Analytics GA (async tracking)
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-*********']);
+			  _gaq.push(['_trackPageview']);
+
+			  (function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+
+				// Google Universal Analytics (async tracking)
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', 'UA-*********', 'venturapools.com');
+			  ga('send', 'pageview');
+			*/
+		</script>
+    </body>
+</html>

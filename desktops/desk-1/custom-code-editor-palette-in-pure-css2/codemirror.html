@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Custom code editor palette in pure CSS</title>
+    
+
+
+<link rel="stylesheet" href="cmtouch/lib/codemirror.css">
+<link rel="stylesheet" href="cmtouch/addon/hint/show-hint.css">
+<script src="cmtouch/lib/codemirror.js"></script>
+<script src="cmtouch/addon/hint/show-hint.js"></script>
+<script src="cmtouch/addon/hint/xml-hint.js"></script>
+<script src="cmtouch/addon/hint/html-hint.js"></script>
+<script src="cmtouch/mode/xml/xml.js"></script>
+<script src="cmtouch/mode/javascript/javascript.js"></script>
+<script src="cmtouch/mode/css/css.js"></script>
+<script src="cmtouch/mode/htmlmixed/htmlmixed.js"></script>
+<script src="cmtouch/addon/selection/active-line.js"></script>
+<script src="cmtouch/addon/edit/matchbrackets.js"></script>
+
+<link rel="stylesheet" href="cmtouch/theme/monokai.css">
+
+<style type="text/css">.CodeMirror {font-size:15px; width: 100%,; height: 100%;}</style>
+    
+    	
+    	
+    	   
+  </head>
+
+  <body>
+    	
+    	
+    	
+    	
+    	<div id="code"></div>
+
+    <script type="text/javascript">
+      CodeMirror.commands.autocomplete = function(cm) {
+          CodeMirror.showHint(cm, CodeMirror.hint.html);
+      }
+      window.onload = function() {
+        editor = CodeMirror(document.getElementById("code"), {
+          mode: "text/html",
+          theme: "monokai",
+          lineWrapping: true,
+          lineNumbers: true,
+          styleActiveLine: true,
+          matchBrackets: true,
+          
+          extraKeys: {"Ctrl-Space": "autocomplete"},
+          value: "<!doctype html>\n<html>\n  " + document.documentElement.innerHTML + "\n</html>"
+        });
+      };
+    </script>
+    	
+    	
+    	
+    	
+    	
+    	
+	
+    
+    
+  </body>
+</html>

@@ -1,0 +1,88 @@
+/*
+Add to Head for Google fonts:
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Istok+Web|Cousine|Cinzel' rel='stylesheet' type='text/css'>
+*/
+
+html {font-size: 16px;}
+
+body {
+	font-size: 62.5%; /* 1em = 10px */
+	background-color: #F1F1F1;
+}
+.dragbar {
+	height: 0.8em;
+	background-color: #F1F1F1;
+	cursor:row-resize;
+	text-align: center;
+}
+.dragger {
+    width: 1em;
+    height: 0.125em;
+    border-top: 0.375em double #000;
+	text-align: center;
+	display: inline-block;
+	position: fixed;
+	margin-top: 0.3em;
+}
+.textbox {
+	border: solid 0.1em #DDD;
+	padding: 1em;
+	/*width: 100%;*/
+	overflow: hidden;
+	overflow-y: scroll;
+	background-color: #FFF;
+}
+.main-toolbar-links {
+	text-decoration: none;
+}
+.main-toolbar {
+	padding:1em 0 1em 1.5em;
+	word-spacing: 0.5em;
+	font-size:120%;
+}
+.main-toolbar a {
+	text-decoration:none;
+	color: #788DB9;
+}
+.main-toolbar a:hover {
+	color: blue;
+}
+container {
+	height: 100%;
+}
+.name {
+	float: left;
+	padding: 0.5em;
+	font-size: 150%;
+	background-color: #FFF;
+	margin: 0 2em 0 1.5em;
+	color: #818181;
+}
+.footer {
+	bottom: 0em;
+	right: 1em;
+	position: absolute;
+	font-size: 90%;
+}
+.signature {
+	text-decoration: none;
+	color: #000;
+}
+/* http://stackoverflow.com/questions/9093424/placeholder-in-contenteditable-focus-event-issue#answer-20453483 */
+[contenteditable][placeholder]:empty:before {
+    content: attr(placeholder);
+	color:#C9C9C9;
+	letter-spacing: 0.1em;
+	font-style: italic;
+}
+/* ===========================================================================
+
+                                MEDIA QUERIES
+
+=========================================================================== */
+
+/*
+@media screen and (max-width: 23em) {
+
+}
+*/

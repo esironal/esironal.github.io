@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+    <title>Dweb CodeMirror</title>
+
+
+
+
+        <meta name="dialog-width" content="720" />
+        <meta name="dialog-height" content="370" />
+        <meta name="dialog-resizable" content="true" />
+        <meta name="dialog-showMaximizeControll" content="true" />
+        <meta name="dialog-showMinimizeControll" content="true" />
+        <meta name="dialog-icon" content="icons/code.png" />
+        
+        
+        <!-- 
+        
+     <meta name="dialog-width" content="300" />
+     <meta name="dialog-height" content="300" />
+     <meta name="dialog-resizable" content="false" />
+     <meta name="dialog-showMaximizeControll" content="false" />
+   <meta name="dialog-showMinimizeControll" content="true" />
+   <meta name="dialog-icon" content="images/add_resource.png" />
+       
+       -->
+        
+
+    <!--
+
+<link rel="stylesheet" href="cmtouch/lib/codemirror.css">
+<link rel="stylesheet" href="cmtouch/addon/hint/show-hint.css">
+<script src="cmtouch/lib/codemirror.js"></script>
+<script src="cmtouch/addon/hint/show-hint.js"></script>
+<script src="cmtouch/addon/hint/xml-hint.js"></script>
+<script src="cmtouch/addon/hint/html-hint.js"></script>
+<script src="cmtouch/mode/xml/xml.js"></script>
+<script src="cmtouch/mode/javascript/javascript.js"></script>
+<script src="cmtouch/mode/css/css.js"></script>
+<script src="cmtouch/mode/htmlmixed/htmlmixed.js"></script>
+<script src="cmtouch/addon/selection/active-line.js"></script>
+<script src="cmtouch/addon/edit/matchbrackets.js"></script>
+
+<link rel="stylesheet" href="cmtouch/theme/monokai.css">
+
+
+-->
+
+
+
+<script src="//cdn.jsdelivr.net/g/codemirror@4.5.0(codemirror.min.js+addon/comment/comment.js+addon/display/fullscreen.js+addon/edit/closetag.js+addon/edit/matchbrackets.js+addon/edit/matchtags.js+addon/edit/trailingspace.js+addon/hint/css-hint.js+addon/hint/html-hint.js+addon/hint/javascript-hint.js+addon/hint/python-hint.js+addon/hint/show-hint.js+addon/hint/sql-hint.js+addon/hint/xml-hint.js+addon/lint/yaml-lint.js+addon/mode/loadmode.js+addon/mode/multiplex.js+addon/mode/overlay.js+addon/runmode/colorize.js+addon/scroll/scrollpastend.js+addon/search/search.js+addon/search/searchcursor.js+addon/selection/active-line.js+addon/selection/mark-selection.js+addon/tern/worker.js+addon/wrap/hardwrap.js+keymap/sublime.js+mode/apl/apl.js+mode/coffeescript/coffeescript.js+mode/css/css.js+mode/go/go.js+mode/htmlmixed/htmlmixed.js+mode/http/http.js+mode/jade/jade.js+mode/javascript/javascript.js+mode/livescript/livescript.js+mode/markdown/markdown.js+mode/meta.js+mode/nginx/nginx.js+mode/perl/perl.js+mode/php/php.js+mode/properties/properties.js+mode/python/python.js+mode/q/q.js+mode/ruby/ruby.js+mode/scheme/scheme.js+mode/shell/shell.js+mode/smarty/smarty.js+mode/smartymixed/smartymixed.js+mode/vb/vb.js+mode/vbscript/vbscript.js+mode/xml/xml.js+mode/xquery/xquery.js+mode/yaml/yaml.js)"></script>
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/g/codemirror@4.5.0(addon/display/fullscreen.min.css+addon/hint/show-hint.min.css+addon/hint/show-hint.css+codemirror.css+theme/3024-day.css+theme/3024-night.css+theme/ambiance-mobile.css+theme/ambiance.css+theme/base16-dark.css+theme/base16-light.css+theme/blackboard.css+theme/cobalt.css+theme/eclipse.css+theme/elegant.css+theme/erlang-dark.css+theme/lesser-dark.css+theme/mbo.css+theme/mdn-like.css+theme/midnight.css+theme/monokai.css+theme/neat.css+theme/neo.css+theme/night.css+theme/paraiso-dark.css+theme/paraiso-light.css+theme/pastel-on-dark.css+theme/rubyblue.css+theme/solarized.css+theme/the-matrix.css+theme/tomorrow-night-eighties.css+theme/twilight.css+theme/vibrant-ink.css+theme/xq-dark.css+theme/xq-light.css)">
+
+
+
+
+
+
+
+
+<style type="text/css">.CodeMirror {font-size:15px; width: 100%; height: 100%;}</style>
+    
+    	
+    	
+    	
+    	   
+  </head>
+
+  <body>
+    	
+    	
+    	
+    	
+    	<div style="margin:-10px" id="code"></div>
+
+    <script type="text/javascript">
+      CodeMirror.commands.autocomplete = function(cm) {
+          CodeMirror.showHint(cm, CodeMirror.hint.html);
+      }
+      window.onload = function() {
+        editor = CodeMirror(document.getElementById("code"), {
+          mode: "text/html",
+          theme: "monokai",
+          lineWrapping: true,
+          lineNumbers: true,
+          styleActiveLine: true,
+          matchBrackets: true,
+          
+          extraKeys: {"Ctrl-Space": "autocomplete"},
+          value: "<!doctype html>\n<html>\n  " + document.documentElement.innerHTML + "\n</html>"
+        });
+      };
+    </script>
+    	
+    	
+    	
+    	
+    	
+    	
+	
+    
+    
+  </body>
+</html>

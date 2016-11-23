@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!--
+ *
+ * Windows Desktop Feeling for Websites - jQuery Plugin (v2.5)
+ *
+ * Requires Easing Plugin for Window Animations:
+ * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+ *
+ * Date: 2011-01-10
+ *
+//-->
+  
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <title>Windows Desktop Feeling for Websites</title>
+    <meta name="description" content="Online Demo: Windows Desktop Feeling for Websites! Try it and love it!" />
+    <meta name="keywords" content="Windows, Desktop, window, Popup, Layer, Fenster, for Websites, Scripte, Webdesign, jQuery, HTML, JavaScript, Download, Homepage, Online" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link href="css/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css"/>
+    <link href="css/AeroWindow.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script> 
+    <script type="text/javascript" src="js/jquery-ui-1.8.1.custom.min.js"></script> 
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>        
+    <script type="text/javascript" src="js/jquery-AeroWindow.min.js"></script>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        background: url(win7-desktop-bg.jpg);
+        font-family: arial;
+        overflow: hidden;
+      }
+      #soyos-facebook-plugin {
+        width: 470px;
+        background: white;
+        position: absolute;
+        top: 50px;
+        right: 217px;
+        padding: 10px 0px 5px 15px;
+        -moz-border-radius: 10px 0px 0px 10px;
+      }
+      #soyos-facebook-plugin .comments {
+        margin-top: -30px;
+        overflow: hidden;
+      }
+      #AD {
+        position: absolute;
+        right: 50px;
+        top: 50px;
+        -moz-border-radius: 0px 10px 10px 10px;        
+        padding: 4px;
+        background: white;
+      }
+      
+    </style>
+  </head>
+  <body>
+   
+    <!-- 
+    ###########################################################################
+    Begin: HTML Content Container for Aero Windows ############################
+    ########################################################################### 
+    -->
+   
+    <div id="DesktopIcons">
+      <ul style="display: none">
+        <li><a href="http://google.com"><img src="images/icons/google.png" border="0">Google</a>
+        <li><a href="http://www.wikipedia.org"><img src="images/icons/wikipedia.png" border="0">Wikipedia</a>
+        <li><a href="http://www.facebook.com"><img src="images/icons/facebook.png" border="0">SOYOS on Facebook</a>
+        <li><a href="http://www.apple.com"><img src="images/icons/apple.png" border="0">Apple</a>
+        <li><a href="http://www.flickr.com"><img src="images/icons/flickr.png" border="0">Flickr</a>
+        <li><a href="http://www.bing.com"><img src="images/icons/bing.png" border="0">bing</a>
+        <li><a href="http://www.ebay.com"><img src="images/icons/ebay.png" border="0">eBay</a>
+        <li><a href="http://wordpress.com/"><img src="images/icons/wordpress.png" border="0">Wordpress</a>
+        <li><a href="http://www.youtube.com"><img src="images/icons/youtube.png" border="0">YouTube</a>
+        <li><a href="http://www.mozilla-europe.org"><img src="images/icons/firefox.png" border="0">Firefox</a> 
+      </ul>  
+    </div>
+
+    <!-- 
+    ###########################################################################
+    End: HTML Content Container for Aero Windows ##############################
+    ########################################################################### 
+    -->  
+
+    
+
+    <script type="text/javascript">
+    var ShowTaskbar = true;
+    $(document).ready(function() {
+      //Initialize Desktop Icons ----------------------------------------------
+      var desktop = $("body #DesktopIcons");
+      var desktop_icons = $("a", desktop);
+      $("ul", desktop).css("display", "none");
+
+      desktop_icons.each(function(index) {
+        if ($(this).attr('href') !== undefined && is_valid_url($(this).attr('href')))
+          $(this).AeroWindowLink();
+      });
+      desktop_icons.remove();
+    });
+    </script>
+      
+      
+    
+     
+  </body>  
+
+</html>

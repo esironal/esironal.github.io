@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+    <title>Dweb CodeMirror</title>
+
+
+
+
+        <meta name="dialog-width" content="720" />
+        <meta name="dialog-height" content="370" />
+        <meta name="dialog-resizable" content="true" />
+        <meta name="dialog-showMaximizeControll" content="true" />
+        <meta name="dialog-showMinimizeControll" content="true" />
+        <meta name="dialog-icon" content="http://esironal.github.io/icons/kode/code.png" />
+        
+        
+        <!-- 
+        
+     <meta name="dialog-width" content="300" />
+     <meta name="dialog-height" content="300" />
+     <meta name="dialog-resizable" content="false" />
+     <meta name="dialog-showMaximizeControll" content="false" />
+   <meta name="dialog-showMinimizeControll" content="true" />
+   <meta name="dialog-icon" content="images/add_resource.png" />
+       
+       -->
+        
+
+    
+
+
+<link rel="stylesheet" href=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/lib/codemirror.css">
+<link rel="stylesheet" href=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/addon/hint/show-hint.css">
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/lib/codemirror.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/addon/hint/show-hint.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/addon/hint/xml-hint.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/addon/hint/html-hint.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/mode/xml/xml.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/mode/javascript/javascript.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/mode/css/css.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/mode/htmlmixed/htmlmixed.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/addon/selection/active-line.js"></script>
+<script src=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/addon/edit/matchbrackets.js"></script>
+
+<link rel="stylesheet" href=" http://esironal.github.io/custom-code-editor-palette-in-pure-css2/cmtouch/theme/monokai.css">
+
+<style type="text/css">.CodeMirror {font-size:15px; width: 100%,; height: 100%;}</style>
+    
+    	
+    	
+    	   
+  </head>
+
+  <body>
+    	
+    	
+    	
+    	
+    	<div id="code"></div>
+
+    <script type="text/javascript">
+      CodeMirror.commands.autocomplete = function(cm) {
+          CodeMirror.showHint(cm, CodeMirror.hint.html);
+      }
+      window.onload = function() {
+        editor = CodeMirror(document.getElementById("code"), {
+          mode: "text/html",
+          theme: "monokai",
+          lineWrapping: true,
+          lineNumbers: true,
+          styleActiveLine: true,
+          matchBrackets: true,
+          
+          extraKeys: {"Ctrl-Space": "autocomplete"},
+          value: "<!doctype html>\n<html>\n  " + document.documentElement.innerHTML + "\n</html>"
+        });
+      };
+    </script>
+    	
+    	
+    	
+    	
+    	
+    	
+	
+    
+    
+  </body>
+</html>

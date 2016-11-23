@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>DWeb Demo Application</title>
+		<script type="text/javascript" src="dweb/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="dweb/js/jquery-ui-1.8.18.custom.min.js"></script>
+		
+		<script type="text/javascript" src="dweb/js/jquery.ui.touch-punch.min.js"></script>
+		
+		<script type="text/javascript" src="dweb/js/jquery.tipTip.minified.js"></script>
+		<script type="text/javascript" src="dweb/js/jquery.hoverIntent.js"></script>
+		<script type="text/javascript" src="dweb/js/supersubs.js"></script>
+		<script type="text/javascript" src="dweb/js/superfish.js"></script>
+		<script type="text/javascript" src="dweb/js/jquery.ba-resize.min.js"></script>
+		<script type="text/javascript" src="dweb/js/jquery.jeegoocontext.min.js"></script>
+		<script type="text/javascript" src="dweb/js/jquery-json.js"></script>
+		<script type="text/javascript" src="dweb/desktop.js"></script>
+		<link type="text/css" href="dweb/desktop-style.css" rel="stylesheet" />
+	</head>
+	<body>
+	
+	
+	
+		<script type="text/javascript">
+		$(document).ready(function() { 
+		
+			var desktop = new Desktop();
+			
+//			var sayHello = new UICommand('Say Hello', 'http://cdn5.iconfinder.com/data/icons/Free-PSD-blogging-icons-Bimbilini/32/comments.png', function() { desktop.showInfoMessage("Hello", "Hello To DWeb"); });
+			
+			
+//			var sayError = new UICommand('Say Error', 'http://cdn2.iconfinder.com/data/icons/oxygen/32x32/actions/list-remove.png', function() { desktop.showErrorMessage("Error", "This is DWeb Error Message"); });
+			
+			
+			
+//			var openSampleDialog = new UICommand('Sample Dialog', 'http://cdn1.iconfinder.com/data/icons/UII_Icons/32x32/dialog%20box.png', function() { desktop.createDialog('sampleDialog.html'); });
+			
+		
+		
+		var openCodeMirror = new UICommand('Code Mirror', 'icons/code.png', function() { desktop.createDialog('dwebcode.html'); });
+		
+	
+	
+			var openBracketsEditor = new UICommand('Brackets Tribute', 'icons/editor.png', function() { desktop.createDialog('brackets.html'); });
+	
+	
+	
+	var openElfinder= new UICommand('Elfinder 2.0', 'icons/icon_folderblue.png', function() { desktop.createDialog('elfinder.html'); });
+	
+	
+	
+			
+			
+//			desktop.addDesktopIcon(sayHello);
+//			desktop.addDesktopIcon(sayError);
+//			desktop.addDesktopIcon(openSampleDialog);
+			
+			
+			desktop.addDesktopIcon(openCodeMirror);
+			
+						desktop.addDesktopIcon(openBracketsEditor);
+						
+						
+												desktop.addDesktopIcon(openElfinder);
+						
+						
+						
+						
+						
+	//								desktop.addDesktopIcon(openCodeMirror);
+			
+			
+			
+//			desktop.addMainMenuItem(sayHello);
+//			desktop.addMainMenuItem(sayError);
+//			desktop.addMainMenuItem(openSampleDialog);
+
+
+
+	desktop.addMainMenuItem(openCodeMirror);
+
+
+	desktop.addMainMenuItem(openBracketsEditor);
+
+
+desktop.addMainMenuItem(openElfinder);
+
+
+
+
+
+
+
+
+			
+			desktop.initDesktop();
+		});
+		</script>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

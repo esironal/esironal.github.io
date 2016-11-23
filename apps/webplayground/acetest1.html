@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<textarea name="my-xml-editor" data-editor="html" rows="15"></textarea>
+
+<!-- 
+<textarea name="my-markdown-editor" data-editor="javascript" rows="15"></textarea>
+-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="ace/ace.js"></script>
+<script>
+    // Hook up ACE editor to all textareas with data-editor attribute
+    $(function () {
+        $('textarea[data-editor]').each(function () {
+            var textarea = $(this);
+
+            var mode = textarea.data('editor');
+
+            var editDiv = $('<div>', {
+                position: 'absolute',
+                width: textarea.width(),
+                height: textarea.height(),
+                'class': textarea.attr('class')
+            }).insertBefore(textarea);
+
+            textarea.css('display', 'none');
+
+            var editor = ace.edit(editDiv[0]);
+            editor.renderer.setShowGutter(false);
+            editor.getSession().setValue(textarea.val());
+            editor.getSession().setMode("ace/" + mode);
+            editor.setTheme("ace/theme/textmate");
+            
+            // copy back to textarea on form submit...
+            /*
+						textarea.closest('form').submit(function () {
+                textarea.val(editor.getSession().getValue());
+            })
+						*/
+						//Update the textarea control (This is the way used by github)
+						editor.getSession().on('change', function(){
+						  textarea.val(editor.getSession().getValue());
+						});
+
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+ <html>
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="doc/docs.css">
+<link rel="stylesheet" href="lib/codemirror.css">
+<link rel="stylesheet" href="theme/monokai.css">
+<link rel="stylesheet" href="addon/dialog/dialog.css">
+<link rel="stylesheet" href="addon/hint/show-hint.css">
+<meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+
+<meta name="viewport" content="width=device-width" />
+    
+<script src="lib/codemirror.js"></script>
+<script src="addon/mode/loadmode.js"></script>
+
+<script src="addon/hint/show-hint.js"></script>
+<script src="addon/hint/javascript-hint.js"></script>
+<script src="addon/hint/xml-hint.js"></script>
+<script src="addon/hint/anyword-hint.js"></script>
+<script src="addon/hint/css-hint.js"></script>
+<script src="addon/hint/pig-hint.js"></script>
+<script src="addon/hint/python-hint.js"></script>
+<script src="addon/hint/html-hint.js"></script>
+
+<script src="addon/edit/closetag.js"></script>
+
+
+<script src="keymap/extra.js"></script>
+<script src="addon/selection/active-line.js"></script>
+<script src="addon/edit/matchbrackets.js"></script>
+<script src="addon/search/searchcursor.js"></script>
+<script src="addon/search/search.js"></script>
+<script src="addon/dialog/dialog.js"></script>
+    
+<script src="addon/fold/foldcode.js"></script>
+<script src="addon/fold/foldgutter.js"></script>
+<script src="addon/fold/brace-fold.js"></script>
+<script src="addon/fold/xml-fold.js"></script>
+<script src="addon/fold/comment-fold.js"></script>
+
+    <style type="text/css">
+        
+        @font-face
+        {
+            font-family: Inconsolata;
+            src: url("Inconsolata.otf") format("opentype");
+        }
+    @font-face
+    {
+        font-family: Monaco;
+        src: url("Monaco.ttf") format('truetype');
+    }
+    @font-face
+    {
+        font-family: Ubuntu Mono;
+        src: url("UbuntuMono-R.ttf") format('truetype');
+    }
+    @font-face
+    {
+        font-family: Consolas;
+        src: url("Consolas.ttf") format('truetype');
+    }
+    @font-face
+    {
+        font-family: source-code-pro;
+        src: url("SourceCodePro-Regular.ttf");
+    }
+        .CodeMirror-foldmarker {
+            color: blue;
+            text-shadow: #b9f 1px 1px 1px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
+            font-family: arial;
+            line-height: .3;
+            cursor: pointer;
+        }
+        .CodeMirror-foldgutter {
+            width: .7em;
+        }
+        .CodeMirror-foldgutter-open,
+        .CodeMirror-foldgutter-folded {
+            color: #555;
+            cursor: pointer;
+        }
+        .CodeMirror-foldgutter-open:after {
+            font-family: Arial, sans-serif;
+            content: "\25BE";
+            background: url(down.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 2px;
+        }
+        .CodeMirror-foldgutter-folded:after {
+            font-family: Arial, sans-serif;
+            content: "\25B8";
+            background: url(right.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 2px;
+        }
+    
+    
+      .CodeMirror { font-size:15px; width: 100%; height: 100%}
+        
+        *:not(input):not(textarea) {
+            -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+            -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+            
+        }
+        
+    </style>
+</head>
+
+<body style="background-color: #231f1d">
+
+<form><textarea id="code" name="code" contenteditable="true">fdc7fdba5b6e33f2e2a968503e688c7ed_CM_6b6763f9eee43d6fb521eb53b1b58e8dfd4493e4</textarea></form>
+
+
+
+    <script id="script">
+        
+        
+        
+        CodeMirror.commands.autocomplete = function(cm) {
+            
+            var mode = editor.getCurrentMode(cm);
+
+            switch(mode) {
+                case "text/x-php":
+                case "php":
+                case "application/x-httpd-php":
+                CodeMirror.showHint(cm, CodeMirror.phpHint, {completeSingle:false});
+                break;
+                case "javascript":
+                CodeMirror.showHint(cm, CodeMirror.hint.javascript, {completeSingle:false});
+                break;
+                case "text/css":
+                CodeMirror.showHint(cm, CodeMirror.cssHint, {completeSingle:false});
+                break;
+                case "xml":
+                CodeMirror.showHint(cm, CodeMirror.xmlHint, {completeSingle:false});
+                break;
+                case "html":
+                case "text/html":
+                CodeMirror.showHint(cm, CodeMirror.htmlHint, {completeSingle:false});
+                break;
+                case "text/x-python":
+                CodeMirror.showHint(cm, CodeMirror.pythonHint, {completeSingle:false});
+                break;
+                default:
+                CodeMirror.showHint(cm, CodeMirror.hint.anyword, {completeSingle:false});
+                break;
+            }
+            
+        };
+    
+    function Editor_Autocomplete(cm, e) {
+        clearTimeout(editor._ac_timeout);
+        if(e.type == "keypress") {
+            
+            cm._inp = String.fromCharCode(e.which);
+            
+            if(cm._inp === undefined) return false;
+
+            var test = /[a-zA-Z0-9\-_<$.]/.test(cm._inp);
+            if(!test) {
+                cm._ac_enteredKeys = 0;
+                return false;
+            }
+
+            if(document.querySelectorAll(".CodeMirror-hints").length==0) {
+                if(typeof (cm._ac_enteredKeys) == "undefined")
+                cm._ac_enteredKeys = 0;
+                
+                cm._ac_enteredKeys++;
+                var keytrigger = editor._keyTrigger;
+                var currentMode = editor.getCurrentMode(cm);
+                
+                if(currentMode == "text/css")
+                keytrigger = 1;
+                else if(currentMode == "application/x-httpd-php" && cm._inp == "$") {
+                    keytrigger = 1;
+                } else if(currentMode == "javascript" && cm._inp == ".") {
+                    keytrigger = 1;
+                }
+
+                if(cm._ac_enteredKeys >= keytrigger) 
+                {
+                    cm._ac_enteredKeys = 0; cm._inp = ""; cm.execCommand("autocomplete");
+                    //editor._ac_timeout = setTimeout(function() { alert("3"); cm._ac_enteredKeys = 0; cm._inp = ""; cm.execCommand("autocomplete"); },50);
+                }       
+                
+            }
+        }
+    }
+    
+    function Editor_getCurrentMode(cm) {
+        var mode = cm.options.mode;
+        var getMode = cm.getModeAt(cm.getCursor());
+        var modeName = getMode.name;
+        
+        if(getMode.name == "xml" && getMode.configuration)
+        modeName = getMode.configuration;
+        
+        switch(modeName) {
+            case "javascript":
+            return "javascript";
+            case "css":
+            return "text/css";
+            case "html":
+            return "text/html";
+        }
+        return mode;
+        
+    }
+        
+        CodeMirror.prototype.autocomplete = Editor_Autocomplete;
+        CodeMirror.prototype.getCurrentMode = Editor_getCurrentMode;
+        CodeMirror.prototype._ac_timeout = null;
+        CodeMirror.prototype._keyTrigger = 2;
+
+
+        CodeMirror.modeURL = "mode/%N/%N.js";
+       
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                                             lineNumbers: true,
+                                             lineWrapping: true,
+                                             theme: "monokai",
+                                             onKeyEvent: Editor_Autocomplete,
+                                             foldGutter: {
+                                             rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.xml)
+                                             },
+                                             autoCloseTags: true,
+                                             gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+                                             });
+                                             
+        editor.on("gutterClick",function(cm, line) {
+    editor.foldCode(CodeMirror.Pos(line, 0));
+    return false;
+});                                       
+                                             
+            
+            setMatchCase(false);
+            
+        var izmjena;
+        
+        function goUndo() {
+            editor.undo();
+        }
+    
+        function goRedo() {
+            editor.redo();
+        }
+        
+        
+        function increaseFontSize() {
+            var broj = getComputedStyle(editor.getWrapperElement())["font-size"].replace("px", "");
+            broj++;
+            editor.getWrapperElement().style["font-size"] = broj+"px";
+            //document.querySelector(".CodeMirror-hints").css({"font-size":broj+"px"});
+            editor.refresh();
+        }
+
+        
+        function decreaseFontSize() {
+            var broj = getComputedStyle(editor.getWrapperElement())["font-size"].replace("px", "");
+            broj--;
+            editor.getWrapperElement().style["font-size"] = broj+"px";
+            //document.querySelector(".CodeMirror-hints").css({"font-size":broj+"px"});
+            editor.refresh();
+        }
+        
+        function search (string) {
+            //CodeMirror.commands["clearSearch"](editor,"");
+            CodeMirror.commands["findNext"](editor,string);
+            
+            return searchMatchFound(string);
+        }
+        function clearSearch (string) {
+            CodeMirror.commands["clearSearch"](editor,string);
+        }
+        function findPrev (string) {
+            CodeMirror.commands["findPrev"](editor,string);
+        }
+        function findNext (string) {
+            CodeMirror.commands["findNext"](editor,string);
+        }
+        function replace (string, newString) {
+            pressedButton();
+            CodeMirror.commands["replace"](editor, string, newString);
+            return searchMatchFound(string);
+        }
+        function replaceAll (string, newString) {
+            pressedButton();
+            CodeMirror.commands["replaceAll"](editor, string, newString);
+            return searchMatchFound(string);
+        }
+        function addKeyboardHandler () {
+            izmjena=false;
+            var handler = function() { pressedButton(); document.body.removeEventListener("keydown", handler) }
+            document.body.addEventListener("keydown", handler);
+        }
+        
+        function getContentOfFile() {
+            return editor.doc.getValue();
+        }
+
+        function enableWordWrap (enable) {
+            if (enable) {
+                editor.setOption("lineWrapping", true);
+            }
+            else {
+                editor.setOption("lineWrapping", false);
+            }
+        }
+    
+        function enableAutocompletion (enable) {
+            if (enable) {
+                editor.setOption("onKeyEvent", Editor_Autocomplete);
+            }
+            else {
+                editor.setOption("onKeyEvent", null);
+            }
+        }
+    
+        function goToLine (number) {
+            var lineNumber = number-1;
+            editor.focus();
+            editor.setCursor({line:lineNumber, ch:0});
+        }
+        function insertText(text) {
+            pressedButton();
+            editor.doc.replaceRange(text, editor.getCursor());
+        }
+        function pressedButton (){
+            //if (izmjena)
+            //    return;
+            //izmjena = true;
+            window.JSInterface.pressedButton();
+          //window.location.href = 'buttonClicked';
+            
+        }
+
+        function resetButtonPressed(){
+            izmjena = false;
+        }
+
+        function getWordWrap() {
+            if (editor.getOption("lineWrapping"))
+                return "1";
+            else
+                return "0";           
+            
+        }
+        function setMode (mode) {
+            editor.setOption("mode", mode);
+            CodeMirror.autoLoadMode (editor, mode);
+        }
+        
+        
+        
+        //kursor
+        
+        var selecting = false;
+        var selection = "";
+        
+        startPos = new Object();
+        startPos.ch = 0;
+        startPos.line = 0;
+        
+        endPos = new Object();
+        endPos.ch = 0;
+        endPos.line = 0;
+        
+        
+        function moveCurDown() {
+            var pos = editor.getCursor();
+            pos['line'] = pos['line']+1;
+            editor.setCursor(pos);
+            
+            if(selecting == true)
+            editor.setSelection(startPos, pos);
+        }
+        
+        function moveCurUp() {
+            var pos = editor.getCursor();
+            pos['line'] = pos['line']-1;
+            editor.setCursor(pos);
+            
+            if(selecting == true)
+            editor.setSelection(startPos, pos);
+        }
+        
+        function moveCurRight() {
+            var pos = editor.getCursor();
+            pos['ch'] = pos['ch']+1;
+            editor.setCursor(pos);
+            
+            if(selecting == true)
+            editor.setSelection(startPos, pos);
+        }
+        
+        function moveCurLeft() {
+            var pos = editor.getCursor();
+            pos['ch'] = pos['ch']-1;
+            editor.setCursor(pos);
+            
+            if(selecting == true)
+            editor.setSelection(startPos, pos);
+        }
+        
+        function startSelecting()
+        {
+            selecting = true;
+            startPos = editor.getCursor();
+            
+            if(selecting == true)
+            editor.setSelection(startPos, pos);
+        }
+        
+        function cancelSelecting()
+        {
+            selecting = false;
+            selection = "";
+            
+            editor.setCursor(editor.getCursor());
+
+            startPos.ch = 0;
+            startPos.line = 0;
+            
+            endPos.ch = 0;
+            endPos.line = 0;
+        }
+
+        function copySelection()
+        {
+            selection = escape(editor.getSelection(startPos, endPos));
+           selecting = false;
+            return selection;
+        }
+        
+        function cutSelection()
+        {
+            pressedButton();
+            cutted = true;
+            selection = escape(editor.getSelection(startPos, endPos));
+            selecting = false;
+            editor.replaceSelection('');
+            return selection;
+        }
+        
+        function pasteText(text)
+        {
+            pressedButton();
+            text = unescape(text);
+            if(selecting == true)
+            editor.replaceSelection(text);
+            else
+            editor.replaceRange(text, editor.getCursor());
+            selecting = false;
+            selection = "";
+        }
+
+        function pasteCuttedText()
+        {
+            pressedButton();
+            selection = unescape(selection);
+            if(selecting == true)
+            editor.replaceSelection(selection);
+            else
+            editor.replaceRange(selection, editor.getCursor());
+            selecting = false;
+            if(cutted == true){
+                selection = "";
+                cutted = false;
+            }
+        }
+
+        function deleteSelection()
+        {
+            pressedButton();
+            selecting = false;
+            editor.replaceSelection('');
+        }
+        /*function copySelection()
+        {
+            selection = escape(editor.getSelection(startPos, endPos));
+            //selecting = false;
+            return selection;
+        }
+        
+        function cutSelection()
+        {
+            pressedButton();
+            selection = escape(editor.getSelection(startPos, endPos));
+            selecting = false;
+            editor.replaceSelection('');
+            return selection;
+        }
+        
+        function pasteText(text)
+        {
+            pressedButton();
+            text = unescape(text);
+            if(selecting == true)
+            editor.replaceSelection(text);
+            else
+            editor.replaceRange(text, editor.getCursor());
+            selecting = false;
+            selection = "";
+        }*/
+
+        function insertTab() {
+            pressedButton();
+            editor.doc.replaceRange('\t', editor.getCursor());
+        }
+    
+    
+    function setMatchCase (enable) {
+        window.CodeMirror.txtcase = !enable;
+        window.CodeMirror.find._case = !enable;
+    }
+    function setRegEx (enable) {
+        window.CodeMirror.regex = enable;
+        window.CodeMirror.find.regex = enable;
+    }
+    
+    
+    
+    
+        function searchMatchFound (query) {
+            return Editor_matches (editor, query);
+        }
+    
+    
+    
+        
+        function Editor_matches(cm, query) {
+            
+           
+            
+            if(query=="") {
+                // tu ocisti match fieldss
+                // $("#find-matches").html("");
+                return "";
+            }
+            
+            if(window.CodeMirror.find._case)
+            var conditions = "gi";
+            else
+            var conditions = "g";
+            
+            if(window.CodeMirror.find.regex)
+            {
+                if(query=="//") return false;
+                var isRE = query.match(/^\/(.*)\/([a-z]*)$/);
+                
+                try {
+                    var reQuery = new RegExp(isRE[1], conditions);
+                } catch(e) {
+                    return "Invalid regular expression";
+                    // $("#find-matches").html("Invalid regular expresion");
+                    return false;
+                }
+                
+                var match = cm.getValue().match(reQuery);
+                
+                if(match == null) {
+                    var matches = 0;
+                } else {
+                    var matches = match.length;
+                }
+            }
+            else {
+                var string = cm.getValue();
+                
+                if(window.CodeMirror.find._case) {
+                    string = string.toLowerCase();
+                    query = query.toLowerCase();
+                }
+                
+                if(query.length<=0) return string.length+1;
+                
+                var n=0, pos=0;
+                
+                while(true){
+                    pos=string.indexOf(query,pos);
+                    if(pos>=0){ n++; pos+=1; } else break;
+                }
+                
+                matches = n;
+            }
+            
+            
+            if(query.length > 50) query = query.substring(0,50)+"...";
+            
+            if(matches==0)
+            var matchString = "Unable to find \""+query+'"';
+            else if(matches==1)
+            var matchString = "1 match found";
+            else 
+            var matchString = matches+" matches found";
+            
+            window.JSInterface.matchesFound(matches);
+            return matchString;
+            // $("#find-matches").html(matchString);
+            
+        }
+        
+        function Preferences_ApplyColoring(coloringJSON) {
+            
+            var htmlTemp = "";
+            Object.keys(coloringJSON).forEach(function (classKey) {
+                                              
+                                              Object.keys(coloringJSON[classKey]).forEach(function (enviroment) {
+                                                                                          if(enviroment == "attrname") return;
+                                                                                          
+                                                                                          
+                                                                                          var selectPath = "#editors .cm-"+enviroment;
+                                                                                          if(enviroment == "default")
+                                                                                          selectPath = "#editors";
+                                                                                          
+                                                                                          if(classKey == "CodeMirror")
+                                                                                          htmlTemp += selectPath+" .CodeMirror {";
+                                                                                          else            
+                                                                                          htmlTemp += selectPath+" .CodeMirror ."+classKey+"{";
+                                                                                          
+                                                                                          Object.keys(coloringJSON[classKey][enviroment]).forEach(function (styleKey) {
+                                                                                                                                                  
+                                                                                                                                                  var attribute = styleKey;
+                                                                                                                                                  var property = coloringJSON[classKey][enviroment][styleKey];                                
+                                                                                                                                                  
+                                                                                                                                                  htmlTemp += attribute+':'+property+';';             
+                                                                                                                                                  });
+                                                                                          htmlTemp += "}";
+                                                                                          });
+                                              });
+                                              document.getElementById("#cm-style").innerHTML = htmlTemp;
+                                              return htmlTemp;
+                                              //return htmlTemp;
+                                              //$('#cm-style').html(htmlTemp);
+        }
+        
+        
+        addKeyboardHandler();
+        
+        
+        </script>
+</body>
+  </html>

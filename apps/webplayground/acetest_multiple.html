@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    #html { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 66%;
+        left: 0;
+    }
+    #javascript { 
+        position: absolute;
+        top: 33%;
+        right: 0;
+        bottom: 33%;
+        left: 0;
+    }
+    #css { 
+        position: absolute;
+        top: 66%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+
+<div id="html" class="editor">test</div>
+
+<div id="javascript" class="editor" style="display:none">test</div>
+
+<div id="css" class="editor" style="display:none">test</div>
+    
+<script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+/*
+	// as multi-dimensional array
+	var editors = [
+		['html',{}],
+		['javascript',{}],
+		['css',{}]
+	];
+	for(var i=0; editors.length > i; i++){
+		editors[i][1] = ace.edit(editors[i][0]);
+  	editors[i][1].setTheme("ace/theme/monokai");
+  	editors[i][1].getSession().setMode("ace/mode/"+editors[i][0]);
+		editors[i][1].setShowPrintMargin(false);
+	}
+
+	editors[0][1].getSession().getValue();
+*/
+
+
+
+// as obj with name array for cycling
+// depends on querySelectorAll returning in order from top down -- which it "should"
+var editors = document.querySelectorAll('.editor');
+var editorsObj = {};
+var editorNameArr = [];
+for(var i=0; editors.length > i; i++){
+	var mode = editors[i].getAttribute('id');
+	editorNameArr.push(mode);
+	editorsObj[mode] = ace.edit(mode);
+	editorsObj[mode].setTheme("ace/theme/monokai");
+	editorsObj[mode].getSession().setMode("ace/mode/"+mode);
+	editorsObj[mode].setShowPrintMargin(false);
+}
+editorsObj.html.getSession().getValue();
+editorsObj[editorNameArr[0]].getSession().getValue();
+
+
+</script>
+</body>
+</html>

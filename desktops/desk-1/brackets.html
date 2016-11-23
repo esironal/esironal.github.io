@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Brackets Tribute</title>
+    
+    
+    
+    <meta name="dialog-width" content="740" />
+        <meta name="dialog-height" content="370" />
+        <meta name="dialog-resizable" content="true" />
+        <meta name="dialog-showMaximizeControll" content="true" />
+        <meta name="dialog-showMinimizeControll" content="true" />
+        <meta name="dialog-icon" content="icons/editor.png" />
+        
+    
+    
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+
+    
+    
+        <!--  Codemirror Begin -->
+    
+<link rel="stylesheet" href="cmtouch/lib/codemirror.css">
+<link rel="stylesheet" href="cmtouch/addon/hint/show-hint.css">
+<script src="cmtouch/lib/codemirror.js"></script>
+<script src="cmtouch/addon/hint/show-hint.js"></script>
+<script src="cmtouch/addon/hint/xml-hint.js"></script>
+<script src="cmtouch/addon/hint/html-hint.js"></script>
+<script src="cmtouch/mode/xml/xml.js"></script>
+<script src="cmtouch/mode/javascript/javascript.js"></script>
+<script src="cmtouch/mode/css/css.js"></script>
+<script src="cmtouch/mode/htmlmixed/htmlmixed.js"></script>
+<script src="cmtouch/addon/selection/active-line.js"></script>
+<script src="cmtouch/addon/edit/matchbrackets.js"></script>
+
+
+<link rel="stylesheet" href="cmtouch/theme/monokai.css">
+
+<style type="text/css">.CodeMirror {font-size:16px; width: 100%,; height: 100%;}</style>
+    	
+      <!--  Codemirror End -->
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+		<div id="c-red" class="circle"></div>
+		<div id="c-yellow" class="circle"></div>
+		<div id="c-green" class="circle"></div>
+		<h1><span id="c-gray"></span>Esironal IDE</h1>
+</header>
+
+<nav>
+		<h2>Working Files</h2>
+		<ul>
+				<li><a href="" class="active">index<span class="ft">.html</span></a>
+				</li>
+				<li><a href="styles">styles<span class="ft">.css</span></a>
+				</li>
+				<li><a href="main">main<span class="ft">.js</span></a>
+				</li>
+				<li><a href="data">data<span class="ft">.json</span></a>
+				</li>
+		</ul>
+</nav>
+
+
+<!--
+<div class="content" contenteditable="true" spellcheck="false" onkeypress="lineCount();" style="outline: none">
+	-->
+	
+	 <div id="code" class="content">
+	
+	
+	
+<!--	
+	
+		<div id="page-1" class="page" style="display: block">
+		</div>
+
+		<div id="page-2" class="page">
+				<p>Feel free to make some changes!</p>
+		</div>
+
+		<div id="page-3" class="page">
+				<p>function You() {</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;return somethingCool;</p>
+				<p>}</p>
+		</div>
+
+		<div id="page-4" class="page">
+				<p>Click that ♥ button :)</p>
+		</div>
+		
+		-->
+		
+		
+</div>
+
+<footer>
+		<p>esironal@github &#45; <span>1 Line</span>
+		</p>
+		<ul>
+				<li>INS</li>
+				<li id="fileType">HTML</li>
+				<li id="color">■</li>
+				<li>Tab Size: 4</li>
+		</ul>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript">
+      CodeMirror.commands.autocomplete = function(cm) {
+          CodeMirror.showHint(cm, CodeMirror.hint.html);
+      }
+      window.onload = function() {
+        editor = CodeMirror(document.getElementById("code"), {
+          mode: "text/html",
+          theme: "monokai",
+          lineWrapping: true,
+          lineNumbers: true,
+          styleActiveLine: true,
+          matchBrackets: true,
+          
+          extraKeys: {"Ctrl-Space": "autocomplete"},
+          value: "<!doctype html>\n<html>\n  " + document.documentElement.innerHTML + "\n</html>"
+        });
+      };
+    </script>
+
+
+    
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>

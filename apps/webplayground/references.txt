@@ -1,0 +1,88 @@
+https://togetherjs.com/
+
+
+		<!--
+		<div id="namePromptContainer">
+			<div class="namePrompt">
+				Please Enter Name:
+				<input id="userName" type="text" placeholder="name"><span>submit</span>
+			</div>
+		</div>
+		-->
+/*
+#namePromptContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#namePromptContainer .namePrompt{
+	width: 200px;
+	  color: #FFF;
+	  font-size: 14px;
+	  margin: auto;
+	  padding-top: 5%;
+	  text-align: center;
+	  line-height: 30px;
+}
+#namePromptContainer input{
+  margin: 0;
+  border: none;
+  padding: 4px;
+}
+#namePromptContainer span{
+	border: 1px solid #FFF;
+  margin: 0;
+  padding: 2px 4px;
+}
+*/
+
+
+https://github.com/mozilla/localForage
+
+http://pixlr.com/editor/
+http://duri.me/
+
+http://youmightnotneedjquery.com/
+
+http://www.joelcardinal.com/git/
+
+
+ACE
+- config
+https://github.com/ajaxorg/ace/wiki/Configuring-Ace
+- syntax
+https://github.com/ajaxorg/ace/wiki/Syntax-validation
+- key commands
+https://github.com/ajaxorg/ace/issues/91
+- autocompletion
+https://github.com/ajaxorg/ace/wiki/How-to-enable-Autocomplete-in-the-Ace-editor
+http://plnkr.co/edit/6MVntVmXYUbjR0DI82Cr?p=preview
+http://stackoverflow.com/questions/24795597/what-does-enablebasicautocompletion-for-ace-editor-do
+-src min no conflict
+https://github.com/ajaxorg/ace-builds/blob/master/src-min-noconflict
+https://github.com/ajaxorg/ace
+- embedding
+http://ace.c9.io/#nav=embedding
+https://gist.github.com/duncansmart/5267653
+- methods
+http://ace.c9.io/#nav=api&api=editor
+
+	/*
+	
+	editor.getSession().setTabSize(2);
+	
+	setOptions({enableBasicAutocompletion: true});
+
+	editor.getSession().on('change', function(){
+	  console.log(editor.getSession().getValue());
+	});
+	
+	*/
+
+Prism
+http://prismjs.com/plugins/line-numbers/
+as IDE
+http://codepen.io/kazzkiq/pen/xGXaKR
