@@ -1,0 +1,396 @@
+
+
+MSM8930 LT02 ATT 
+
+sudo dpkg -i nomachine_5.1.62_1_amd64.deb
+
+sudo apt install application.deb
+
+
+sudo apt install nomachine_5.1.62_1_amd64.deb
+
+
+sudo apt install ~/Downloads/google-chrome-stable_current_amd64.deb
+
+
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt-get update
+sudo apt-get install boot-repair
+
+
+sudo apt-get install ubuntu-restricted-extras
+
+sudo wget http://www.medibuntu.org/sources.list.d/natty.list –output-document=/etc/apt/sources.list.d/medibuntu.list
+sudo apt-get update
+
+
+sudo apt-get install medibuntu-keyring
+sudo apt-get update
+
+
+
+sudo -s apt-get install libdvdcss2
+cd /usr/share/doc/libdvdread4/
+./install-css.sh 
+
+
+
+winecfg
+/opt/google/picasa/3.0/bin/wrapper winecfg
+
+/opt/google/picasa/3.0/bin/wrapper /home/esironal/K-Lite_Codec_Pack.exe
+
+/opt/google/picasa/3.0/bin/wrapper /home/esironal/QuickTime_Alternative_322.exe
+
+/opt/google/picasa/3.0/bin/wrapper QuickTimePlayer.exe
+
+
+sudo apt install gparted
+
+sudo apt install partitionmanager
+
+sudo apt install winetricks
+
+sudo apt install lubuntu-software-center
+
+
+sudo apt install software-center
+
+sudo apt install gdebi-gtk
+
+
+sudo apt install gnome-disks
+
+sudo apt install nemo
+
+sudo apt install kate
+
+
+sudo apt-get install kdenlive
+
+sudo apt-get install openshot
+
+
+sudo apt install gparted partitionmanager winetricks lubuntu-software-center software-center gdebi-gtk gnome-disks nemo kate
+
+
+
+sudo apt install dos2unix
+
+
+
+
+http://askubuntu.com/questions/55868/installing-broadcom-wireless-drivers
+
+sudo apt update
+
+
+sudo update-pciids
+
+
+sudo apt install firmware-b43-installer
+
+sudo apt-get install bcmwl-kernel-source
+
+
+Grub Customizer
+
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get update
+sudo apt-get install grub-customizer
+
+
+sudo apt install perlbrew
+
+perlbrew install perl-5.16.0
+perlbrew switch perl-5.16.0
+
+
+gedit ~/.bashrc
+
+
+gedit ~/.bash_profile
+
+
+rm -r kernel
+
+
+mkdir kernel
+tar xzf Kernel.tar.gz -C kernel
+chmod +x kernel/scripts/gcc-wrapper.py
+
+
+make ARCH=arm CROSS_COMPILE=arm-eabi- VARIANT_DEFCONFIG=msm8930_lt02_att_defconfig msm8930_lt02_defconfig SELINUX_DEFCONFIG=selinux_defconfig
+
+
+make VARIANT_DEFCONFIG=msm8930_lt02_att_defconfig msm8930_lt02_defconfig SELINUX_DEFCONFIG=selinux_defconfig
+
+
+make -j2 ARCH=arm CROSS_COMPILE=arm-eabi-
+
+
+
+
+~/arm-eabi-4.6/bin/arm-eabi-
+
+
+make VARIANT_DEFCONFIG=msm8930_lt02_att_defconfig msm8930_lt02_defconfig SELINUX_DEFCONFIG=selinux_defconfig
+make -j2 ARCH=arm CROSS_COMPILE=~/arm-eabi-4.6/bin/arm-eabi-
+
+
+~/.bash_profile
+
+
+
+
+
+3. Convert files to linux text format
+
+The files form the Galaxy sources are in a Windows text format and need converting. Change Dir to kernel_2.6.27 and type:
+
+find . -type f -name ‘*’ -exec dos2unix {} \;
+
+
+make ARCH=arm CROSS_COMPILE=~/arm-eabi-4.6/bin/arm-eabi- menuconfig
+
+
+
+rm -r kernel
+mkdir kernel
+tar xzf Kernel.tar.gz -C kernel
+chmod +x kernel/scripts/gcc-wrapper.py
+cd kernel
+make VARIANT_DEFCONFIG=msm8930_lt02_att_defconfig msm8930_lt02_defconfig SELINUX_DEFCONFIG=selinux_defconfig
+make -j2 ARCH=arm CROSS_COMPILE=~/arm-eabi-4.6/bin/arm-eabi-
+
+
+
+
+
+make ARCH=arm CROSS_COMPILE=~/arm-eabi-4.6/bin/arm-eabi- VARIANT_DEFCONFIG=msm8930_lt02_att_defconfig msm8930_lt02_defconfig SELINUX_DEFCONFIG=selinux_defconfig
+
+
+make ARCH=arm CROSS_COMPILE=~/arm-eabi-4.6/bin/arm-eabi- menuconfig
+
+
+cp arch/arm/boot/zImage ~/kernel_flashable
+
+find . -name '*ko' -exec cp '{}' ~/kernel_flashable/system/lib/modules/ \;
+ 
+cd ~/kernel_flashable
+ 
+zip -r mykernel ./
+
+
+
+
+
+/home/esironal/Andriod/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rm -r kernel
+
+mkdir kernel
+tar xzf Kernel.tar.gz -C kernel
+chmod +x kernel/scripts/gcc-wrapper.py
+cd kernel
+find . -type f -name '*' -exec dos2unix {} \;
+
+make VARIANT_DEFCONFIG=msm8930_lt02_att_defconfig msm8930_lt02_defconfig SELINUX_DEFCONFIG=selinux_defconfig
+make -j2 ARCH=arm CROSS_COMPILE=~/arm-eabi-4.6/bin/arm-eabi-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+z
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sudo apt-get install git-core gnupg flex bison gperf libsdl-dev libesd0-dev build-essential zip curl libncurses5-dev zlib1g-dev valgrind libreadline6-dev gcc-multilib g++-multilib libc6-dev x11proto-core-dev libx11-dev libz-dev gawk texinfo automake libtool cvs libsdl-dev
+
+
+
+
+android_img_repack_tools:
+
+git clone https://github.com/ASdev/android_img_repack_tools
+cd android_img_repack_tools
+git checkout android-4.4.2
+chmod +x configure
+./configure
+make
+make clean
+make clear
+
+
+
+
+sudo apt install android-tools-fsutils
+
+
+sudo apt install android-tools
+
+
+
+
+
+
+
+
+sudo apt-get install automake
+
+sudo apt install imagemagick
+
+sudo apt install gimp
+
+sudo mount -t ext4 -o loop system.img system_mnt
+
+
+
+
+sudo mount -t ext4 -o loop boot.img system_mnt
+
+
+
+sudo simg2img system.img* system.raw.img
+
+
+
+
+
+
+system_img_mnt
+
+
+
+
+sudo simg2img system.img* system.raw.img
+
+
+mount -t ext4 -o loop system.raw.img system_mnt
+
+
+
+
+
+
+sudo simg2img boot.img* boot.raw.img
+
+
+sudo mount -t ext4 -o loop boot.raw.img boot_mnt
+
+
+cp -r system_mnt system_img_mnt
+
+wrestool -n 2 -x -t 14 heimdall-frontend.exe > heimdall.ico
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+git clone https://github.com/termux/termux-packages
+
+
+
+
+
+
+
+
+
+
+
+
+sudo apt-get install samba
+
+
+
+
+
+
+CONTENT='<action> <icon>preferences-system-sharing</icon> <name>Share (R)</name> <command>net usershare add %n %f &quot;&quot; Everyone:R guest_ok=y &amp;&amp; chmod 775 %f &amp;&amp; gvfs-set-attribute %f -t stringv metadata::emblems emblem-web</command> <description>Share Directory with Samba (Read Only)</description> <patterns>*</patterns> <directories/> </action> <action> <icon>preferences-system-sharing</icon> <name>Share (RW)</name> <command>net usershare add %n %f &quot;&quot; Everyone:F guest_ok=y &amp;&amp; chmod 777 %f &amp;&amp; gvfs-set-attribute %f -t stringv metadata::emblems emblem-web</command> <description>Share Directory with Samba (Read &amp; Write)</description> <patterns>*</patterns> <directories/> </action> <action> <icon>preferences-system-sharing-symbolic</icon> <name>UnShare</name> <command>net usershare delete %n &amp;&amp; gvfs-set-attribute %f -t stringv metadata::emblems none</command> <description>End sharing of this Directory with Samba</description> <patterns>*</patterns> <directories/> </action> </actions>'
+cat $HOME/.config/Thunar/uca.xml >> newtmp
+sed 's/<\/actions>//' <newtmp >newfile
+echo $CONTENT >> newfile
+mv $HOME/.config/Thunar/uca.xml $HOME/.config/Thunar/uca.xml.bak
+mv newfile $HOME/.config/Thunar/uca.xml
+rm newtmp
+
+
+
+
+
+
+
+
+
+
