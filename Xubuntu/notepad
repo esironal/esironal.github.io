@@ -1,3 +1,135 @@
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get update
+sudo apt-get install grub-customizer
+
+
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git-all
+
+
+sudo apt-get install python-software-properties
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash
+sudo apt-get install nodejs﻿​​
+
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install default-jdk
+
+sudo apt-get install gnupg flex bison gperf build-essential zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 libgl1-mesa-dev g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386 git
+
+
+sudo apt-get install build-essential libssl-dev﻿​
+
+
+
+
+git-core
+sudo apt-get install gnupg
+sudo apt-get install flex
+sudo apt-get install bison
+sudo apt-get install gperf
+sudo apt-get install build-essential
+sudo apt-get install zip
+sudo apt-get install curl
+sudo apt-get install libc6-dev
+sudo apt-get install libncurses5-dev:i386
+sudo apt-get install x11proto-core-dev
+sudo apt-get install libx11-dev:i386
+sudo apt-get install libreadline6-dev:i386
+sudo apt-get install libgl1-mesa-glx:i386
+sudo apt-get install libgl1-mesa-dev
+sudo apt-get install g++-multilib
+sudo apt-get install mingw32
+openjdk-6-jdk
+sudo apt-get install tofrodos
+sudo apt-get install python-markdown
+sudo apt-get install libxml2-utils
+sudo apt-get install xsltproc
+sudo apt-get install zlib1g-dev:i386
+sudo apt-get install git
+
+sudo apt-get install 
+
+sudo apt-get install mingw32
+
+
+sudo apt-get install gcc-mingw-w64-i686
+
+
+
+
+sudo apt-get purge runit
+sudo apt-get purge git-all
+sudo apt-get purge git
+sudo apt-get autoremove
+sudo apt update
+sudo apt install git
+
+
+
+
+
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+
+
+
+
+git clone -b kitkat-release --depth 1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6
+
+
+https://android.googlesource.com/platform/build/+archive/android-4.4.2_r1.tar.gz
+
+
+
+tar xzf build-android-4.4.2_r1.tar.gz -C android-4.4.2
+
+
+
+
+
+sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 libgl1-mesa-dev g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386 git
+
+
+gedit .bashrc
+
+export PATH=${PATH}:~/arm-eabi-4.6/bin
+
+export ARCH=arm
+export CROSS_COMPILE=pwd`~/arm-eabi-4.6/bin/arm-eabi-
+
+
+sudo apt install 
+
+
+sudo apt install ncurses
+
+sudo apt install ncurses-devel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 MSM8930 LT02 ATT 
@@ -391,6 +523,22 @@ rm newtmp
 
 
 
+mmv -n '*.3gp' '#1.mp4'
+
+mmv '*.3gp' '#1.mp4'
 
 
+
+
+for i in *.3gp; do mv "$i" "$i.mp4"; done
+
+
+
+
+find /media/esironal/Dev/RN/Vids -depth -type f -name "*.3gp" -exec sh -c 'mv "$1" "$(dirname "$1")/$(basename "$1" .3gp).mp4"' _ {} \;
+
+
+git commit yourfile.js
+git status
+git push origin master
 
