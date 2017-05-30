@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/layout_methods.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:15 GMT -->
+<head>
+
+	<title>Layout Method Samples</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+
+	<style type="text/css">
+	button		{ text-align: left; padding: 2px 1em; vertical-align: middle; width: 55ex; }
+	h3			{ margin: 1em 0 1ex; font-size: 1.1em; font-weight: normal; }
+	p, ul, li	{ margin-top: 1ex; margin-bottom: 1ex; }
+	span.noWrap { white-space: nowrap; margin-left: 5px; }
+	.noScroll	{ overflow: hidden; }
+	.noPadding	{ padding: 0; }
+	.hide		{ display:	none; }
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+	<script type="text/javascript">
+
+	var myLayout, westLayout;
+
+	$(document).ready( function() {
+
+		myLayout = $("body").layout({
+			useStateCookie: 	true	// enable cookie-based state-management
+		,	west__size:			150
+		,	east__size:			150
+		});
+
+		westLayout = $("body > .ui-layout-west").layout();
+
+	});
+
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-center hide"><b>Center pane</b>
+	<p>These buttons show some of Layout's methods.</p>
+	<p>NOTE that closable &amp; resizable pane-options must be enabled <u>when the Layout initializes</u>,
+		if you want to be able to disable/re-enabled these features later.</p>
+
+	<h3> disable/enableClosable( pane [, hideToggler ] ) </h3>
+	<p> <button onclick="myLayout.disableClosable('west')">
+		myLayout.disableClosable('west')</button></p>
+	<p> <button onclick="myLayout.disableClosable('west',true)">
+		myLayout.disableClosable('west', true)</button>
+		<span class="noWrap">&gt; true = hide the Toggler-button</span></p>
+	<p> <button onclick="myLayout.enableClosable('west')">
+		myLayout.enableClosable('west')</button></p>
+
+	<h3> disable/enableSlidable( pane ) </h3>
+	<p> <button onclick="myLayout.disableSlidable('west')">
+		myLayout.disableSlidable('west')</button></p>
+	<p> <button onclick="myLayout.enableSlidable('west')">
+		myLayout.enableSlidable('west')</button></p>
+
+	<h3> disable/enableResizable( pane ) </h3>
+	<p> <button onclick="myLayout.disableResizable('west')">
+		myLayout.disableResizable('west')</button></p>
+	<p> <button onclick="myLayout.enableResizable('west')">
+		myLayout.enableResizable('west')</button></p>
+
+	<h3> $Container.data("layout") / $Pane.data("parentLayout") </h3>
+	<p> A layout-instance can be retrieved from the layout-container element.
+		You can also get the instance of the 'containing layout' from
+		any 'child-element' (pane, resizer or togger) of a layout... </p>
+	<ul>
+		<li> $( [containerSelector] ).layout() </li>
+		<li> $( [containerSelector] ).data("layout") </li>
+		<li> $( [paneSelector] ).data("parentLayout") </li>
+	</ul>
+	<p> <button onclick="debugData( $('body').layout() )">
+		$('body').layout()</button></p>
+	<p> <button onclick="debugData( $('body').data('layout') )">
+		$('body').data('layout')</button></p>
+	<p> <button onclick="debugData( $('.ui-layout-resizer-north').data('parentLayout') )">
+		$('.ui-layout-resizer-north').data('parentLayout')</button></p>
+	<p> The outer-west pane is BOTH a layout-pane and a layout-container... </p>
+	<p> <button onclick="debugData( $('.ui-layout-west').data('parentLayout') )">
+		$('.ui-layout-west').data('parentLayout')</button></p>
+	<p> <button onclick="debugData( $('.ui-layout-west').data('layout') )">
+		$('.ui-layout-west').data('layout')</button></p>
+
+
+	<p>&nbsp;</p>
+</div>
+
+<div class="ui-layout-north hide">North pane</div>
+
+<div class="ui-layout-west noPadding noScroll hide">West pane
+	<div class="ui-layout-center">West&ndash;Center pane</div>
+	<div class="ui-layout-north noScroll">West&ndash;North pane</div>
+	<div class="ui-layout-south noScroll">West&ndash;South pane</div>
+</div>
+
+<div class="ui-layout-south hide">South pane</div>
+
+<div class="ui-layout-east hide">East pane</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/layout_methods.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:15 GMT -->
+</html>

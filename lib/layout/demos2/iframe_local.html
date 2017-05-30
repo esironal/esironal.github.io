@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<HTML>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/iframe_local.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:55 GMT -->
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<TITLE>Layout with Iframe</TITLE>
+
+	<LINK type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+
+	<STYLE type="text/css">
+
+	/* remove padding from the IFRAME-pane */ 
+	.ui-layout-pane-center {
+		padding: 	0;
+	}
+	/* masks are normally transparent - make them visible (must 'override' default) */
+	.ui-layout-mask {
+		background:	#C00;
+		opacity:	.20;
+		filter:		alpha(opacity=20); /* IE */
+	}
+
+	/**
+	 *	This CSS below is only for cosmetic and demo purposes
+	 *	Nothing here affects the appearance of the layout
+	 */
+
+	body {
+		background:		#DFD;
+		font-family:	Arial, sans-serif;
+		*font-size:		0.85em;
+	}
+	p {
+		margin:			1em 0;
+	}
+
+	</STYLE>
+
+	<SCRIPT type="text/javascript" src="lib/js/jquery-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery-ui-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery.layout-latest.js"></SCRIPT>
+
+	<SCRIPT type="text/javascript">
+
+	var topLayout;
+
+	$(document).ready(function () {
+
+		topLayout = $('body').layout({
+			center__maskContents:	true // IMPORTANT - enable iframe masking
+		,	west__size:				300
+		});
+
+ 	});
+
+	</SCRIPT>
+
+</HEAD>
+<BODY>
+
+<IFRAME id="childIframe" name="childIframe" class="ui-layout-center" scrolling="auto"
+	src="iframe_local_child.html"></IFRAME>
+
+<DIV class="ui-layout-west"> West
+
+	<P><BUTTON onclick="$(this).closest('.ui-layout-pane').trigger('layoutpaneclose')"
+	>Close Me</BUTTON></P>
+
+	<h3>Close/Toggle Iframe-West</h3>
+
+	<P><BUTTON	onclick="$('#childIframe')[0].contentWindow.iframeLayout.toggle('west')"
+						>$('#childIframe')[0].contentWindow.iframeLayout.toggle('west')</BUTTON></P>
+
+	<P><BUTTON	onclick="window.frames.childIframe.iframeLayout.toggle('west')"
+						>window.frames.childIframe.iframeLayout.toggle('west')</BUTTON></P>
+
+	<P><BUTTON	onclick="window.frames['childIframe'].iframeLayout.toggle('west')"
+						>window.frames['childIframe'].iframeLayout.toggle('west') (most backwards compatible)</BUTTON></P>
+
+	<P><BUTTON	onclick="window.frames.childIframe.$('.ui-layout-west').trigger('layoutpaneclose')"
+						>window.frames.childIframe.$('.ui-layout-west').trigger('layoutpaneclose')</BUTTON></P>
+
+</DIV>
+
+<DIV class="ui-layout-east"> East
+	<P><BUTTON onclick="$(this).closest('.ui-layout-pane').trigger('layoutpaneclose')"
+	>Close Me</BUTTON></P>
+</DIV>
+
+<DIV class="ui-layout-north"> North </DIV>
+
+<DIV class="ui-layout-south"> South </DIV>
+
+</BODY>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/iframe_local.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:56 GMT -->
+</HTML>

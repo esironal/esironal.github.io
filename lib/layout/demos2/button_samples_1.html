@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/button_samples_1.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:08 GMT -->
+<head>
+
+	<title>Shifty Layout Demo</title>
+
+	<style type="text/css">
+	/**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane-east ,
+	.ui-layout-pane-center .ui-layout-pane { /* all 'inner panes' */ 
+		border: 1px solid #BBB; 
+		padding: 10px; 
+		overflow: auto;
+	} 
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+	} 
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+
+	#pane4-closed ,
+	.ui-layout-east						{ background:	#00CB6D; }
+	.ui-layout-center .ui-layout-north	{ background:	#00B4BA; }
+	.ui-layout-center .ui-layout-south	{ background:	#008EFF; }
+	.ui-layout-center .ui-layout-center	{ background:	#90C7FF; }
+
+	#pane4-closed {
+		position:	absolute;
+		top:		0;
+		right:		0;
+		width:		auto;
+		height:		auto;
+		padding:	5px 10px;
+		text-align:	center;
+		border:		1px solid #999;
+	}
+
+	/**
+	 *	ALL CSS below is only for cosmetic and demo purposes
+	 *	Nothing here affects the appearance of the layout
+	 */
+	body {
+		font-family:	Arial, sans-serif;
+		font-size:		1em;
+		background:		#999;
+	}
+	p {
+		margin: 1em 0;
+	}
+
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+
+	<script type="text/javascript" src="js/complex.js"></script>
+
+	<script type="text/javascript">
+
+	var outerLayout, innerLayout;
+
+	$(document).ready(function () {
+
+		outerLayout = $('body').layout({
+			// using 'sub-key' option format here
+			east: {
+				size:				300
+			,	resizable:			false
+			,	togglerLength_open:	0
+			,	spacing_open:		1 /* cosmetic only */
+			,	initHidden:			true
+			,	onhide_end:			function () { $("#pane4-closed").slideDown(); }
+			,	onshow_start:		function () { $("#pane4-closed").hide(); }
+			}
+		,	center: {
+				onresize:		function () { if (innerLayout) innerLayout.resizeAll(); }
+			}
+		});
+
+		innerLayout = $('body > .ui-layout-center').layout({
+			minSize:			60
+		,	closable:			false
+		});
+
+ 	});
+
+	</script>
+
+
+</head>
+<body>
+
+<div class="ui-layout-east">
+	This is pane #4 - Open
+	<p><button onclick="outerLayout.hide('east')">Close Me</button></p>
+</div>
+
+<div class="ui-layout-center">
+
+	<div class="ui-layout-north">
+		<div id="pane4-closed">
+			<button onclick="outerLayout.show('east',true)">Open #4</button>
+		</div>
+		This is pane #3 &nbsp; &nbsp;
+		<button onclick="innerLayout.sizePane('north', 300)">'Open' Pane</button> &nbsp;
+		<button onclick="innerLayout.sizePane('north', 60)">'Close' Pane</button>
+	</div>
+	
+	<div class="ui-layout-center">
+		This is pane #2
+		<p>
+			Now is the time for all good men to come to the aid of their country.
+			Now is the time for all good men to come to the aid of their country.
+			Now is the time for all good men to come to the aid of their country.
+			Now is the time for all good men to come to the aid of their country.
+			Now is the time for all good men to come to the aid of their country.
+		</p>
+	</div>
+	
+	<div class="ui-layout-south">
+		This is pane #1 &nbsp; &nbsp;
+		<button onclick="innerLayout.sizePane('south', 300)">'Open' Pane</button> &nbsp;
+		<button onclick="innerLayout.sizePane('south', 60)">'Close' Pane</button>
+	</div>
+	
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/button_samples_1.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:08 GMT -->
+</html>

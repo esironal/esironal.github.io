@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/container_margins.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:53 GMT -->
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+	<title>Layout Container with Margins</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+	<style type="text/css">
+	html, body {
+		background:	#666;
+		width:		100%;
+		height:		100%;					
+		padding:	0;
+		margin:		0;
+		overflow:	auto; /* when page gets too small for container min-width/height */
+	}
+	#container {
+		background:	#999;
+		min-height:	300px;
+		min-width:	600px;
+		position:	absolute;
+		top:		50px;	/* margins in pixels */
+		bottom:		50px;	/* could also use a percent */
+		left:		50px;
+		right:		50px;
+	}
+	.pane {
+		display:	none; /* will appear when layout inits */
+	}
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-1.3.0.rc30.7.js"></script>
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function () {
+		$('#container').layout();
+	});
+
+	</script>
+
+</head>
+<body>
+<div id="container">
+	<div class="pane ui-layout-center">
+		Center
+		<p><a href="../demos-2.html"><b>Go to the Demos page</b></a></p>
+	</div>
+	<div class="pane ui-layout-north">North</div>
+	<div class="pane ui-layout-south">South</div>
+	<div class="pane ui-layout-east">East</div>
+	<div class="pane ui-layout-west">West</div>
+</div>
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/container_margins.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/slideOffscreenClose.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:40 GMT -->
+<head>
+	<title>Slide-Offscreen Animation</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+
+	<style type="text/css">
+	.ui-layout-center,
+	.ui-layout-south,
+	.ui-layout-west,
+	.ui-layout-east { padding: 0; overflow: hidden; }
+	/* padding on inner-wrapper instead of on pane-element allows pane (0-padding) to be sized smaller */
+	.padding-wrapper { padding: 10px; overflow: auto; text-align: center; }
+	.ui-layout-north {
+		-moz-column-count:		2;
+		-webkit-column-count:	2;
+		column-count:			2;
+		-moz-column-gap:		20px;
+		-webkit-column-gap:		20px;
+		column-gap:				20px;
+	}
+
+	.ui-layout-west > h2 {
+		background:		#DDD;
+		font-size:		1.3em;
+		padding:		4px 10px;
+		margin:			0;
+	}
+	.ui-layout-west > .ui-layout-content {
+		background:		#000;
+		padding:		0;
+		overflow:		auto;
+	}
+
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout.slideOffscreen-1.1.js"></script>
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+
+	<!--  this plug-in smooths animations by using CSS3 transitions where possible,
+			however it sometimes leaves screen artifacts so it not used in this demo
+	<script type="text/javascript" src="/lib/js/jquery.animate-enhanced.min.js"></script>
+	-->
+
+	<!--  utility for loading objects -->
+	<script type="text/javascript" src="lib/js/AC_RunActiveContent.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function () {
+		myLayout = $("body").layout({
+			minSize:				50
+		,	north__size:			"25%"
+		,	south__size:			370
+		,	west__size:				427
+		,	east__size:				300
+
+		,	useOffscreenClose:		true // true = initClosed & initHidden are 'offscreen' instead of 'hidden'
+		,	fxName:					"slideOffscreen" // plug-in - like slide, but does not 'hide' panes
+		,	fxSpeed:				1000
+		//,	south__initClosed:		true
+		,	contentIgnoreSelector:	".ui-layout-mask" // TEMP work-around for RC30.6.x
+
+		,	center__maskContents:	true	// no objects, just an iframe
+		,	south__maskObjects:		true	// Flash inside an iframe
+		,	west__maskObjects:		true	// Flash
+		,	east__maskObjects:		true	// Flash
+		});
+	});
+	</script>
+
+</head>
+<body>
+
+	<div class="ui-layout-north">
+		<h3 style="margin: 0">Slide-Offscreen Animation for Layout</h3>
+		<p>This page contains objects (iframe, flash &amp; embedded video)
+			that would 'reload' if hidden and then re-shown &ndash; as when a layout-pane closes and opens.</p>
+		<p>To prevent that, <b>the slideOffscreen animation</b> just moves the pane offscreen instead.
+			So if a video is playing when you 'close' a pane, it will continue to play.</p>
+
+		<p>	<button onclick="myLayout.toggle('west');">Toggle West</button>
+			<button onclick="myLayout.open('west.html');">Open</button>
+			<button onclick="myLayout.close('west');">Close</button>
+			<button onclick="myLayout.hide('west')">Hide</button>
+			<button onclick="myLayout.show('west', false)">Unhide</button>
+		</p>
+
+		<p>To use the animation, just include the <b><a href="lib/js/jquery.layout.slideOffscreen-1.1.js">jquery.layout.slideOffscreen-1.1.js</a></b> 
+			(<a href="lib/js/jquery.layout.slideOffscreen.min-1.1.js">minified</a>) file and 
+			specify "slideOffscreen" as the fxName for any panes you want to use it for.</p>
+		<p>If you enable the "useOffscreenClose" pane-option, then initHidden and initClosed also use the offscreen technique.</p>
+
+		<pre style="font-size: 1.2em;">
+$("body").layout({
+    west__fxName:  slideOffscreen  // for 'closing'
+,   west__useOffscreenClose:  true // for 'hiding'
+});
+</pre>
+
+		<p style="display: none;">This page also utilized the <b><a href="http://playground.benbarnett.net/jquery-animate-enhanced/">jquery.animate-enhanced.js plug-in</a></b> to smooth animations.
+			However this sometimes leaves artifacts and can interfers with object masking.</p>
+	</div>
+
+	<iframe class="ui-layout-center" width="100%" height="100%" frameborder="0" scrolling="auto"
+	src="../demos.html"></iframe>
+
+	<div class="ui-layout-south">
+		<div class="padding-wrapper">
+			<iframe class="youtube-player" width="425" height="349" frameborder="0" 
+			src="http://www.youtube.com/embed/JW5meKfy3fY?rel=0" allowfullscreen></iframe>
+		</div>
+		
+	</div>
+
+	<div class="ui-layout-west">
+		<h2>Header</h2>
+		<div class="ui-layout-content">
+			<object width="425" height="349">
+				<param name="movie" value="http://www.youtube.com/v/JW5meKfy3fY?version=3&amp;hl=en_US&amp;rel=0" /></param>
+				<param name="allowFullScreen" value="true" /></param><param name="allowscriptaccess" value="always" /></param>
+				<embed src="http://www.youtube.com/v/JW5meKfy3fY?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="425" height="349" allowscriptaccess="always" allowfullscreen="true"></embed>
+			</object>
+		</div>
+	</div>
+
+	<div class="ui-layout-east">
+		<script type="text/javascript">
+			AC_FL_RunContent( 'codebase','http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0','width','300','height','300','id','globe','align','middle','src','/lib/obj/globe','quality','high','bgcolor','#ffffff','name','globe','allowscriptaccess','sameDomain','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','/lib/obj/globe' );
+		</script>
+		<noscript>
+			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
+				codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
+				width="300" height="300" id="globe" align="middle">
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="movie" value="/lib/obj/globe.swf" />
+				<param name="quality" value="high" />
+				<param name="bgcolor" value="#ffffff" />
+				<embed src="lib/obj/globe.swf" quality="high" bgcolor="#ffffff" width="300" height="300" name="globe" align="middle" allowscriptaccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			</object>
+		</noscript>
+	</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/slideOffscreenClose.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:41 GMT -->
+</html>

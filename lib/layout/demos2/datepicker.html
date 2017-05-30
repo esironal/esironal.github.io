@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/datepicker.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:03 GMT -->
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+	<title>Datepicker Demo</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/themes/base/jquery.ui.core.css" />
+	<link type="text/css" rel="stylesheet" href="lib/css/themes/base/jquery.ui.datepicker.css" />
+	<link type="text/css" rel="stylesheet" href="lib/css/themes/base/jquery.ui.theme.css" />
+
+	<style type="text/css">
+	body {
+		font-family:	Arial, Helvetica, sans-serif;
+		font-size:		11pt;
+	}
+	p {
+		margin:			1em 0;
+	}
+	.header {
+		background:		#EEE;
+		border-bottom:	1px solid #BBB;
+		font-size:		1.2em;
+		text-align:		center;
+		padding:		5px 0;
+	}
+
+	/* Layout */
+	.ui-layout-pane {
+		background:		#F6F6F6;
+		padding:		15px;
+		overflow:		auto;
+	}
+	.ui-layout-pane-north ,
+	.ui-layout-pane-south {
+		padding:		10px 15px;
+		text-align:		center;
+	}
+	.ui-layout-pane-west ,
+	.ui-layout-pane-center {
+		padding:		0;
+		overflow:		hidden;
+		}
+		.ui-layout-content {
+			padding:		15px;
+			overflow:		auto;
+			position:		relative; /* REQUIRED to contain the Datepicker Header */
+		}
+	.ui-layout-resizer	{ background: #BBB; opacity: 1; filter: alpha(opacity=100); } /* override UI theme */
+	.ui-layout-toggler	{ background: #777; opacity: 1; filter: alpha(opacity=100); } /* override UI theme */
+	.ui-layout-resizer-dragging ,
+	.ui-layout-resizer:hover							{ background: #89A; }
+	.ui-layout-resizer:hover .ui-layout-toggler			{ background: #BCD; }
+	.ui-layout-resizer:hover .ui-layout-toggler:hover	{ background: #FC0; }
+	.ui-layout-resizer-dragging-limit					{ background: #C66; }
+
+	/* the 'fix' for the datepicker - override default: zIndex = 1 */
+	.ui-datepicker { z-index: 3 !important; }
+
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+
+	<script type="text/javascript">
+
+	function showBug () {
+		myLayout.close( "west" );
+		setTimeout( "myLayout.open('west')", 1000 );
+		return false;
+	};
+
+	var myLayout;
+
+	$(document).ready( function() {
+
+		// create the OUTER LAYOUT
+		myLayout = $("body").layout({
+			// test fix for opacity-animations
+			west__fxName:			"drop"
+		,	west__fxSettings_open:	{ duration: 1500 } // slow so can see aliased text
+		,	west__size:				365
+		,	west__minSize:			50
+		,	east__initClosed:		true
+		,	resizerDragOpacity:		.60
+		});
+
+		$("#datepicker_input").datepicker(/*{ container: '.ui-layout-center .ui-layout-content' }*/);
+		$("#datepicker_div").datepicker();
+		$("#datepicker_west").datepicker();
+
+	});
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-center">
+
+	<div class="header">Date Pickers</div>
+
+	<div class="ui-layout-content">
+		<p>Date: <input id="datepicker_input" type="text" style="vertical-align: middle;" /></p>
+		<p></p>
+		<p style="margin-bottom: 5px;">Select a date...</p>
+		<div id="datepicker_div"></div>
+
+		<p>This page uses the latest versions of jQuery and jQuery UI</p>
+		<p><a href="../demos-2.html"><b>Go to the Demos page</b></a></p>
+
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	</div>
+
+</div>
+
+<div class="ui-layout-west">
+	<div class="header">Opacity-Fix</div>
+	<div class="ui-layout-content">
+		<div id="datepicker_west"></div>
+		<p><b><a href="#" onclick="return showBug()">Click here to show the opacity bug in IE</a></b></p>
+		<p>Note how this text <i>and</i> the calendar snap into focus after opening completes.</p>
+		<p style="text-align: center;">
+			<button onclick="myLayout.options.west.fxOpacityFix=false; showBug();">Disable Fix</button> &nbsp;
+			<button onclick="myLayout.options.west.fxOpacityFix=true; myLayout.panes.west[0].style.removeAttribute('filter')">Enable Fix</button>
+		</p>
+		<p>To fix the bug, Layout removes the CSS 'filter' rule after the animation completes.
+			This restores text anti-aliasing in Internet Explorer when panes reopen.</p>
+	</div>
+</div>
+
+<div class="ui-layout-east">East</div>
+
+<div class="ui-layout-north">North</div>
+
+<div class="ui-layout-south">South</div>
+
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/datepicker.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:04 GMT -->
+</html>

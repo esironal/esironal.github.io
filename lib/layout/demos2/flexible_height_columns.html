@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/flexible_height_columns.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:11 GMT -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Layout Test-page</title>
+
+	<link rel="stylesheet" type="text/css" href="lib/css/layout-default.css" />
+	<style type="text/css">
+	.hidden { display: none; }
+	#content { position: relative; overflow: hidden; }
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript">
+
+	var myLayout;
+
+	function sizeCenterPane () {
+		var $Container	= $('#container')
+		,	$Pane		= $('.ui-layout-center')
+		,	$Content	= $('#content')
+		,	outerHeight = $Pane.outerHeight()
+			// use a Layout utility to calc total height of padding+borders (also handles IE6)
+		,	panePadding	= outerHeight - $.layout.cssHeight($Pane, outerHeight)
+		;
+		// update the container height - *just* tall enough to accommodate #Content without scrolling
+		$Container.height( $Pane.position().top + $Content.outerHeight() + panePadding );
+		// now resize panes to fit new container size
+		myLayout.resizeAll();
+	}
+
+	$(document).ready(function(){
+
+		// first set a 'fixed height' on the container so it does not collapse...
+		var $Container = $('#container')
+		$Container.height( $(window).height() - $Container.offset().top );
+
+		// NOW create the layout
+		myLayout = $('#container').layout({
+			north__spacing_open: 0
+		});
+		
+		// now RESIZE the container to be a perfect fit
+		sizeCenterPane();
+	});
+	
+	</script>
+
+</head>
+<body>
+
+<p>
+	<button onclick="$('#content').append('<p>Some more text...</p>'); sizeCenterPane();">Add Text</button>
+	<button onclick="$('#content > p:last').remove(); sizeCenterPane();">Remove Text</button>
+</p>
+
+<div id="container">
+
+    <div class="ui-layout-north hidden"> header </div> 
+
+    <div class="ui-layout-center hidden">
+		<div id="content">
+			center
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+			<p>Some text...</p>
+		</div>
+	</div>
+
+    <div class="ui-layout-west hidden">
+		west
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+	</div>
+
+    <div class="ui-layout-east hidden">
+		east
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+		<p>Some text...</p>
+	</div>
+
+</div> 
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/flexible_height_columns.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:11 GMT -->
+</html>

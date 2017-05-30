@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/custom_scrollbars.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:08 GMT -->
+<head>
+
+	<title>Custom Scrollbars Demo</title>
+
+	<link rel="stylesheet" type="text/css" href="lib/css/layout-default-latest.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.scrollpane.css" />
+
+	<style type="text/css">
+
+		.ui-layout-west ,
+		.ui-layout-east ,
+		.ui-layout-center {
+			padding:		0;
+			}
+			h3 ,
+			p.footer {
+				font-size:		1.2em;
+				background:		#F6F6F6;
+				border-bottom:	1px solid #BBB;
+				padding:		5px 15px;
+				margin:			0;
+			}
+			p.footer {
+				font-size:		1em;
+				border-top:		1px solid #BBB;
+				border-bottom:	0;
+			}
+			.ui-layout-east ,
+			.ui-layout-content {
+				padding:		0;
+				overflow:		hidden !important; /* prevent scrollbars auto-added by Layout */
+				}
+				.scrolling-content {
+					height:			100%;
+					padding:		0 15px 10px; /* extra paddingTop being added by scrollpane? */
+					padding-right:	0; /* for pseudo-scrollbar on right */
+				}
+
+
+		.jScrollPaneTrack {
+			background: url(css/scrollpane/osx_track.gif) repeat-y;
+		}
+		.jScrollPaneDrag {
+			background: url(css/scrollpane/osx_drag_middle.gif) repeat-y;
+		}
+		.jScrollPaneDragTop {
+			background: url(css/scrollpane/osx_drag_top.gif) no-repeat;
+			height: 6px;
+		}
+		.jScrollPaneDragBottom {
+			background: url(css/scrollpane/osx_drag_bottom.gif) no-repeat;
+			height: 7px;
+		}
+		a.jScrollArrowUp {
+			height: 24px;
+			background: url(css/scrollpane/osx_arrow_up.png) no-repeat 0 -30px;
+		}
+		a.jScrollArrowUp:hover {
+			background-position: 0 0;
+		}
+		a.jScrollArrowDown {
+			height: 24px;
+			background: url(css/scrollpane/osx_arrow_down.png) no-repeat 0 -30px;
+		}
+		a.jScrollArrowDown:hover {
+			background-position: 0 0;
+		}
+
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.scrollpane.js"></script>
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+
+	<script type="text/javascript">
+
+	function initPaneScrollbar ( pane, $Pane ) {
+		$Pane.find("div.scrolling-content:first")
+			// re/init the pseudo-scrollbar
+			.jScrollPane({
+				scrollbarMargin:	15	// spacing between text and scrollbar
+			,	scrollbarWidth:		15
+			,	arrowSize:			16
+			,	showArrows:			true
+			})
+			// REMOVE the *fixed width & height* just set on jScrollPaneContainer
+			.parent(".jScrollPaneContainer").css({
+				width:	'100%'
+			,	height:	'100%'
+			})
+		;
+	};
+
+	var myLayout	;
+
+	$(document).ready(function () {
+
+		myLayout = $('body').layout({
+		//	need to re-init the scrollbar whenever the pane resizes
+			center__onresize:			initPaneScrollbar
+		,	west__onresize:				initPaneScrollbar
+		,	east__onresize:				initPaneScrollbar
+		//	timing issue, so init scrolling AFTER init done (below)
+		,	triggerEventsOnLoad:		false
+		//	live-resizing on all panes - not required
+		,	resizeWhileDragging:		true
+		//	avoid re-initing scrollbars repeatedly while: resizeWhileDragging
+		//	sizing is much smoother, but scrollbar.height and text-width don't update until 'done'
+		,	triggerEventsWhileDragging:	false
+		// enable state-managment for pane-size
+		,	useStateCookie:				true
+		});
+
+		// NOW init all scrollbars
+		initPaneScrollbar( 'west', myLayout.panes.west );
+		initPaneScrollbar( 'east', myLayout.panes.east );
+		initPaneScrollbar( 'center', myLayout.panes.center );
+
+ 	});
+
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-center">
+	<h3>Center Header</h3>
+
+	<div class="ui-layout-content">
+		<div class="scrolling-content">
+			<p>Center</p>
+			<p>
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+			</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+			</p>
+		</div>
+	</div>
+
+	<p class="footer">Center Footer</p>
+</div>
+
+<div class="ui-layout-west">
+	<h3>West</h3>
+
+	<div class="ui-layout-content">
+		<div class="scrolling-content">
+			<p>West</p>
+			<p>
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+				Now is the time for all good men to come to the aid of their country.
+			</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+			<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		</div>
+	</div>
+</div>
+
+<div class="ui-layout-east">
+	<div class="scrolling-content">
+		<p>East</p>
+		<p>
+			Now is the time for all good men to come to the aid of their country.
+			Now is the time for all good men to come to the aid of their country.
+			Now is the time for all good men to come to the aid of their country.
+			Now is the time for all good men to come to the aid of their country.
+		</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	</div>
+</div>
+
+<div class="ui-layout-north"> North </div>
+<div class="ui-layout-south"> South </div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/custom_scrollbars.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:10 GMT -->
+</html>

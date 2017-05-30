@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/callback_pseudoClose.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:39 GMT -->
+<head>
+	<title>Pseudo-Close - Prevent Iframe Reloading</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+
+	<style type="text/css">
+	.ui-layout-north,
+	.ui-layout-south,
+	.ui-layout-west,
+	.ui-layout-east { padding: 0; overflow: hidden; }
+	/* padding on inner-wrapper instead of on pane-element allows pane (0-padding) to be sized smaller */
+	.padding-wrapper { padding: 10px; overflow: auto; text-align: center; }
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout.pseudoClose.min-1.1.js"></script>
+	<script type="text/javascript" src="lib/js/AC_RunActiveContent.js"></script>
+
+	<script type="text/javascript">
+	/* REFERENCE - pseudoClose default options
+	$.layout.defaults[ pane ].pseudoClose = {
+		hideObject:	"iframe" // find and hide this when 'closed' - usually: "", "pane", "iframe" or "object"
+	,	skipIE:		false	// can skip IE for iframes that do not contain media objects
+	}
+	*/
+
+	$(document).ready(function () {
+		$("body").layout({
+			minSize:				50
+		,	north__size:			'25%'
+		,	south__size:			411
+		,	west__size:				425
+		,	east__size:				300
+
+		//	mask the iframes and objects
+		,	north__maskContents:	true
+		,	west__maskObjects:		true
+		,	east__maskObjects:		true
+		,	south__maskObjects:		true
+
+		//	override pseudoClose.defaults with custom settings
+		,	north__pseudoClose:		{ skipIE: true } // simple iframe - OK in IE
+		,	west__pseudoClose:		{ hideObject: "object" }
+		//,	west__initClosed:		true
+
+		//	set callback on any pane(s) where you want to prevent the pane 'closing'
+		,	west__onclose_start:	$.layout.callbacks.pseudoClose
+		,	north__onclose_start:	$.layout.callbacks.pseudoClose
+		,	south__onclose_start:	$.layout.callbacks.pseudoClose
+		,	east__onclose_start:	$.layout.callbacks.pseudoClose
+		});
+	});
+	</script>
+
+</head>
+<body>
+
+	<div class="ui-layout-center">
+		<h3 style="margin: 0">Pseudo-Close Callback for UI Layout</h3>
+		<p>This demo has a number of objects (iframe, flash, embedded video, and iframe containing embedded video)
+			that would 'reload' if they were hidden and re-shown &ndash; like when a layout-pane closes and opens.</p>
+		<p>To prevent that, the pseudoClose() callback does <i>not</i> hide the panes; instead just resizing them as small as possible.</p>
+		<p>So if you start a video playing and then 'close' the pane, it will continue to play.</p>
+		<p>Options allow contents to be hidden to prevent a strip of color showing in the space that does not close.
+			(avoid padding on panes that pseudo-close because that will cause a larger space)</p>
+		<p>Pseudo-close will temporarily override the minSize set for the pane.
+			Pane-resizing is also temporarily disabled when the pane is pseudo-closed.</p>
+		<p>See the source-code of this page for a link to the pseudoClose addon, and for sample options.</p>
+
+		<p>pseudoClose 1.1 does NOT interfere with Layout's hide() functionality.
+			So you can still hide() &amp; show() panes that have pseudoClose assigned.
+			Note that 'hiding' the pane will cause the object or iframe to 'reload'.</p>
+		<p>	<button onclick="$('body').layout().hide('west')">Hide West</button>
+			<button onclick="$('body').layout().show('west', false)">Unhide West</button>
+			<button onclick="$('body').layout().show('west', true)">Unhide &amp; Open West (restore last size)</button>
+		</p>
+	</div>
+
+	<iframe class="ui-layout-north" width="100%" height="100%" frameborder="0" scrolling="auto"
+	src="../demos.html"></iframe>
+
+	<div class="ui-layout-south">
+		<div class="padding-wrapper">
+			<iframe class="youtube-player" width="425" height="349" frameborder="0" 
+			src="http://www.youtube.com/embed/JW5meKfy3fY?rel=0" allowfullscreen></iframe>
+		</div>
+		
+	</div>
+
+	<div class="ui-layout-west">
+		<object width="425" height="349">
+			<param name="movie" value="http://www.youtube.com/v/JW5meKfy3fY?version=3&amp;hl=en_US&amp;rel=0" /></param>
+			<param name="allowFullScreen" value="true" /></param><param name="allowscriptaccess" value="always" /></param>
+			<EMBED src="http://www.youtube.com/v/JW5meKfy3fY?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="425" height="349" allowscriptaccess="always" allowfullscreen="true"></EMBED>
+		</object>
+	</div>
+
+	<div class="ui-layout-east">
+		<script type="text/javascript">
+			AC_FL_RunContent( 'codebase','http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0','width','300','height','300','id','globe','align','middle','src','/lib/obj/globe','quality','high','bgcolor','#ffffff','name','globe','allowscriptaccess','sameDomain','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','/lib/obj/globe' );
+		</script>
+		<noscript>
+			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
+				codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
+				width="300" height="300" id="globe" align="middle">
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="movie" value="/lib/obj/globe.swf" />
+				<param name="quality" value="high" />
+				<param name="bgcolor" value="#ffffff" />
+				<EMBED src="lib/obj/globe.swf" quality="high" bgcolor="#ffffff" width="300" height="300" name="globe" align="middle" allowscriptaccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			</object>
+		</noscript>
+	</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/callback_pseudoClose.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:40 GMT -->
+</html>

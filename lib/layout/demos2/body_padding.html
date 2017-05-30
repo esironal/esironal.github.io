@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/body_padding.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:53 GMT -->
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+	<title>Layout Body with Padding</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+	<style type="text/css">
+	html {
+		background:	#99C;
+		padding:	0px; /* will add spacing from viewport around BODY */
+		display:	block !important;
+	}
+	body {
+		background:	#CC9;
+		padding:	10px; /* the 'inset' of the body-layout, UNLESS an inset option overrides it */
+		min-height:	300px;
+		min-width:	600px;
+		/* border causes a positioning error in UI Draggable
+		border:		10px solid red;
+		*/
+		/* margin causes a positioning error in UI Draggable
+		/* override layout style to 'center' the body * /
+		margin:		0 auto !important; /* does not center in IE8 or less * /
+		max-width:	1100px;
+		width:		1100px;
+		*/
+	}
+	body > .ui-layout-center {
+		background:	#9B9;
+		padding:	0; /* center-container inset will be created by an inset option */
+	}
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+	<script type="text/javascript">
+
+	var inset50 = {
+		top:	50
+	,	bottom:	50
+	,	left:	50
+	,	right:	50
+	};
+
+	var layoutOptions = {
+		center__childOptions: {
+			inset: {
+				top:	20
+			,	bottom:	20
+			,	left:	20
+			,	right:	20
+			}
+		}
+	};
+
+	$(document).ready(function(){
+		$('body').layout( layoutOptions );
+	});
+
+	</script>
+
+</head>
+<body>
+<div class="ui-layout-center">
+	<div class="ui-layout-center">
+		Inner Center
+		<p><a href="../demos-2.html"><b>Go to the Demos page</b></a></p>
+		<p style="line-height: 2em;">
+			<button onclick="$('body').layout( layoutOptions )"
+			>Create Layouts</button>&nbsp;<br />
+
+			<button onclick="var inst = $('body').data('layout'); if (inst) inst.destroy();"
+			>Destroy Layouts</button>&nbsp;<br />
+
+			<button onclick="var inst = $('body').layout( layoutOptions ).center.children.layout1; inst.options.inset = inset50; inst.resizeAll(true);"
+			>inner - insets = 50</button>&nbsp;<br />
+
+			<button onclick="var inst = $('body').layout( layoutOptions ); inst.options.inset = inset50; inst.resizeAll(true);"
+			>outer - insets = 50</button>&nbsp;<br />
+
+			<!-- requires Layout RC30.72 -->
+			<button onclick="var inst = $('body').layout( layoutOptions ); inst.options.outset = inset50; inst.resizeAll(true);"
+			>outer - outsets = 50</button>&nbsp;
+			
+
+		</p>
+	</div>
+	<div class="ui-layout-north">Inner North</div>
+	<div class="ui-layout-south">Inner South</div>
+	<div class="ui-layout-east"	>Inner East</div>
+	<div class="ui-layout-west"	>Inner West</div>
+</div>
+<div class="ui-layout-north">Outer North</div>
+<div class="ui-layout-south">Outer South</div>
+<div class="ui-layout-east"	>Outer East</div>
+<div class="ui-layout-west"	>Outer West</div>
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/body_padding.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:53 GMT -->
+</html>

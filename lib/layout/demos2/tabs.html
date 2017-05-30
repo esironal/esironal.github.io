@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/tabs.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:02 GMT -->
+<HEAD>
+	<META http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+
+	<LINK rel="stylesheet" type="text/css" href="lib/css/themes/base/jquery.ui.all.css">
+	<LINK rel="stylesheet" type="text/css" href="lib/css/layout-default.css">
+
+	<STYLE type="text/css">
+
+		/*
+		 *	GLOBAL LAYOUT STYLES
+		 */
+		.ui-layout-content {
+			overflow:		auto; /* add scrolling to content-divs (panel-wrappers) */
+			border-top:		0 !important; /* tab-buttons above this DIV already has a border-bottom */
+		}
+
+		/*
+		 *	TAB-THEME ADJUSTMENTS
+		 */
+		.ui-tabs-nav li {
+			white-space:	nowrap;
+		}
+		.ui-tabs-nav li a {
+			font-size:		1em !important;
+			padding:		4px 1.5ex 3px !important;
+		}
+		.ui-tabs-panel {
+			font-size:		1em !important;
+			padding:		0 1em !important;
+		}
+
+		/*
+		 *	WEST-PANE TABS
+		 *
+		 *	These tabs 'fill' the pane,
+		 *	so the pane-border acts as the tab-border
+		 */
+		.ui-layout-pane-west {
+			padding:	0;
+			overflow:	hidden;
+			}
+			.ui-layout-pane-west .ui-tabs-nav {
+				/* don't need border or rounded corners - tabs 'fill' the pane */
+				border-top:		0;
+				border-left:	0;
+				border-right:	0;
+				padding-bottom:	0 !important;
+				-moz-border-radius:		0;
+				-webkit-border-radius:	0;
+			}
+
+		/*
+		 *	CENTER-PANE TABS
+		 *
+		 *	These tabs have white-space around them,
+		 *	so the content-div provides the border for the tabs
+		 */
+		.ui-layout-pane-center {
+			background:	#FFD; /* to make pane background stand-out */
+			padding:	10px;
+			overflow:	hidden;
+			}
+			.ui-layout-pane-center .ui-tabs-nav {
+				/* remove rounded corners from bottom of 'tabs'*/
+				-moz-border-radius-bottomleft:		0;
+				-moz-border-radius-bottomright:		0;
+				-webkit-border-bottom-left-radius:	0;
+				-webkit-border-bottom-right-radius:	0;
+			}
+
+		/*
+		 *	EAST-PANE TABS
+		 *
+		 *	These are ordinary tabs - entire pane scrolls
+		 */
+		.ui-layout-pane-east {
+			background:	#EFE; /* to make pane background stand-out */
+			padding:	10px;
+			overflow:	auto; /* scroll - tab-panels taller than pane - without content-div */
+			}
+			.ui-layout-pane-east .ui-tabs-nav {
+				/* remove rounded corners from bottom of 'tabs'*/
+				-moz-border-radius-bottomleft:		0;
+				-moz-border-radius-bottomright:		0;
+				-webkit-border-bottom-left-radius:	0;
+				-webkit-border-bottom-right-radius:	0;
+			}
+			.ui-layout-pane-east .ui-tabs-panel {
+				background:	#FFF;			/* ui-tab-panel class removes ui-widget-content background - restore it */
+				border:		1px solid #AAA;	/* ditto for the ui-widget-content border */
+				border-top-color:	#FFF;
+			}
+
+		div.buttons {
+			float:			right;
+			margin-right:	200px;
+			margin-top:		0;
+		}
+
+	</STYLE>
+
+	<SCRIPT type="text/javascript" src="lib/js/jquery-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery-ui-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery.layout-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/debug.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="lib/js/themeswitchertool.js"></SCRIPT> 
+
+	<SCRIPT type="text/javascript">
+
+		$(document).ready( function() {
+
+			// TABS-WEST - sortable
+			$(".ui-layout-west")
+				.tabs()
+				.find(".ui-tabs-nav")
+					.sortable({ axis: 'x', zIndex: 2 })
+			;
+
+			// TABS-EAST - sortable
+			$(".ui-layout-east")
+				.tabs()
+				.find(".ui-tabs-nav")
+					.sortable({ axis: 'x', zIndex: 2 })
+			;
+
+			// TABS-CENTER - sortable
+			$(".ui-layout-center")
+				.tabs({
+					change: function () {  }
+				})
+				.find(".ui-tabs-nav")
+					.sortable({ axis: 'x', zIndex: 2 })
+			;
+
+			// PAGE LAYOUT
+			myLayout = $('body').layout({
+				west__size:			.33
+			,	east__size:			.33
+			,	south__initClosed:	true
+			});
+
+
+			addThemeSwitcher( 'body > .ui-layout-north', { top: '13px', right: '20px' });
+			// if a theme is applied by ThemeSwitch *onLoad*, it may change the height of some content,
+			// so we need to call resizeLayout to 'correct' any header/footer heights affected
+			// call multiple times so fast browsers update quickly, and slower ones eventually!
+			// NOTE: this is only necessary because we are changing CSS *AFTER LOADING* (eg: themeSwitcher)
+			//setTimeout( resizeOuterLayout, 1000 ); /* allow time for browser to re-render for theme */
+			//setTimeout( resizeOuterLayout, 5000 ); /* for really slow browsers */
+		});
+
+	</SCRIPT>
+
+</HEAD>
+<BODY>
+
+<DIV class="ui-layout-north">
+	<DIV class="buttons">
+		<BUTTON onClick="removeUITheme(); myLayout.resizeAll();">Remove UI Theme</BUTTON>
+		<BUTTON onClick="myLayout.resizeAll()">Resize Layout</BUTTON>
+	</DIV>
+
+	<B>Three sets of 'sortable tabs' are shown on this page...</B>
+	<P>
+		The tabs in the west and center panes both use Layout's 'pane header/footer' capabilities so only the 'tab-content' scrolls.
+		This is done by putting a wrapper-div around the pane-divs, with the "ui-layout-content" class.
+	</P>
+	<P><B>West-pane tabs</B> 'fill the pane', so most 'tab borders' are removed because the pane already has borders</P>
+	<P><B>Center-pane tabs</B> 'float' inside the pane's padding, so the tabs have their own border</P>
+	<P>
+		<B>East-pane tabs</B> <u>do not</u> utilize Layout's auto-sizing,
+		so the tabs do not stay in place when the pane scrolls.
+	</P>
+</DIV>
+
+
+<DIV class="ui-layout-center">
+	<UL>
+		<LI><A href="#tabs-center-1">Nunc tincidunt</A></LI>
+		<LI><A href="#tabs-center-2">Proin dolor</A></LI>
+	</UL>
+	<!-- add wrapper that Layout will auto-size to 'fill space' -->
+	<DIV class="ui-layout-content ui-widget-content ui-corner-bottom">
+		<DIV id="tabs-center-1">
+			<P>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</P>
+			<P>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</P>
+		</DIV>
+		<DIV id="tabs-center-2">
+			<P>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</P>
+		</DIV>
+	</DIV><!--- END content-body --->
+	<DIV class="ui-state-default" style="padding: 3px 5px 5px; text-align: center; margin-top: 1ex;"
+	onMouseOver="$(this).addClass('ui-state-hover')" onMouseOut="$(this).removeClass('ui-state-hover')">
+		Footer for the Center-pane
+	</DIV>
+</DIV><!--- END ui-layout-center --->
+
+
+<DIV class="ui-layout-west">
+	<UL>
+		<LI><A href="#tabs-west-1">Nunc tincidunt</A></LI>
+		<LI><A href="#tabs-west-2">Proin dolor</A></LI>
+	</UL>
+	<!-- add wrapper that Layout will auto-size to 'fill space' -->
+	<DIV class="ui-layout-content ui-widget-content">
+		<DIV id="tabs-west-1">
+			<P>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</P>
+			<P>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</P>
+		</DIV>
+		<DIV id="tabs-west-2">
+			<P>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</P>
+		</DIV>
+	</DIV><!--- END content-body --->
+	<DIV class="ui-state-default" style="padding: 3px 5px 5px; text-align: center;"
+	onMouseOver="$(this).addClass('ui-state-hover')" onMouseOut="$(this).removeClass('ui-state-hover')">
+		Footer for the West-pane
+	</DIV>
+</DIV>
+
+
+<DIV class="ui-layout-east">
+	<UL>
+		<LI><A href="#tabs-east-1">Nunc tincidunt</A></LI>
+		<LI><A href="#tabs-east-2">Proin dolor</A></LI>
+	</UL>
+	<DIV id="tabs-east-1" class="ui-widget-content">
+		<P>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</P>
+		<P>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</P>
+	</DIV>
+	<DIV id="tabs-east-2" class="ui-widget-content">
+		<P>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</P>
+	</DIV>
+</DIV>
+
+
+<DIV class="ui-layout-south">
+	South Pane
+</DIV>
+
+
+</BODY>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/tabs.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:02 GMT -->
+</HTML>

@@ -1,0 +1,266 @@
+/* Global Styles */
+
+BODY {
+	font-family: Lucida Grande, Lucida Sans, Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	color: #000;
+	background-color: #677;
+	margin: 0;
+	padding: 0;
+}
+
+A {
+	color: #00D;
+	text-decoration: none;
+	}
+	A:visited {
+		color: #60C;
+	}
+	A:hover {
+		color: #00F;
+		text-decoration: underline;
+	}
+	A:visited:hover {
+		color: #80E;
+	}
+
+/* bookmarks - depricated? */
+A.bm ,
+A.bm:visited
+A.bm:hover {
+	color: #000;
+	text-decoration: none;
+	font-size: inherit;
+}
+
+TD {
+	vertical-align: top;
+}
+
+P {
+	line-height: 1.5em;
+	margin: 0.75em 0 0.5em;
+}
+
+H1 {
+	color: #C30;
+	font: 1.65em Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	letter-spacing: 0.1em;
+	margin: 0 0 0.75em;
+	}
+	H1 A , /* bookmarks - depricated? */
+	H1 A:visited ,
+	H1 A:hover {
+		color: #C30 !important;
+	}
+
+H2 {
+	font: 1.3em Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #566F6F;
+	border-bottom:  1px dotted #566F6F;
+	padding: 1em 0 3px;
+	margin: 0.5em 0 0.75em;
+	}
+	H2 A , /* bookmarks - depricated? */
+	H2 A:visited ,
+	H2 A:hover {
+		color: #566F6F !important;
+	}
+
+H3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	font-style: italic;
+	padding-top: 1em;
+	margin: 0.5em 0 0.75em;
+}
+
+H4 {
+	font-size: 1.1em;
+	font-weight: bold;
+	padding-top: 0.5em;
+	margin: 0.5em 0 1em;
+}
+
+BLOCKQUOTE {
+	margin: 1em 0 1em 3em;
+}
+TT { /* used for inline code references */
+	font-size: 1.1em;
+	font-weight: bold;
+}
+PRE { /* used for code blocks */
+	font-size: 1.1em;
+	font-weight: normal;
+	margin: 1em 0;
+	padding: 5px 7px 7px;
+	border: 1px solid #CCC;
+	background-color: #F6F6F6;
+}
+PRE I { /* code comment */
+	color: #666;
+	font-style: italic;
+}
+
+STRONG {
+	font-weight: bold;
+	color: #B30;
+}
+
+UL, OL {
+	margin-top: 0.5ex;
+	margin-bottom: 1ex;
+	margin-left: 2em;
+	padding: 0;
+	}
+	LI {
+		line-height: 1.35em;
+		padding: 0.75ex 0;
+		margin: 0;
+	}
+
+/* ID Styles */
+
+#logo {
+	font: 2em Georgia, "Times New Roman", Times, serif;
+	color: #FFF;
+	letter-spacing: 1px;
+	font-weight: bold;
+	padding: 0.5em 15px 2px;
+}
+
+#navigation {
+	padding: 5px 5px 7px 3em;
+	background-color: #A4C2C2;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	}
+	#navigation A {
+		color: #255;
+		font-size: 0.85em;
+		font-weight: bold;
+		text-decoration: none;
+		letter-spacing: 1px;
+		margin-right: 1em;
+		}
+		#navigation A:hover {
+			color: #033;
+			text-decoration: none;
+		}
+		#navigation A.current ,
+		#navigation A.current:hover {
+			color: #C30;
+		}
+
+#nav2 {
+	padding: 5px 5px 7px 3em;
+	background-color: #a4c2c2;
+	border-bottom: 1px solid #fff;
+	}
+	#nav2 A {
+		color: #04E;
+		font-size: 0.85em;
+		font-weight: bold;
+		text-decoration: none;
+		letter-spacing: 1px;
+		margin-right: 1em;
+		}
+		#nav2 A:hover {
+			color: #00E;
+			text-decoration: none;
+		}
+		#nav2 A.current ,
+		#nav2 A.current:hover {
+			color: #C30;
+		}
+
+#iframeInstructions {
+	font-size: 1.1em;
+	background: #eee url(../img/eeeeee_40x100_textures_02_glass_90.png) 0 50% repeat-x;
+	padding: 4px 2em 6px;
+}
+IFRAME {
+	border-top: 1px solid #777;
+	background-color: #FFF;
+}
+
+TR.main {
+	background-color: #fff;
+	}
+
+	TD.content {
+		padding: 1em 2em 3em;
+	}
+
+	TD.sidebarLeft {
+		background-color: #a4c2c2;
+		}
+		TD.sidebarLeft P {
+			font: 1em Georgia, "Times New Roman", Times, serif;
+			color: #366;
+			line-height: 1.5em;
+			padding: 20px;
+			margin: 0;
+		}
+		.google-logo,
+		.google-logo-small {
+			background:	url(../img/google-logo-sprite.png) no-repeat -45px 0;
+			border:		0;
+			height:		45px;
+			width:		116px;
+			display:	inline-block;
+		}
+		.google-logo-small {
+			background-position: -242px 0;
+			height:		37px;
+			width:		95px;
+		}
+
+	TD.sidebarRight {
+		padding: 1em;
+		padding-left: 0;
+		}
+		DIV.bookmarks {
+			background-color: #a4c2c2;
+			padding: 0.5em;
+			}
+			.bookmarks UL {
+				margin-top: 0;
+				margin-bottom: 0.5em;
+				margin-left: 2em;
+				list-style-type: square;
+				/*
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				*/
+				}
+				.bookmarks LI {
+					font-size: 0.9em;
+					text-transform: uppercase;
+					padding-top: 0.25em;
+					padding-bottom: 0.25em;
+					}
+
+/* Generic Classes */
+
+.bold		{ font-weight: bold; }
+.notBold	{ font-weight: normal; }
+.italic		{ font-style: italic; }
+.notItalic	{ font-style: normal; }
+
+.noMargin		{ margin: 0; }
+.noTopMargin	{ margin-top: 0; }
+.noBottomMargin	{ margin-bottom: 0; }
+
+.noPadding	{ padding: 0; }
+
+.white		{ color: #FFF; }
+.grey		{ color: #777; }
+.red		{ color: #F00; }
+
+

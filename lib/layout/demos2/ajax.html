@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/ajax.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:07 GMT -->
+<head>
+
+	<title>Ajax Injection Demo</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest-2.css" />
+
+	<style type="text/css">
+	/*
+	 *	Cosmetic Styles
+	 */
+	body {
+		font-family:	Arial, sans-serif;
+		font-size:		100%;
+		*font-size:		0.8em; /* IE 6/7 only */
+	}
+	p {
+		font-size:		1em;
+		margin:			1em 0;
+	}
+	button {
+		line-height:	normal;
+	}
+
+	/*
+	 *	CUSTOMIZE LAYOUT SETTINGS
+	 */
+	.ui-layout-north {
+		background:		#EEE;
+		border-bottom:	0;
+		padding:		10px 20px;
+	}
+	.ui-layout-center {
+		background:		#EEE;
+		border-top:		0;
+		padding:		0 20px 20px;
+		overflow-x:		hidden;
+	}
+	.ui-layout-resizer-east {
+		border-top:		1px solid #BBB;
+	}
+	.ui-layout-east {
+		padding:		0;
+		}
+		.ui-layout-east div {
+			padding:		4px 15px;
+			background:		#FEE;
+			border:			1px solid #C00;
+		}
+		.ui-layout-east div.ui-layout-content {
+			background:		#FFF;
+		}
+
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript">
+
+	var myLayout;
+
+	$(document).ready(function () {
+
+		myLayout = $('body').layout({
+			east__size:				Math.floor(screen.availWidth * .50) // 50% screen width
+		,	north__spacing_open:	0
+		});
+
+ 	});
+
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-north">
+	<button onclick="$('#output').val( $.trim( $('div.ui-layout-east').html() ) )">
+		Read HTML</button> &nbsp;
+	<button onclick="$('div.ui-layout-east').html(''); myLayout.initContent('east');">
+		Clear HTML</button> &nbsp;
+	<button onclick="$('div.ui-layout-east').html( $('#output').val() ); myLayout.initContent('east');">
+		Write HTML &amp; initContent('east')</button>
+</div>
+
+<div class="ui-layout-center">
+
+<textarea id="output" name="output" class="ui-layout-content" rows="30" cols="50" 
+style="width: 100%; background: #F9F9F9; border-width: 1px;">
+<div class="top">Header DIV</div>
+<div class="ui-layout-content">
+	<p>Dummy content to cause a scrollbar...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p>
+</div>
+<div class="bottom">Footer DIV</div>
+</textarea>
+
+</div>
+
+<div class="ui-layout-east">
+	Click &quot;Write HTML&quot; to fill this pane
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/ajax.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:08 GMT -->
+</html>

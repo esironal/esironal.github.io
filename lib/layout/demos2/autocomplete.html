@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/autocomplete.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:03 GMT -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+
+	<title>Layout with AutoComplete Control</title>
+
+	<link rel="stylesheet" type="text/css" href="lib/css/layout-default-latest.css" />
+	<link rel="stylesheet" type="text/css" href="lib/css/themes/base/jquery.ui.all.css" />
+	<!-- CUSTOMIZE/OVERRIDE THE DEFAULT CSS -->
+	<style type="text/css">
+	/* remove padding and scrolling from elements that contain an Accordion OR a content-div */
+	.ui-layout-center ,	/* has content-div */
+	.ui-layout-east {	/* has content-div ... */
+		border:		0;	/* inner elements have borders, so don't need one on 'pane' */
+		padding:	0;
+		overflow:	hidden;
+	}
+	h3, h4 { /* Headers & Footer in Center & East panes */
+		font-size:		1.1em;
+		background:		#EEF;
+		border:			1px solid #BBB;
+		border-width:	0 0 1px;
+		padding:		7px 10px;
+		margin:			0;
+	}
+	.ui-layout-east h4 { /* Footer in East-pane */
+		font-size:		0.9em;
+		font-weight:	normal;
+		border-width:	1px 0 0;
+	}
+	/*
+	 *	Customize the auto-generated AutoComplete menu
+	 */
+	ul.ui-autocomplete {
+		}
+		.ui-autocomplete li.ui-menu-item {
+			}
+			.ui-autocomplete .ui-menu-item a {
+			}
+	</style>
+
+	<!-- REQUIRED scripts for layout widget -->
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+
+    <script type="text/javascript" src="lib/js/themeswitchertool.js"></script> 
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+
+	<script type="text/javascript">
+	var array_languages = ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby", "python", "c", "scala", "groovy", "haskell", "perl"];
+
+	$(document).ready( function() {
+
+		myLayout = $('body').layout({
+			west__size:			300
+		,	east__size:			300
+		});
+
+		// AUTOCOMPLETE
+		$("input#autocomplete").autocomplete({
+			appendTo:	"body"
+		,	source:		array_languages
+		});
+
+		// THEME SWITCHER
+		addThemeSwitcher('.ui-layout-north',{ top: '12px', right: '5px' });
+		// if a new theme is applied, it could change the height of some content,
+		// so call resizeAll to 'correct' any header/footer heights affected
+		// NOTE: this is only necessary because we are changing CSS *AFTER LOADING* using themeSwitcher
+		setTimeout( myLayout.resizeAll, 1000 ); /* allow time for browser to re-render with new theme */
+
+	});
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-north ui-widget-content" style="display: none;">
+	<div style="float: right; margin-right: 160px;">
+		<button onClick="resizeWidgets()">Resize</button> &nbsp;
+		<button onClick="removeUITheme(); myLayout.resizeAll()">Remove Theme</button>
+	</div>
+	North Pane
+</div>
+
+<div class="ui-layout-center" style="display: none;"> 
+	<h3 class="ui-widget-header">Center Pane</h3>
+	<div class="ui-layout-content ui-widget-content">
+		<p>The input below uses the jQuery UI AutoComplete widget that lists all </p>
+		<p>Language: <input id="autocomplete" /></p>
+		<p style="font-size: .84em;">TIP: Try typing a "j" or a "c"</p>
+	</div>
+</div>
+
+<div class="ui-layout-west" style="display: none;">
+	West Pane
+</div>
+
+<div class="ui-layout-east" style="display: none;">
+	<h3 class="ui-widget-header">East Pane</h3>
+	<div class="ui-layout-content">Lorem Ipsum...</div>
+	<h4 class="ui-widget-content ui-state-hover">I'm a layout footer</h4>
+</div>
+
+<div class="ui-layout-south ui-widget-content ui-state-error" style="display: none;"> South Pane </div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/autocomplete.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:03 GMT -->
+</html> 

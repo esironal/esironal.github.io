@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/toggle_center_pane.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:11 GMT -->
+<head>
+
+	<link rel="stylesheet" type="text/css" href="lib/css/layout-default-latest.css" />
+	<style type="text/css">
+	/* STYLE LAYOUT ELEMENTS */
+	#header			{ border: 0 0 1px; padding-bottom: 0; }
+	#innerContainer { padding: 0; border: 0; }
+	#resources, #staff { padding: 0; } /* has header/content-div */
+	#resources, #filters, #staff { border-top: 0; }
+	#filters		{border-top: 0;  background: #CEE; }
+	#staff			{  }
+	/* hide panes until layout inits... */
+	#header, #resources, #innerContainer,	/* outer-layout panes */
+	#filters, #staff { display: none; }		/* inner-layout panes */
+	/* STYLE DEMO ELEMENTS */
+	body			{ background: #999; }
+	#header div		{ position: relative; overflow: hidden; }
+	#header button	{ vertical-align: middle; }
+	div.toolbar		{ padding: 5px 10px; border: 1px solid #BBB; background: #F6F6F6; }
+	div.buttons		{ padding: 7px 10px 0; text-align: center; }
+		div.left	{ float: left;  text-align: left;  }
+		div.right	{ float: right; text-align: right; }
+		div.left ,
+		div.right	{ width: 25%; font-weight: bold; font-size: 1.2em; }
+		#btnToggle	{ background: #EEE; }
+		#btnSlide	{ background: #EEE; }
+	#filters		{ background: #EEE; }
+	th				{ background: #DDD; }
+	h5				{ background: #F6F6F6; border-bottom: 1px solid #BBB; padding: 5px 15px; margin: 0; }
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript">
+
+	var outerLayout, westLayout, innerLayout;
+
+	$(document).ready(function() {
+
+		outerLayout = $("body").layout({
+				name:					"outer" // used for button binding
+			,	north__paneSelector:	"#header"
+			,	north__closable:		false
+			,	north__resizable:		false
+			,	north__spacing_open:	0
+			,	center__paneSelector:	"#innerContainer"
+			,	west__paneSelector:		"#resources"
+			,	west__size:				Math.floor((screen.width / 2) - 112) // allow for resizer-widths
+			,	west__maxSize:			"70%"
+			,	west__minSize:			200
+			,	center__onresize:		'innerLayout.resizeAll'
+			,	resizeWhileDragging:	true
+			,	autoBindCustomButtons:	true
+			,	useStateCookie:			true
+			,	cookie__keys:			"west.size,west.isClosed"
+		});
+
+		innerLayout = $("#innerContainer").layout({
+				name:					"inner" // used for button binding
+			,	center__paneSelector:	"#staff"
+			,	west__paneSelector:		"#filters"
+			,	west__size:				200
+			,	west__minSize:			150
+			,	west__maxSize:			250
+			,	west__spacing_closed:	0
+			,	west__togglerLength_open: 0
+			,	west__fxSettings:		{ direction: "up" }
+			,	west__trackMouseWhenSliding: false // so doesn't immediately close when using Toggle-Slide button
+			,	autoBindCustomButtons:	true
+			,	useStateCookie:			true
+			,	cookie__keys:			"west.size,west.isClosed"
+		});
+
+	});
+
+	</script>
+
+</head>
+<body>
+
+<div id="header">
+	<div class="toolbar">
+		<button>Back</button>
+		<button>Fwd</button>
+		<button>Home</button>
+		<input style="width: 70%;" />
+	</div>
+	<div class="buttons">
+		<div class="left">Resources &nbsp; <button class="ui-layout-button-toggle-west" layoutName="outer">+/-</button></div>
+		<div class="right">Staff</div>
+		<button id="btnToggle" class="ui-layout-button-toggle-west" layoutName="inner">Toggle Open</button>
+		<button id="btnSlide" class="ui-layout-button-toggle-slide-west" layoutName="inner">Toggle Slide</button>
+	</div>
+</div>
+
+<div id="resources">
+	<h5>Pane Header</h5>
+	<div class="ui-layout-content">
+		<table width="100%" cellpadding="5" cellspacing="0" border="1">
+			<tr><th>Name</th>	<th>Count</th>		<th>Note</th></tr>
+			<tr><td>Item 1</td>	<td>2</td>			<td>&nbsp;</td></tr>
+			<tr><td>Item 2</td>	<td>1</td>			<td>&nbsp;</td></tr>
+			<tr><td>Item 3</td>	<td>4</td>			<td>&nbsp;</td></tr>
+		</table>
+	</div>
+</div>
+
+<div id="innerContainer">
+
+	<div id="filters">
+		<button style="float: right;" class="ui-layout-button-pin-west" layoutName="inner">Pin</button>
+		Actions here...
+	</div>
+
+	<div id="staff">
+		<h5>Pane Header</h5>
+		<div class="ui-layout-content">
+			<table width="100%" cellpadding="5" cellspacing="0" border="1">
+				<tr><th>Name</th>			<th>Age</th>	<th>Ranking</th></tr>
+				<tr><td>John Smith</td>		<td>24</td>		<td>50</td></tr>
+				<tr><td>Jane Summers</td>	<td>28</td>		<td>56</td></tr>
+				<tr><td>Bill Johnson</td>	<td>35</td>		<td>87</td></tr>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/toggle_center_pane.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:11 GMT -->
+</html>

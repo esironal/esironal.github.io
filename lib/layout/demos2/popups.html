@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/popups.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:57 GMT -->
+<head>
+
+	<title>Popups Demo</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+
+	<style type="text/css">
+	/**
+	 *	ALL CSS below is only for cosmetic and demo purposes
+	 *	Nothing here affects the appearance of the layout
+	 */
+
+	body {
+		font-family: Arial, sans-serif;
+		font-size: 0.85em;
+	}
+	p {
+		margin: 1em 0;
+	}
+
+	/*
+	 *	Rules below are for simulated drop-down/pop-up lists
+	 */
+
+	ul {
+		/* rules common to BOTH inner and outer UL */
+		z-index:	100000;
+		margin:		1ex 0;
+		padding:	0;
+		list-style:	none;
+		cursor:		pointer;
+		border:		1px solid Black;
+		/* rules for outer UL only */
+		width:		15ex;
+		position:	relative;
+	}
+	ul li {
+		background-color: #EEE;
+		padding: 0.15em 1em 0.3em 5px;
+	}
+	ul ul {
+		display:	none;
+		position:	absolute;
+		width:		100%;
+		left:		-1px;
+		/* Pop-Up */
+		bottom:		0;
+		margin:		0;
+		margin-bottom: 1.55em;
+	}
+	.ui-layout-north ul ul {
+		/* Drop-Down */
+		bottom:		auto;
+		margin:		0;
+		margin-top:	1.45em;
+	}
+	ul ul li		{ padding: 3px 1em 3px 5px; }
+	ul ul li:hover	{ background-color: #FF9; }
+	ul li:hover ul	{ display:	block; background-color: #EEE; }
+
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="lib/js/debug.js"></script>
+
+	<script type="text/javascript">
+
+	var myLayout; // a var is required because this page utilizes: myLayout.allowOverflow() method
+
+	$(document).ready(function () {
+		myLayout = $('body').layout({
+			// enable showOverflow on west-pane so popups will overlap north pane
+			west__showOverflowOnHover:	true
+		});
+ 	});
+
+	</script>
+
+</head>
+<body>
+
+<!-- manually attach allowOverflow method to pane -->
+<div class="ui-layout-north" onmouseover="myLayout.allowOverflow('north')" onmouseout="myLayout.resetOverflow(this)">
+	North pane
+	<ul>
+		<li>
+			<ul>
+				<li>one</li>
+				<li>two</li>
+				<li>three</li>
+				<li>four</li>
+				<li>five</li>
+			</ul>
+			Drop-Down <!-- put this below so IE and FF render the same! -->
+		</li>
+	</ul>
+
+</div>
+
+<!-- allowOverflow auto-attached by option: west__showOverflowOnHover = true -->
+<div class="ui-layout-west">
+	West pane
+	<ul>
+		<li>
+			<ul>
+				<li>one</li>
+				<li>two</li>
+				<li>three</li>
+				<li>four</li>
+				<li>five</li>
+			</ul>
+			Pop-Up <!-- put this below so IE and FF render the same! -->
+		</li>
+	</ul>
+</div>
+
+<div class="ui-layout-south">
+	South pane
+</div>
+
+<div class="ui-layout-east">
+	East pane
+	<!-- attach allowOverflow method to this specific element -->
+	<ul onmouseover="myLayout.allowOverflow(this)" onmouseout="myLayout.resetOverflow('east')">
+		<li>
+			<ul>
+				<li>one</li>
+				<li>two</li>
+				<li>three</li>
+				<li>four</li>
+				<li>five</li>
+			</ul>
+			Pop-Up <!-- put this below so IE and FF render the same! -->
+		</li>
+	</ul>
+	<p>
+		This pane has a scrollbar.
+		Note how the scrollbar disappears and content 'overflows' into the South pane
+		when you you mouse-over the Pop-Up.
+	</p>
+	<p>
+		So the allowOverflow method is best used only for panes that do not scroll, like a toolbar or menubar.
+	</p>
+	<div style="color: Red; font-weight: bold;">
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+		<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	</div>
+</div>
+
+<div class="ui-layout-center">
+	Center pane
+	<p>The Pop-Up and Drop-Down lists demonstrate the <b>allowOverflow()</b> utility</p>
+	<p>The <b>allowOverflow()</b> method is attached <u>differently</u> in each pane: North, West &amp; East</p>
+	<p><b>NOTE:</b> The allowOverflow method is intended as a last resort 
+		- <u>used only when there is no other way to make a popup work</u>.</p>
+	<p><a href="../demos-2.html">Go to the Demos page</a></p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/popups.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:57 GMT -->
+</html>

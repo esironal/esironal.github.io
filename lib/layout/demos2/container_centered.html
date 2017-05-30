@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/container_centered.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+	<title>Layout Container</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+	<style type="text/css">
+	html, body {
+		width:		100%;
+		height:		100%;					
+		padding:	0;
+		margin:		0;
+		overflow:	auto; /* when page gets too small */
+	}
+	body {
+		background:	#666;
+	}
+	/*
+	 *	#verticalCenteringWrapper
+	 *
+	 *	This is an example of a pure CSS solution for vertical centering
+	 *	It works well when dealing with a fixed-height container
+	 *	However if you just want a 'margin' at top and bottom,
+	 *	then you could use an absolutely positioned div with top & bottom settings,
+	 *	or use an extra wrapper-layout as described in more detail below.
+	 */
+	#verticalCenteringWrapper {
+		background:	#777; /* for easier visualization */
+		width:		100%;
+		height:		1px;
+		top:		50%;
+		position:	absolute;
+	}
+	#container {
+		background:	#999;
+		height:		500px;
+		margin:		-250px auto 0; /* top-margin = height/2 */
+		width:		100%;
+		max-width:	900px;
+		min-width:	700px;
+		_width:		700px; /* min-width for IE6 */
+		position:	relative;
+	}
+	.pane {
+		display:	none; /* will appear when layout inits */
+	}
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function () {
+		$('#container').layout();
+	});
+
+	</script>
+
+</head>
+<body>
+<div id="verticalCenteringWrapper">
+	<div id="container">
+		<div class="pane ui-layout-center">
+			Center
+			<p><a href="../demos-2.html"><b>Go to the Demos page</b></a></p>
+		</div>
+		<div class="pane ui-layout-north">North</div>
+		<div class="pane ui-layout-south">South</div>
+		<div class="pane ui-layout-east">East</div>
+		<div class="pane ui-layout-west">West</div>
+	</div>
+</div>
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/container_centered.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+</html>

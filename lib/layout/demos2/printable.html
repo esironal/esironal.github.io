@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/printable.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:57 GMT -->
+<head>
+
+	<title>Simple Layout Demo</title>
+
+	<style type="text/css">
+
+	/**
+	 *	Basic CSS - not related to the layout
+	 */
+	body {
+		font-family: Arial, sans-serif;
+		font-size: 0.85em;
+	}
+	p {
+		margin: 1em 0;
+	}
+
+
+	/**
+	 *	Cosmetic Styling for Layout Elements
+	 */
+	.ui-layout-pane { 
+		background:	#FFF; 
+		border:		1px solid #F00; 
+		padding:	10px; 
+		overflow:	auto;
+	} 
+	.ui-layout-resizer {
+		background:	#DDD; 
+	} 
+	.ui-layout-toggler {
+		background:	#AAA; 
+	}
+
+	</style>
+
+	<style type="text/css" media="print">
+	/**
+	 *	PRINT Stylesheet
+	 * 
+	 *	First 'neutralize' all the positioning/overflow CSS added by Layout
+	 *	Then change or add cosmetic styles (borders, padding) for printing
+	 *
+	 *	MUST use "!important" for all size, position, margin & overflow rules,
+	 *	so these will 'override' styles applied to the elements by Layout
+	 */
+
+	html, body {
+		/* NEUTRALIZE 'layout container' styles */
+		overflow:	visible 	!important;
+		width:		auto		!important;
+		height:		auto		!important;
+		position:	static		!important;
+	}
+	.ui-layout-pane ,
+	.ui-layout-resizer ,
+	.ui-layout-toggler {
+		/* NEUTRALIZE 'layout element' styles */
+		display:	none		!important; /* hide ALL by default */
+		position:	relative	!important;
+		top:		auto		!important;
+		bottom:		auto		!important;
+		left:		auto		!important;
+		right:		auto		!important;
+		width:		auto		!important;
+		height:		auto		!important;
+		overflow:	visible		!important;
+	}
+	/* SHOW ONLY the panes you want */
+	.ui-layout-pane-north ,
+	.ui-layout-pane-south ,
+	.ui-layout-pane-east ,
+	.ui-layout-pane-center {
+		display:	block		!important;
+		/* OPTIONAL: change cosmetic styles as desired
+		border:		0			!important;
+		padding:	0			!important;
+		background:	transparent	!important;
+		*/
+	}
+	/* float the east pane to create a sidebar */
+	.ui-layout-pane-east {
+		float:			right;
+		width:			25%			!important;
+		margin-left:	1em			!important;
+		margin-bottom:	1ex			!important;
+	}
+
+	</style>
+
+
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="jquery.ui.all.js"></script>
+	<script type="text/javascript" src="jquery.layout.js"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			$('body').layout();
+		});
+
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-north">
+	This is the north pane
+</div>
+
+<div class="ui-layout-west">
+	This is the west pane
+</div>
+
+<div class="ui-layout-east">
+	This is the east pane
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>BOTTOM OF EAST PANE</p>
+</div>
+
+<div class="ui-layout-center">
+	If you Print Preview this page, it will print like this...
+	<ul>
+		<li>North-pane as a header</li>
+		<li>Center-pane under the header, spanning multiple pages</li>
+		<li>South-pane immediately after the center-pane</li>
+		<li>East-pane 'floating' in upper-right of center-pane</li>
+		<li>West-pane hidden</li>
+	</ul>
+	<p>
+		Everything should print exactly as if there were no 'layout' used.
+		There should be no gaps or overlap between the sections.
+		The red borders are visible for printing so the alignment can be seen easily.
+	</p>
+	
+	<p>&nbsp;</p>
+	<p><a href="../demos-2.html">Go to the Demos page</a></p>
+	<p>&nbsp;</p>
+	
+	<p>
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+	</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+	</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+		Now is the time for all good men to come to the aid of their country.
+	</p>
+	<p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p><p>...</p>
+	<p>END OF CENTER PANE</p>
+</div>
+
+<div class="ui-layout-south">
+	This is the south pane
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/printable.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:00 GMT -->
+</html>

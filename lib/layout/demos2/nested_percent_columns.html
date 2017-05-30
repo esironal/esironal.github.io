@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/nested_percent_columns.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<title>Percentage-Width Columns</title>
+
+	<link rel="stylesheet" type="text/css" href="lib/css/layout-default.css" />
+
+	<style type="text/css">
+		/* set some minimum dimensions to the page/layout */
+		html { overflow:	auto !important; }
+		body { min-width:	500px; min-height: 300px; }
+		/* add some colors to distinguish outer from inner layout */
+		body									{ background:	#F6F6F6; }
+		body>.ui-layout-pane 					{ background:	#EFE; }
+		body>.ui-layout-pane>.ui-layout-pane	{ background:	#EEF; }
+		/* outer-center pane is a 'container - remove padding & scrollbar */
+		.col234 { padding: 0; overflow: hidden;	  background:	#FEE; }
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript">
+
+	var outerLayout, innerLayout;
+
+	$(document).ready(function(){
+
+		outerLayout = $('body').layout({ 
+			name:					'outerLayout' // for debugging & auto-adding buttons (see below)
+		,	autoResize:				true	// try to maintain pane-percentages
+		,	autoReopen:				true	// auto-open panes that were previously auto-closed due to 'no room'
+		,	autoBindCustomButtons:	true
+		,	west__paneSelector: 	'.col1' 
+		,	center__paneSelector: 	'.col234' 
+		,	east__paneSelector: 	'.col5' 
+		,	west__size: 			.20		// percentage size expresses as a decimal
+		,	east__size: 			.20
+		,	minSize:				100
+		,	center__minWidth:		239 // 3 x 75 (panes) + 2 x 6 (spacing) + 2 x 1 (center-border)
+		,	noRoomToOpenAction:		"hide" // 'close' or 'hide' when no room to open a pane at minSize
+		}); 
+
+		innerLayout = outerLayout.panes.center.layout({ 
+			name:					'innerLayout' // for debugging & auto-adding buttons (see below)
+		,	west__paneSelector: 	'.col2'
+		,	center__paneSelector: 	'.col3'
+		,	east__paneSelector: 	'.col4'
+		,	west__size: 			'33%'	// percentage size expresses as a string
+		,	east__size: 			'33%'
+		,	autoResize:				true	// try to maintain pane-percentages
+		,	closable:				true
+		,	togglerLength_open:		0	// hide toggler-buttons
+		,	spacing_closed:			0	// hide resizer/slider bar when closed
+		,	autoReopen:				true	// auto-open panes that were previously auto-closed due to 'no room'
+		,	autoBindCustomButtons:	true
+		,	minSize:				75
+		,	center__minWidth:		75
+		}); 
+
+	});
+
+	</script>
+
+</head>
+<body>
+
+<div class="col1">
+	col1 <p>outerLayout.west</p> 	<p>size = 20%</p>
+	<p><button class="ui-layout-button-toggle-east">Toggle Outer-East</button></p> 
+	<p><button class="ui-layout-button-toggle-west" layoutName="innerLayout">Toggle Inner-West</button></p> 
+	<p><button class="ui-layout-button-toggle-east" layoutName="innerLayout">Toggle Inner-East</button></p> 
+</div>
+
+<div class="ui-layout-center col234">
+	<div class="col2"> col2 <p>innerLayout.west</p>		<p>size = 33%</p> </div>
+    <div class="col3"> col3 <p>innerLayout.center</p>	<p>size = 33%</p> </div>
+	<div class="col4"> col4 <p>innerLayout.east</p>		<p>size = 33%</p> </div>
+</div>
+
+<div class="col5">
+	col5 <p>outerLayout.east</p>	<p>size = 20%</p> 
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/nested_percent_columns.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+</html>

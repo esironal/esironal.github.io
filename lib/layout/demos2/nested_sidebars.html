@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from layout.jquery-dev.com/demos/nested_sidebars.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+
+	<title>Nested Sidebars Layout</title> 
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+
+	<style type="text/css">
+	/* give outer-panes their own colors */
+	body > .ui-layout-center	{ background: #CEE; }
+	body > .ui-layout-west	 	{ background: #CCF; }
+	body > .ui-layout-east		{ background: #CFC; }
+	
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		$('body').layout({
+			minSize:					100	// ALL panes
+		,	west__size:					200
+		,	east__size:					200
+		,	stateManagement__enabled:	true
+
+		//	West Sidebar options
+		,	west__childOptions:	{
+				minSize:				50	// ALL panes
+			,	south__size:			300
+			}
+
+		//	East Sidebar options
+		,	east__childOptions:	{
+				minSize:				50	// ALL panes
+			,	south__size:			100
+			}
+
+		});
+
+	});
+
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-center">
+	Outer - Center pane
+	<p>&nbsp;</p>
+	<p><a href="../demos-2.html">Go&nbsp;to Demos&nbsp;page</a></p>
+</div>
+
+<div class="ui-layout-west">
+	<div class="ui-layout-center"> West - Center </div>
+	<div class="ui-layout-south">  West - South </div>
+</div>
+
+<div class="ui-layout-east">
+	<div class="ui-layout-center"> East - Center </div>
+	<div class="ui-layout-south">  East - South </div>
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/nested_sidebars.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+</html>

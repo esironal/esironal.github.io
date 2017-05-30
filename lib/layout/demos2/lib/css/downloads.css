@@ -1,0 +1,85 @@
+/*
+ *	CURRENT VERSON BOX & BULLETS
+ */
+DIV.currentVersion {
+	margin-top: 1em;
+	border: 1px solid #CCC;
+	background-color: #F9F9F9;
+	padding: 5px 1px 9px 10px;
+	width: 35em;
+	}
+	.currentVersion P {
+		font-size: 1.2em;
+		font-weight: bold;
+		margin: 0;
+		}
+		.currentVersion P STRONG {
+			font-size: 1.1em;
+			margin-left: 1ex;
+			margin-right: 1ex;
+		}
+		.currentVersion P SPAN {
+			font-weight: normal;
+			font-size: 0.85em;
+		}
+	.currentVersion UL {
+		margin-top: 1ex;
+		margin-bottom: 0;
+		}
+		.currentVersion UL LI A {
+			/*font-weight: bold;*/
+		}
+		.currentVersion UL LI SPAN {
+			color: #333;
+			font-size: 0.8em;
+			margin: 0 1ex;
+		}
+
+/*
+ *	CHANGE-LOG TABLE
+ */
+TABLE#changelog {
+	table-layout: fixed;
+	border: 1px solid #CCC;
+	width: 100%; /* for FireFox */
+	}
+	#changelog TH {
+		font-size: 0.9em;
+		text-align: center;
+		background-color: #F6F6F6;
+		padding: 4px 0 5px;
+		}
+		#changelog TH.date ,
+		#changelog TH.version {
+			border-right: 1px solid #CCC;
+		}
+		#changelog TH.changes {
+			text-align: left;
+			padding-left: 1em;
+		}
+	#changelog TD {
+		text-align: center;
+		border-top: 1px solid #CCC;
+		padding: 4px 0;
+		}
+		#changelog TD.date ,
+		#changelog TD.version {
+			border-right: 1px solid #EEE;
+		}
+		#changelog TD.date {
+			text-align: right;
+			padding-right: 1ex;
+		}
+		#changelog TD.version {
+			font-weight: bold;
+		}
+		#changelog TD.changes {
+			text-align: left;
+			padding: 0;
+			}
+			#changelog TD.changes UL {
+				margin: 0 1ex 2px 2em;
+				}
+				#changelog TD.changes UL LI {
+					padding: 3px 0 4px;
+				}

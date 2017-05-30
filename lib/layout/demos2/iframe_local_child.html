@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<HTML>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/iframe_local_child.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:26 GMT -->
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<TITLE>Simple Layout</TITLE>
+
+	<LINK type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css" />
+
+	<STYLE type="text/css">
+	/**
+	 *	This CSS below is only for cosmetic and demo purposes
+	 *	Nothing here affects the appearance of the layout
+	 */
+
+	body {
+		background:		#FFC;
+		font-family:	Arial, sans-serif;
+		*font-size:		0.85em;
+		padding:		10px;
+	}
+	p {
+		margin:			1em 0;
+	}
+
+	</STYLE>
+
+	<SCRIPT type="text/javascript" src="lib/js/jquery-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery-ui-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery.layout-latest.js"></SCRIPT>
+
+	<SCRIPT type="text/javascript">
+
+	var iframeLayout;
+
+	$(document).ready(function () {
+
+		iframeLayout = $('body').layout();
+
+ 	});
+
+	</SCRIPT>
+
+</HEAD>
+<BODY>
+
+<DIV class="ui-layout-center"> Iframe Center
+	<P>These buttons control the layout in the parent page.</P>
+
+	<h3>Close/Toggle West Pane</h3>
+
+	<P><BUTTON	onclick="parent.topLayout.toggle('west')"
+						>parent.topLayout.toggle('west')</BUTTON></P>
+
+	<P><BUTTON	onclick="parent.$('body').layout().toggle('west')"
+						>parent.$('body').layout().toggle('west')</BUTTON></P>
+
+	<P><BUTTON	onclick="parent.$('.ui-layout-west').trigger('layoutpaneclose')"
+						>parent.$('.ui-layout-west').trigger('layoutpaneclose')</BUTTON></P>
+
+	<h3>Size East Pane</h3>
+
+	<P><BUTTON	onclick="var layout = parent.topLayout; layout.sizePane('east', layout.state.east.size + 20 )"
+						>var layout = parent.topLayout;
+						<br>layout.sizePane('east',&nbsp;layout.state.east.size&nbsp;+&nbsp;20&nbsp;)</BUTTON></P>
+
+	<P><BUTTON	onclick="parent.$('body').layout().sizePane('east', 250)"
+						>parent.$('body').layout().sizePane('east', 250)</BUTTON></P>
+
+	<P><BUTTON	onclick="parent.$('.ui-layout-east').trigger('layoutpanesize', 300)"
+						>parent.$('.ui-layout-east').trigger('layoutpanesize',&nbsp;300)
+						<br>(works as of Layout RC30.7)</BUTTON></P>
+
+	<P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P>
+	<P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P>
+	<P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P>
+	<P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P>
+	<P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P>
+	<P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P>
+	<P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P><P>...</P>
+</DIV>
+
+<DIV class="ui-layout-west"> Iframe West
+	<P><BUTTON onclick="$(this).closest('.ui-layout-pane').trigger('layoutpaneclose')">Close Me</BUTTON></P>
+</DIV>
+
+<DIV class="ui-layout-east"> Iframe East
+	<P><BUTTON onclick="$(this).closest('.ui-layout-pane').trigger('layoutpaneclose')">Close Me</BUTTON></P>
+</DIV>
+
+<DIV class="ui-layout-north"> Iframe North </DIV>
+
+<DIV class="ui-layout-south"> Iframe South </DIV>
+
+</BODY>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/iframe_local_child.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:26 GMT -->
+</HTML>

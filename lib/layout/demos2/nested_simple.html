@@ -1,0 +1,61 @@
+<html>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/nested_simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+<head>
+<title>Layout Example</title>
+
+	<link type="text/css" rel="stylesheet" href="lib/css/layout-default-latest.css">
+
+	<style type="text/css">
+	.container	{ padding: 0; overflow: hidden; }
+	.blue		{ background: #EEF; }
+	.green		{ background: #EFE; }
+	</style>
+
+	<script type="text/javascript" src="lib/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function () {
+		$('body').layout({
+			west__size:			.50
+		,	west__childOptions:	{
+				center__childOptions:	{
+					size:		.33
+				}
+			}
+		});
+	});
+
+	</script>
+
+</head>
+<body>
+
+<div class="ui-layout-north">Outer North</div>
+
+<div class="ui-layout-center">Outer Center</div>
+
+<div class="ui-layout-south">Outer South</div>
+
+<div class="ui-layout-east">Outer East</div>
+
+<div class="ui-layout-west blue"><b><u>Outer West</u></b>
+
+	<div class="ui-layout-north">Middle North</div>
+	<div class="ui-layout-south">Middle South</div>
+	<div class="ui-layout-center green"><b><u>Middle Center</u></b>
+
+		<div class="ui-layout-west">Inner West</div>
+		<div class="ui-layout-east">Inner East</div>
+		<div class="ui-layout-center">Inner Center</div>
+
+	</div>
+
+</div>
+
+</body>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/nested_simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:49:54 GMT -->
+</html>

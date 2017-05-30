@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/tabs_ajax.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:02 GMT -->
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<TITLE>Ajax Tabs Demo</TITLE>
+
+	<LINK rel="stylesheet" type="text/css" href="lib/css/themes/base/jquery.ui.all.css">
+	<LINK rel="stylesheet" type="text/css" href="lib/css/layout-default-latest.css">
+	<STYLE type="text/css">
+
+	/*
+	 *	REQUIRED pane & wrapper styles
+	 *	this code removes padding and borders from all elements that need it
+	 */
+	#page_header,				/* this pane has a header & content-div, so should not have padding or scrolling */
+		#tabs,					/* wrapper for tabs widget */
+			#tab_buttons,		/* tab-buttons wrapper (center-north) */
+			#tab_panels,		/* tab-panels  wrapper (center-center) */
+				.tab-panel {	/* individual tab-panels */
+					border:		none;
+					padding:	0 !important; /* override UI theme for tab-panels */
+					overflow:	hidden;
+					position:	relative;
+				}
+				.tab-panel {	/* individual tab-panels */
+					/* make ALL tab-panels FILL the #tab_panels wrapper */
+					width:		100%;
+					height:		100%;
+					background:	#FF0;
+				}
+				#tab_buttons span.ui-icon { /* (x) close icons/buttons inside the tabs */
+					margin-right:	-7px;
+					vertical-align:	middle;
+					display:		inline-block;
+					cursor:			pointer;
+				}
+			#tab_panels {
+				border:		5px solid blue;
+			}
+	/*
+	 *	COSMETIC styling - not required
+	 */
+	#page_header h3 {
+		padding:	5px 15px;
+		margin:		0;
+	}
+	#page_header div.toolbar {
+		padding:	3px 10px;
+		}
+		#page_header .toolbar button {
+			padding:	5px 15px;
+		}
+	/*
+	 *	styles for layouts & elements inside tab-panels
+	 */
+	.tab-panel .ui-layout-north {
+		border-width:	0 0 1px;
+		overflow:		hidden;
+	}
+	.tab-panel .ui-layout-center {
+		border-width:	1px 0 0;
+		padding:		0;
+		overflow:		hidden;
+		}
+		.tab-panel .ui-layout-center .ui-widget-content {
+			padding:	10px 15px;
+			overflow:	auto;
+		}
+		.tab-panel H4 ,
+		.tab-panel H5 {
+			padding:	10px 15px;
+			margin:		0;
+		}
+
+	</STYLE>
+
+	<SCRIPT type="text/javascript" src="lib/js/jquery-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery-ui-latest.js"></SCRIPT>
+	<!-- UI Milestone 7 - fixes one issue, but has other bugs! 
+	<SCRIPT type="text/javascript" src="/lib/js/jquery-ui-1.9.0.m7.js"></SCRIPT>
+	-->
+
+	<SCRIPT type="text/javascript" src="lib/js/jquery.layout-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery.layout.resizeTabLayout-latest.js"></SCRIPT>
+
+    <SCRIPT type="text/javascript" src="lib/js/themeswitchertool.js"></SCRIPT> 
+	<SCRIPT type="text/javascript" src="lib/js/debug.js"></SCRIPT>
+
+	<SCRIPT type="text/javascript">
+
+	// global vars for layouts and tabs - for convenience
+	var pageLayout, $Tabs;
+	var newTabCounter = 1;
+
+	// options for the layout generated _inside_ the tab(s)
+	var tabLayoutOptions = {
+		resizeWithWindow:			false // *** IMPORTANT *** tab-layouts must NOT resize with the window
+	,	center__contentSelector:	".ui-widget-content"
+	};
+
+
+	// onClick event of the Add New Tab button
+	function add_tab () {
+		$Tabs.tabs( "add", "tabs_ajax_new_tab.html", "Tab "+ (++newTabCounter) );
+		
+	};
+
+	// bound to 'X' icon inside NEW tab-buttons
+	function remove_tab (evt) {
+		evt.preventDefault();
+		if ( confirm("Close this tab?") ) {
+			var	idx = $(this).closest("li").index();
+			$Tabs.tabs("remove", idx);
+		}
+	};
+
+
+	$(document).ready(function(){
+
+		// init the Page Layout
+		pageLayout = $("body").layout({ 
+			resizable:				false
+		,	closable:				false
+		,	spacing_open:			0
+		,	north__paneSelector:	"#page_header"	// page header
+		,	center__paneSelector:	"#tabs"			// tabs-wrapper
+		//	the Tabs-Wrapper layout inside the center-pane of the outer-layout
+		,	center__childOptions: {
+				resizable:				false
+			,	closable:				false
+			,	spacing_open:			0
+			,	north__paneSelector:	"#tab_buttons"	// tab-buttons
+			,	center__paneSelector:	"#tab_panels"	// tab-panels-wrapper
+			,	center__onresize:		$.layout.callbacks.resizeTabLayout // resize 'visible tab layout' if pane resizes
+			}
+		});
+
+		$Tabs = $("#tabs").tabs({
+		//	load Ajax tabs only once - when it is created
+			cache:			true
+
+		//	use a tab-button template so we can add a close (X) button/icon
+		,	tabTemplate:	'<LI><A href="#{href}">#{label}  <SPAN class="ui-icon ui-icon-close"></SPAN></A></LI>'
+		//	use a tab-template template so we can add our own class, and hide it temporarily
+		,	panelTemplate:	'<DIV class="tab-panel"></DIV>'
+		,	idPrefix:		"tab_panel_" // prefix for auto-generated ID for panel - eg: "tab_panel_3"
+
+		//	show() runs after a tab is made visible - but before Ajax content is loaded
+		//	this will also run when the tabs widget initializes - and the first tab-panel is shown
+		,	activate: $.layout.callbacks.resizeTabLayout // resize the layout inside tab - if one exists
+
+		,	activate_ALTERNATE: function (evt, ui) {
+				// resize inner tab-layout(s), if are any
+				$.layout.callbacks.resizeTabLayout(evt, ui);
+
+				// resize Accordion(s), if are any
+				// REQUIRES the jquery.layout.resizePaneAccordions-latest.js callback loaded
+				//$.layout.callbacks.resizePaneAccordions(evt, ui);
+			}
+
+		//	load() runs after widget finishes loading Ajax content into a tab
+		,	load: function (evt, ui ) { 
+				var $panel	= $( ui.panel )
+				,	$tab	= $( ui.tab )
+				//	get 'first element' of the injected content - used to store 'data'
+				,	$child	= $panel.children(":first");
+
+				//	look for layout-options data on the *first element* of the injected content
+				//	this trick could also be used to trigger initialization of other widgets, like tabs or accordions
+				var options	= $child.data("layout_options"); // eg: "tabLayoutOptions"
+				if ($.type(options) === "string") options = window[ options ];
+				// if layout options found, then init the layout with these options
+				if (options) $panel.layout( options );
+
+				/* if a tab-ID is set as data on the remote content, use it for the tab/panel
+				 * disabled in this demo because we reuse the same sample page repeatedly!
+				var tabId = $child.data("tab_id");
+				if (tabId) {
+					ui.panel.id = tabId;
+					if ($tab.attr("aria-controls")) // UI 1.9 attribute
+						$tab.attr("aria-controls", tabId)
+					else // UI 1.8 and below
+						ui.tab.href = "#"+ tabId;
+				}
+				*/
+			}
+
+		//	NOTE: As of jQuery UI 1.9.x, there is no longer an add-event
+		//		  - you must add new panels manually and then 'refresh' the tabs-widget
+		//		  This _eliminates_ the need to hack around how the widget appends panels.
+		//	add() runs after widget generates a new tab-button and tab-panel
+		,	add: function (evt, ui) {
+				var $panel	= $( ui.panel )
+				,	$tab	= $( ui.tab );
+
+				// MOVE the auto-generated panel inside the panels-wrapper DIV
+				// *** NO LONGER NEEDED WITH UI 1.8/1.9 - here for reference only ***
+				//$panel.appendTo( "#tab_panels" );
+
+				// UI 1.8 BUG FIX
+				// Until fix available in UI 1.9, must manually remove 'extra' ui-panel created
+				// these phantoms are always appended as siblings of the tab-buttons UL element
+				// *** NOT NEEDED WITH UI 1.9 ***
+				$tab.closest("ul").siblings("div.ui-tabs-panel").remove();
+
+				// resize tabs-layout in case tabs now wrap to another line
+			 	$Tabs.layout().resizeAll();
+
+				// bind the ui-icon-close in the tab (see template above) so it is functional
+				$tab.find(".ui-icon-close").click( remove_tab ).attr("title","Close This Tab");
+
+				// automatically select the newly added tab
+				// this will trigger the the ajax content to 'load'
+				$Tabs.tabs( "select", ui.index );
+			}
+
+
+		//	NOTE: As of jQuery UI 1.9.x, there is no longer a remove-event
+		//		  - you must remove tab-panels manually and then 'refresh' the tabs-widget
+		//		  This _should_ automatically update any layouts inside the tabs
+		//	remove() runs after widget removes a tab
+		,	remove: function (evt, ui ) { 
+				// resize tabs-layout in case tabs no longer wrapped to another line
+			 	$Tabs.layout().resizeAll();
+			}
+
+		//	create() runs after widget is created and the first tab is shown
+		,	create: function (evt, ui) { 
+				// create the layout inside the first tab
+				$("#first_panel").layout( tabLayoutOptions );
+			}
+
+		});
+
+		// resize the tabs-layout after creating the tabs to fit the tabs precisely
+		pageLayout.center.children.layout1.resizeAll();
+
+
+		// UI Theme Selector - for development testing only
+		addThemeSwitcher('#page_header',{ top: '43px', right: '15px' });
+		// if a theme is applied by ThemeSwitch *onLoad*, it may change the height of some content,
+		// so we need to call resizeLayout to 'correct' any header/footer heights affected
+		// call multiple times so fast browsers update quickly, and slower ones eventually!
+		// NOTE: this is only necessary because we are changing CSS *AFTER LOADING* (eg: themeSwitcher)
+		setTimeout( pageLayout.resizeAll, 1000 ); /* allow time for browser to re-render for theme */
+		setTimeout( pageLayout.resizeAll, 5000 ); /* for really slow browsers */
+	});
+
+	</SCRIPT>
+</HEAD>
+<BODY>
+
+<DIV id="page_header">
+	<H3 class="ui-state-active"> Page Header </H3>
+	<DIV class="toolbar ui-widget-content">
+		<BUTTON onClick="add_tab()">Add New Tab</BUTTON> &nbsp;
+		<BUTTON onClick="removeUITheme()">Remove UI Theme</BUTTON> 
+	</DIV>
+</DIV>
+
+<DIV id="tabs">
+	<DIV id="tab_buttons">
+		<UL> 
+			<LI><A href="#first_panel">Tab 1</A></LI> 
+		</UL>
+	</DIV>
+ 	<!-- center-pane with dynamic added tab-panels --> 
+	<DIV id="tab_panels">
+
+		<DIV id="first_panel" class="tab-panel"> 
+			<DIV class="ui-layout-north ui-widget-content"> Tab 1 North </DIV> 
+			<DIV class="ui-layout-center"> 
+				<H4 class="ui-state-default"> Tab 1 - Center - Header </H4>
+				<DIV class="ui-widget-content">
+					Tab 1 - Center - Content
+				</DIV>
+				<H5 class="ui-state-default"> Tab 1 - Center - Footer </H5>
+			</DIV> 
+		</DIV> 
+
+	</DIV>
+</DIV> 
+
+</BODY>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/tabs_ajax.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:02 GMT -->
+</HTML>

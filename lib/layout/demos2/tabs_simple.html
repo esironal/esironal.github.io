@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/tabs_simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:02 GMT -->
+<HEAD>
+	<META http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<TITLE>Simple Tabs Sample</TITLE>
+
+	<LINK rel="stylesheet" type="text/css" href="lib/css/themes/base/jquery.ui.all.css">
+	<LINK rel="stylesheet" type="text/css" href="lib/css/layout-default-latest.css">
+
+	<STYLE type="text/css">
+	/* Using an 'optional-container' instead of 'body', so need body to have a 'height' */
+	html, body {
+		width:		100%;
+		height:		100%;
+		padding:	0;
+		margin:		0;
+		overflow:	hidden !important;
+	}
+	#optional-container {
+		width:			96%;
+		height:			94%;
+		margin-top:		2%;
+		margin-left:	2%;
+	}
+	.ui-layout-center { overflow: hidden; }
+	</STYLE>
+
+	<SCRIPT type="text/javascript" src="lib/js/jquery-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery-ui-latest.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="lib/js/jquery.layout-latest.js"></SCRIPT>
+	<!-- theme switcher -->
+	<SCRIPT type="text/javascript" src="lib/js/debug.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="lib/js/themeswitchertool.js"></SCRIPT> 
+
+	<SCRIPT type="text/javascript">
+	var myLayout;
+
+	$(document).ready(function(){
+
+		$("#tabs_div").tabs();
+
+		$(".header-footer").hover(
+			function(){ $(this).addClass('ui-state-hover'); }
+		,	function(){ $(this).removeClass('ui-state-hover'); }
+		);
+
+		myLayout = $('#optional-container').layout();
+
+		addThemeSwitcher('.ui-layout-north',{ top: '13px', right: '20px' });
+
+	});
+	</SCRIPT>
+
+</HEAD>
+<BODY>
+
+<DIV id="optional-container">
+
+	<DIV class="ui-layout-north" style="text-align: center;">
+		<BUTTON onClick="removeUITheme()">Remove Theme</BUTTON> &nbsp; &nbsp;
+		<BUTTON onClick="myLayout.resizeAll(); myLayout.sizeContent('center');">Resize Content</BUTTON>
+	</DIV>
+
+	<DIV id="tabs_div" class="ui-layout-center">
+		<DIV class="header-footer ui-state-default ui-corner-all" style="padding: 3px 5px 5px; text-align: center; margin-bottom: 1ex;">
+			Header DIV above Tabs UL
+		</DIV>
+		<UL style="-moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0;">
+			<LI><A href="#tab_1"><SPAN>Tab 1</SPAN></A></LI>
+			<LI><A href="#tab_2"><SPAN>Tab 2</SPAN></A></LI>
+			<LI><A href="#tab_3"><SPAN>Tab 2</SPAN></A></LI>
+		</UL>
+		<DIV class="ui-layout-content ui-widget-content ui-corner-bottom" style="border-top: 0; padding-bottom: 1em;">
+			<DIV id="tab_1">
+				<P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Vestibulum condimentum neque a velit laoreet dapibus. 
+				Etiam eleifend tempus pharetra. Aliquam vel ante mauris, eget aliquam sapien. 
+				Aenean euismod vulputate quam, eget vehicula lectus placerat eu. 
+				Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+				Curabitur et ipsum orci, at fermentum metus. Etiam volutpat metus sit amet sapien tincidunt 
+				non fermentum velit aliquet. Pellentesque malesuada accumsan mi a accumsan. 
+				Nam commodo lectus non tellus rhoncus in facilisis metus iaculis. 
+				Proin id sapien felis, sit amet pretium dui. Suspendisse purus erat, blandit ut mollis elementum, 
+				bibendum a leo. Curabitur pulvinar arcu quis orci ultricies vestibulum. 
+				Cras convallis nisi eget tortor tristique gravida. Nam augue magna, dapibus in luctus ac, 
+				tincidunt dapibus tellus. Donec massa metus, pretium sit amet pulvinar id, ultrices ac eros. 
+				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+				Maecenas placerat lacus nec tortor feugiat condimentum.</P>
+
+				<P>Cras nec arcu sed nisi varius fermentum ut non nulla. Pellentesque ultricies condimentum nibh, 
+				nec imperdiet felis laoreet sit amet. Aenean a molestie tortor. 
+				Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+				Praesent enim magna, imperdiet adipiscing tempus nec, molestie id elit. Ut varius ante gravida 
+				est dignissim sodales. Nulla consectetur nibh eget metus sodales vulputate. 
+				Mauris lacinia risus nec ipsum sodales elementum. Nunc non tortor turpis. 
+				Vestibulum a euismod ligula.</P>
+
+				<P>Nam non hendrerit augue. Nunc sit amet est lectus. Morbi non nisl eget dolor rutrum ullamcorper. 
+				Sed dictum commodo elit sed rutrum. Nunc eu massa nulla, at gravida dolor. Aenean at interdum nisi. 
+				Integer consequat malesuada urna quis dignissim. Duis luctus porta ullamcorper. 
+				Aliquam tortor nunc, porta vel vestibulum at, egestas id mi. 
+				In quis arcu in felis laoreet varius a et ligula. 
+				Sed in magna a orci posuere ullamcorper ultrices ut ante. Suspendisse velit enim, venenatis et 
+				pharetra sed, mollis ut dui. Donec erat eros, dignissim ac ultrices ac, hendrerit a elit.</P>
+
+				<P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Vestibulum condimentum neque a velit laoreet dapibus. 
+				Etiam eleifend tempus pharetra. Aliquam vel ante mauris, eget aliquam sapien. 
+				Aenean euismod vulputate quam, eget vehicula lectus placerat eu. 
+				Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+				Curabitur et ipsum orci, at fermentum metus. Etiam volutpat metus sit amet sapien tincidunt 
+				non fermentum velit aliquet. Pellentesque malesuada accumsan mi a accumsan. 
+				Nam commodo lectus non tellus rhoncus in facilisis metus iaculis. 
+				Proin id sapien felis, sit amet pretium dui. Suspendisse purus erat, blandit ut mollis elementum, 
+				bibendum a leo. Curabitur pulvinar arcu quis orci ultricies vestibulum. 
+				Cras convallis nisi eget tortor tristique gravida. Nam augue magna, dapibus in luctus ac, 
+				tincidunt dapibus tellus. Donec massa metus, pretium sit amet pulvinar id, ultrices ac eros. 
+				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+				Maecenas placerat lacus nec tortor feugiat condimentum.</P>
+
+				<P>Cras nec arcu sed nisi varius fermentum ut non nulla. Pellentesque ultricies condimentum nibh, 
+				nec imperdiet felis laoreet sit amet. Aenean a molestie tortor. 
+				Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+				Praesent enim magna, imperdiet adipiscing tempus nec, molestie id elit. Ut varius ante gravida 
+				est dignissim sodales. Nulla consectetur nibh eget metus sodales vulputate. 
+				Mauris lacinia risus nec ipsum sodales elementum. Nunc non tortor turpis. 
+				Vestibulum a euismod ligula.</P>
+			</DIV>
+			<DIV id="tab_2">
+				<P>Nam non hendrerit augue. Nunc sit amet est lectus. Morbi non nisl eget dolor rutrum ullamcorper. 
+				Sed dictum commodo elit sed rutrum. Nunc eu massa nulla, at gravida dolor. Aenean at interdum nisi. 
+				Integer consequat malesuada urna quis dignissim. Duis luctus porta ullamcorper. 
+				Aliquam tortor nunc, porta vel vestibulum at, egestas id mi. 
+				In quis arcu in felis laoreet varius a et ligula. 
+				Sed in magna a orci posuere ullamcorper ultrices ut ante. Suspendisse velit enim, venenatis et 
+				pharetra sed, mollis ut dui. Donec erat eros, dignissim ac ultrices ac, hendrerit a elit.</P>
+			</DIV>
+			<DIV id="tab_3">
+				<P>Cras nec arcu sed nisi varius fermentum ut non nulla. Pellentesque ultricies condimentum nibh, 
+				nec imperdiet felis laoreet sit amet. Aenean a molestie tortor. 
+				Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+				Praesent enim magna, imperdiet adipiscing tempus nec, molestie id elit. Ut varius ante gravida 
+				est dignissim sodales. Nulla consectetur nibh eget metus sodales vulputate. 
+				Mauris lacinia risus nec ipsum sodales elementum. Nunc non tortor turpis. 
+				Vestibulum a euismod ligula.</P>
+			</DIV>
+		</DIV>
+		<DIV class="header-footer ui-state-default ui-corner-all" style="padding: 3px 5px 5px; text-align: center; margin-top: 1ex;">
+			Footer DIV under ui-layout-content DIV
+		</DIV>
+	</DIV>
+
+	<DIV class="ui-layout-west"> West </DIV>
+
+	<DIV class="ui-layout-south"> South </DIV>
+
+</DIV>
+
+</BODY>
+
+<!-- Mirrored from layout.jquery-dev.com/demos/tabs_simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2015 08:50:02 GMT -->
+</HTML>
