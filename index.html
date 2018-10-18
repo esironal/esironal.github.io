@@ -50,6 +50,23 @@ http://esironal.github.io/dwz/bin/dwz.min.js
 
 -->
 
+	
+	
+	
+	<script>
+
+jQuery.ajaxPrefilter(function(options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
+
+</script>
+	
+	
+	
+	
+	
 	<script type="text/javascript">
 		$(function() {
 			DWZ.init("http://esironal.github.io/dwz/dwz.frag.xml", {
