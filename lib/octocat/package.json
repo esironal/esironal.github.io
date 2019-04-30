@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "q": "1.4.1",
-    "lodash": "3.10.1",
+    "lodash": ">=4.17.5",
     "request": "2.64.0",
     "js-base64": "2.1.9",
     "mime-types": "2.1.4",
