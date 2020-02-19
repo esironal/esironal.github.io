@@ -72,7 +72,7 @@
     "babel-register": "^6.7.2",
     "babelify": "^7.3.0",
     "browserify": "^13.0.0",
-    "codecov": "^1.0.1",
+    "codecov": "^3.6.5",
     "del": "^2.2.0",
     "eslint-config-google": "^0.5.0",
     "eslint-plugin-mocha": "^2.2.0",
